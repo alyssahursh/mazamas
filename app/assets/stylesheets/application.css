@@ -1,2 +1,26 @@
 @import 'normalize.css';
 @import 'skeleton.css';
+
+/**********************************************************/
+/*           PLACE HOLDER STYLING FOR HOME PAGE           */
+/**********************************************************/
+
+html {
+  background-color: #ece2ff;
+}
+
+h1,
+h2 {
+  color: white;
+  text-align: center;
+  font-family: 'Helvetica', sans-serif;
+}
+
+h1 {
+  font-size: 5rem;
+  padding-top: 20vh;
+}
+
+h2 {
+  font-size: 3rem;
+}
