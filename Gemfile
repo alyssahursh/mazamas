@@ -23,6 +23,15 @@ gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc
 
+# Use Stripe for payment processing
+gem 'stripe', :git => 'https://github.com/stripe/stripe-ruby'
+
+# Use Mandrill for transactional emails
+gem 'mandrill-api'
+
+# Use Stormpath for user authentication
+gem 'stormpath-sdk'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
