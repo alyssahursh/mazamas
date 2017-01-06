@@ -34,7 +34,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'byebug'
+  # gem 'byebug'
 end
 
 group :development do
@@ -49,3 +49,11 @@ group :production do
   # Use PostgreSQL as the database for Active Record
   gem 'pg', '~> 0.19.0'
 end
+
+
+# platforms :rbx do
+#   gem 'rubysl', '~> 2.0'
+#   gem 'racc'
+#   gem 'minitest'
+#   gem 'rubinius-developer_tools'
+# end
