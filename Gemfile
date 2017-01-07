@@ -32,6 +32,9 @@ gem 'mandrill-api'
 # Use Stormpath for user authentication
 gem 'stormpath-sdk'
 
+# Use dotenv to load environment variables
+gem 'dotenv', '~> 2.1', '>= 2.1.1'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
