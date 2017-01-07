@@ -1,8 +1,20 @@
 Rails.application.routes.draw do
 
+
   root to: 'pages#index'
 
   get 'pages/index'
+
+  post 'payments/stripe', to: 'payments#create', as: 'payments'
+
+
+
+
+
+
+
+
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
