@@ -5,7 +5,7 @@ Rails.application.routes.draw do
 
   get 'pages/index'
 
-  post 'payments/stripe', to: 'payments#create', as: 'payments'
+  post 'payments/stripe', to: 'payments#stripe', as: 'payments'
 
 
 
