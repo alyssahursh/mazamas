@@ -1,6 +1,6 @@
 class PaymentsController < ApplicationController
   def stripe
-    event_json = JSON.parse(request.body.read)
+    # event_json = JSON.parse(request.body.read)
 
     TestMailer.test("akhursh@gmail.com").deliver_now
 
