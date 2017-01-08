@@ -33,7 +33,7 @@ gem 'mandrill-api'
 gem 'stormpath-sdk'
 
 # Use dotenv to load environment variables
-gem 'dotenv', '~> 2.1', '>= 2.1.1'
+gem 'dotenv-rails', '~> 2.1', '>= 2.1.1'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
@@ -61,11 +61,3 @@ group :production do
   # Use PostgreSQL as the database for Active Record
   gem 'pg', '~> 0.19.0'
 end
-
-
-# platforms :rbx do
-#   gem 'rubysl', '~> 2.0'
-#   gem 'racc'
-#   gem 'minitest'
-#   gem 'rubinius-developer_tools'
-# end
