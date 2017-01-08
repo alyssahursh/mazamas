@@ -1,7 +1,7 @@
 stormpath:
   application:
     href: <%= ENV['STORMPATH_APPLICATION_HREF'] %>
-    name: null
+    name: "Mazamas Climbs"
 
   web:
     basePath: null
@@ -65,7 +65,7 @@ stormpath:
             type: "text"
           middleName:
             enabled: false
-            visible: true
+            visible: false
             label: "Middle Name"
             placeholder: "Middle Name"
             required: false
@@ -79,10 +79,10 @@ stormpath:
             type: "text"
           username:
             enabled: false
-            visible: true
+            visible: false
             label: "Username"
             placeholder: "Username"
-            required: true
+            required: false
             type: "text"
           email:
             enabled: true
@@ -99,16 +99,14 @@ stormpath:
             required: true
             type: "password"
           confirmPassword:
-            enabled: false
+            enabled: true
             visible: true
             label: "Confirm Password"
             placeholder: "Confirm Password"
             required: true
             type: "password"
         fieldOrder:
-          - "username"
           - "givenName"
-          - "middleName"
           - "surname"
           - "email"
           - "password"
@@ -120,7 +118,7 @@ stormpath:
     # store for the defined Stormpath application has the email verification
     # workflow enabled.
     verifyEmail:
-      enabled: null
+      enabled: true
       uri: "/verify"
       nextUri: "/login?status=verified"
       view: "stormpath/rails/verify_email/new"
@@ -135,8 +133,8 @@ stormpath:
           login:
             enabled: true
             visible: true
-            label: "Username or Email"
-            placeholder: "Username or Email"
+            label: "Email Address"
+            placeholder: "Email Address"
             required: true
             type: "text"
           password:
@@ -159,7 +157,7 @@ stormpath:
     # will be automatically enabled if the default account store for the defined
     # Stormpath application has the password reset workflow enabled.
     forgotPassword:
-      enabled: null
+      enabled: true
       uri: "/forgot"
       view: "stormpath/rails/forgot_password/new"
       nextUri: "/login?status=forgot"
@@ -168,7 +166,7 @@ stormpath:
     # will be automatically enabled if the default account store for the defined
     # Stormpath application has the password reset workflow enabled.
     changePassword:
-      enabled: null
+      enabled: true
       autoLogin: false
       uri: "/change"
       nextUri: "/login?status=reset"
