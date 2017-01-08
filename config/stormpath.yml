@@ -1,6 +1,6 @@
 stormpath:
   application:
-    href: null
+    href: <%= ENV['STORMPATH_APPLICATION_HREF'] %>
     name: null
 
   web:
@@ -68,7 +68,7 @@ stormpath:
             visible: true
             label: "Middle Name"
             placeholder: "Middle Name"
-            required: true
+            required: false
             type: "text"
           surname:
             enabled: true
