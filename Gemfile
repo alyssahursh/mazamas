@@ -35,6 +35,11 @@ gem 'stormpath-sdk'
 # Use dotenv to load environment variables
 gem 'dotenv-rails', '~> 2.1', '>= 2.1.1'
 
+# For API interaction
+gem 'httparty'
+gem 'webmock'
+
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
@@ -44,9 +49,18 @@ gem 'dotenv-rails', '~> 2.1', '>= 2.1.1'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+
+
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  # gem 'byebug'
+  gem 'byebug'
+
+  # Standard testing suite
+  gem 'better_errors'
+  gem 'awesome_print'
+  gem 'minitest-reporters'
+  gem 'simplecov'
 end
 
 group :development do
