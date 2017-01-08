@@ -1,9 +1,8 @@
 class PaymentsController < ApplicationController
   def stripe
-    puts "I got here!"
-    TestMailer.test("akhursh@gmail.com").deliver
-    # Give Stripe confirmation that the information was received
-    return status 200
+    TestMailer.test("akhursh@gmail.com").deliver_now
 
+    # Give Stripe confirmation that the information was received
+    render status: 200
   end
 end
