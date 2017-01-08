@@ -31,6 +31,7 @@ gem 'mandrill-api'
 
 # Use Stormpath for user authentication
 gem 'stormpath-sdk'
+gem 'stormpath-rails'
 
 # Use dotenv to load environment variables
 gem 'dotenv-rails', '~> 2.1', '>= 2.1.1'
