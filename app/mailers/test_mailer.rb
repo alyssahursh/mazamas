@@ -1,9 +1,8 @@
 class TestMailer < BaseMandrillMailer
   def test(user_email)
-
     subject = "OH MY FUCKING GOD YOU DID IT!"
     merge_vars = {
-      "FIRST_NAME" => "Alyssa",
+      "NAME" => "Alyssa",
       "USER_URL" => "www.google.com",
     }
     body = mandrill_template("welcome-email", merge_vars)
