@@ -70,6 +70,9 @@ group :development do
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
+
+  # Rake erd to get a ERD of the current schema
+  gem "rails-erd"
 end
 
 group :production do
