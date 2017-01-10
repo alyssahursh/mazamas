@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170110034829) do
+ActiveRecord::Schema.define(version: 20170110035446) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -77,9 +77,24 @@ ActiveRecord::Schema.define(version: 20170110034829) do
     t.integer "climb_id",     :null=>false
   end
 
+  create_table "climber_educations", force: :cascade do |t|
+    t.integer  "year"
+    t.string   "leader"
+    t.datetime "created_at", :null=>false
+    t.datetime "updated_at", :null=>false
+  end
+
 # Could not dump table "climbs" because of following StandardError
 #   Unknown type 'climb_status' for column 'climb_status'
 
+
+  create_table "education_programs", force: :cascade do |t|
+    t.string   "abbreviation"
+    t.string   "name"
+    t.string   "description"
+    t.datetime "created_at",   :null=>false
+    t.datetime "updated_at",   :null=>false
+  end
 
 # Could not dump table "general_dates" because of following StandardError
 #   Unknown type 'climb_month' for column 'climb_month'

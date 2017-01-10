@@ -87,10 +87,14 @@ role                string
 month               integer
 year                integer
 
+rails g model EducationProgram abbreviation:string name:string description:string
+
 EDUCATION_PROGRAM
 name                string
 description         string
 
+
+rails g ClimberEducation year:integer leader:string
 *** CLIMBER_EDUCATION *** JOIN!
 belongs_to          user_id
 has_one             education_program
@@ -99,6 +103,8 @@ has_one             user_id (climb_leader)
 
 HIKER_PROFILE
 belongs_to          user_id
+
+rails g model ClimbLeaderProfile climbing_since:integer leader_since:integer pace:integer climb_preferences:text volunteer_history:text climb_achievements:text climb_philsophy:text summit_treat:text profile:text
 
 CLIMB_LEADER_PROFILE
 belongs_to          user_id
