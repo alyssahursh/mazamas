@@ -143,6 +143,9 @@ spots_available       integer // based on climbers accepted
 last_updated          datetime
 status                enum // open full waitlist cancelled
 
+rails generate migration CreateJoinTableStudentTeacher student teacher
+
+
 
 rails g model climb_schedule season:string date:integer
 

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170110032825) do
+ActiveRecord::Schema.define(version: 20170110034200) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -33,6 +33,11 @@ ActiveRecord::Schema.define(version: 20170110032825) do
     t.string   "description"
     t.datetime "created_at",  :null=>false
     t.datetime "updated_at",  :null=>false
+  end
+
+  create_table "climb_grad_emphases_climbs", id: false, force: :cascade do |t|
+    t.integer "climb_grad_emphasis_id", :null=>false
+    t.integer "climb_id",               :null=>false
   end
 
 # Could not dump table "climb_registrations" because of following StandardError
