@@ -47,3 +47,23 @@ ClimbSchedule.create(season: "Winter", year: 2016-2017)
 ClimbSchedule.create(season: "Summer", year: 2017)
 ClimbSchedule.create(season: "Winter", year: 2017-2018)
 ClimbSchedule.create(season: "Summer", year: 2018)
+
+# Use Faker to create 100 users
+100.times do |x|
+  statuses = ["nonmember", "active", "lapsed"]
+
+  User.create(
+    first_name:         Faker::Name.first_name,
+    last_name:          Faker::Name.last_name,
+    email:              Faker::Internet.email,
+    phone:              Faker::PhoneNumber.phone_number,
+    emergency_contact:  Faker::Name.name,
+    emergency_phone:    Faker::PhoneNumber.phone_number,
+    birthdate:          Faker::Date.between(80.years.ago, 20.years.ago),
+    address1:           Faker::Address.street_address,
+    address2:           Faker::Address.secondary_address,
+    city:               Faker::Address.city,
+    state:              Faker::Address.state_abbr,
+    zip:                Faker::Address.zip,
+    membership_status:  statuses[rand(0..2)]
+  )
