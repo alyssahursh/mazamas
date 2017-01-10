@@ -144,6 +144,8 @@ spots_available       integer // based on climbers accepted
 status                string // open full waitlist cancelled
 last_updated          datetime
 
+rails g model climb_schedule season:string date:integer
+
 rails g model specific_date date_leave_town:date date_leave_trailhead:date date_summit:date date_return_trailhead:date date_return_town:date
 
 SPECIFIC_DATES (TYPICALLY SUMMER)
@@ -155,26 +157,37 @@ return_trailhead_date date
 return_town_date      date
 
 rails g model general_dates climb_year:integer description:text
+
 GENERAL_DATES (TYPICALLY WINTER)
 belongs_to            climb
 climb_month           string
 description           text
 
+rails g model climb_class code:string description:string
+
 CLIMB_CLASS
 code                  string
 description           string
 
-CLIMB_GRADS
+rails g model climb_grad_emphasis code:string description:string
+
+CLIMB_GRAD_EMPHASIS
 code                  string
 description           string
+
+rails g model climb_tag code:string description:string
 
 CLIMB_TAG
 code                  string
 description           string
 
+rails g model mountain name:string peak_coordinates:string
+
 MOUNTAIN
 name                  string
 peak_coordinates      string
+
+rails g model route name:string description:string trailhead_coordinates:string
 
 ROUTE
 name                  string
