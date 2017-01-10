@@ -65,6 +65,8 @@ has_and_belongs_to_many  :users                /// Takes place of users_types jo
 ///                PROFILES                    ///
 //////////////////////////////////////////////////
 
+
+
 CLIMBER_PROFILE
 belongs_to          user_id
 has_many            climber_history
@@ -117,14 +119,13 @@ profile             text
 ///                  CLIMBS                    ///
 //////////////////////////////////////////////////
 
+rails g model climb_registration application_date:date
+
 CLIMB_APPLICATION
 belongs_to            user_id
 belongs_to            climb_id
 application_date      date?
-has_one               climb_application_status
-
-CLIMB_APPLICATION_STATUS
-name                  string // accepted rejected waitlisted withdrawn
+enum                  submitted accepted rejected waitlist leader assistant
 
 CLIMB
 has_many              climb_applications
