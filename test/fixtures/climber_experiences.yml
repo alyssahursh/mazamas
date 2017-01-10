@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  mountain: MyString
+  route: MyString
+  climb_leader: MyString
+  role: MyString
+  month: 1
+  year: 1
+
+two:
+  mountain: MyString
+  route: MyString
+  climb_leader: MyString
+  role: MyString
+  month: 1
+  year: 1

@@ -70,7 +70,7 @@ has_and_belongs_to_many  :users                /// Takes place of users_types jo
 CLIMBER_PROFILE
 belongs_to          user_id
 has_many            climber_history
-has_many            climber_education
+has_many            climber_education through user?
 bio                 text
 mazamas_volunteer   text
 physical_activity   text
@@ -78,7 +78,8 @@ physical_condition  text
 medical_condition   text
 medication          text
 
-CLIMBER_HISTORY
+rails g ClimberExperience mountain:string route:string climb_leader:string role:string month:integer year:integer
+CLIMBER_EXPERIENCE
 belongs_to          user_id
 has_one             mountain
 has_one             route
