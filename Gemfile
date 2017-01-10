@@ -40,6 +40,9 @@ gem 'dotenv-rails', '~> 2.1', '>= 2.1.1'
 gem 'httparty'
 gem 'webmock'
 
+# Add postgresql enum functionatlity to migrations
+gem "schema_plus_enums"
+
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
