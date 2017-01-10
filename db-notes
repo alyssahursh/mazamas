@@ -127,22 +127,22 @@ belongs_to            climb_id
 application_date      date?
 enum                  submitted accepted rejected waitlist leader assistant
 
-rails g model climb
+rails g model climb description:text party_size:integer spots_available:integer last_updated:datetime
 
 CLIMB
-has_many              climb_applications
-has_many              climb_leadership?? (some name for the climb-climb-leader join table)
-has_one               climb_class_id
-has_many              climb_grads
-has_many              climb_restrictions
-inherits              specific_dates
-inherits              general_dates
+has_many                  climb_registration
+has_and_belongs_to_many   climb_grads
+has_and_belongs_to_many   climb_restrictions
+belongs_to                climb_schedule
+has_one                   specific_dates
+has_one                   general_dates
+
 description           text
-schedule              string // summer 2017, winter 2017-2018, etc
 party_size            integer
 spots_available       integer // based on climbers accepted
-status                string // open full waitlist cancelled
 last_updated          datetime
+status                enum // open full waitlist cancelled
+
 
 rails g model climb_schedule season:string date:integer
 

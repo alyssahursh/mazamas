@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170110030051) do
+ActiveRecord::Schema.define(version: 20170110030812) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -50,6 +50,15 @@ ActiveRecord::Schema.define(version: 20170110030051) do
     t.string   "description"
     t.datetime "created_at",  :null=>false
     t.datetime "updated_at",  :null=>false
+  end
+
+  create_table "climbs", force: :cascade do |t|
+    t.text     "description"
+    t.integer  "party_size"
+    t.integer  "spots_available"
+    t.datetime "last_updated"
+    t.datetime "created_at",      :null=>false
+    t.datetime "updated_at",      :null=>false
   end
 
 # Could not dump table "general_dates" because of following StandardError

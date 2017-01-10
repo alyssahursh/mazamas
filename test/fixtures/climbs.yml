@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  description: MyText
+  party_size: 1
+  spots_available: 1
+  last_updated: 2017-01-09 19:08:12
+
+two:
+  description: MyText
+  party_size: 1
+  spots_available: 1
+  last_updated: 2017-01-09 19:08:12
