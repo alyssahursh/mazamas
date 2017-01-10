@@ -23,6 +23,14 @@ has_and_belongs_to_many
 ///                  USER                      ///
 //////////////////////////////////////////////////
 
+
+
+rails g model user first_name:string last_name:string email:string emergency_contact:string emergency_phone:string address1:string address2:string city:string state:string zip:string phone:string birthdate:date age:integer membership_status:enum
+
+rails g model user_role role:string description:string
+
+
+
 :USER
 first_name               string                /// Stormpath
 last_name                string                /// Stormpath
@@ -205,4 +213,4 @@ rejected              boolean
 waitlisted            boolean
 
 
-Payments 
+Payments
