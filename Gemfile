@@ -44,6 +44,7 @@ gem 'webmock'
 gem "schema_plus_enums"
 
 
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
@@ -65,6 +66,9 @@ group :development, :test do
   gem 'awesome_print'
   gem 'minitest-reporters'
   gem 'simplecov'
+  
+  # Use faker for seeding placeholder user data
+  gem "faker"
 end
 
 group :development do
