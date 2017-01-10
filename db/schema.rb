@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170110034200) do
+ActiveRecord::Schema.define(version: 20170110034829) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -38,6 +38,20 @@ ActiveRecord::Schema.define(version: 20170110034200) do
   create_table "climb_grad_emphases_climbs", id: false, force: :cascade do |t|
     t.integer "climb_grad_emphasis_id", :null=>false
     t.integer "climb_id",               :null=>false
+  end
+
+  create_table "climb_leader_profiles", force: :cascade do |t|
+    t.integer  "climbing_since"
+    t.integer  "leader_since"
+    t.integer  "pace"
+    t.text     "climb_preferences"
+    t.text     "volunteer_history"
+    t.text     "climb_achievements"
+    t.text     "climb_philsophy"
+    t.text     "summit_treat"
+    t.text     "profile"
+    t.datetime "created_at",         :null=>false
+    t.datetime "updated_at",         :null=>false
   end
 
 # Could not dump table "climb_registrations" because of following StandardError
@@ -101,6 +115,11 @@ ActiveRecord::Schema.define(version: 20170110034200) do
     t.string   "description"
     t.datetime "created_at",  :null=>false
     t.datetime "updated_at",  :null=>false
+  end
+
+  create_table "user_roles_users", id: false, force: :cascade do |t|
+    t.integer "user_role_id", :null=>false
+    t.integer "user_id",      :null=>false
   end
 
 # Could not dump table "users" because of following StandardError
