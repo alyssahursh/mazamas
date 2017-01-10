@@ -11,13 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170110030812) do
+ActiveRecord::Schema.define(version: 20170110032151) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
 
   create_enum "climb_month", "january", "february", "march", "april", "may", "june", "july", "august", "september,october", "november", "december"
+  create_enum "climb_status", "unpublished", "open", "full", "waitlist", "cancelled", "completed"
   create_enum "membership_status", "nonmember", "active", "lapsed"
   create_enum "registration_status", "appliedacceptedrejectedwaitlistleaderassistant"
   create_table "climb_classes", force: :cascade do |t|
@@ -52,14 +53,9 @@ ActiveRecord::Schema.define(version: 20170110030812) do
     t.datetime "updated_at",  :null=>false
   end
 
-  create_table "climbs", force: :cascade do |t|
-    t.text     "description"
-    t.integer  "party_size"
-    t.integer  "spots_available"
-    t.datetime "last_updated"
-    t.datetime "created_at",      :null=>false
-    t.datetime "updated_at",      :null=>false
-  end
+# Could not dump table "climbs" because of following StandardError
+#   Unknown type 'climb_status' for column 'climb_status'
+
 
 # Could not dump table "general_dates" because of following StandardError
 #   Unknown type 'climb_month' for column 'climb_month'
