@@ -127,6 +127,8 @@ belongs_to            climb_id
 application_date      date?
 enum                  submitted accepted rejected waitlist leader assistant
 
+rails g model climb
+
 CLIMB
 has_many              climb_applications
 has_many              climb_leadership?? (some name for the climb-climb-leader join table)
@@ -142,6 +144,8 @@ spots_available       integer // based on climbers accepted
 status                string // open full waitlist cancelled
 last_updated          datetime
 
+rails g model specific_date date_leave_town:date date_leave_trailhead:date date_summit:date date_return_trailhead:date date_return_town:date
+
 SPECIFIC_DATES (TYPICALLY SUMMER)
 belongs_to            climb
 leave_town_date       date
@@ -150,20 +154,22 @@ summit_date           date
 return_trailhead_date date
 return_town_date      date
 
+rails g model general_dates climb_year:integer description:text
 GENERAL_DATES (TYPICALLY WINTER)
 belongs_to            climb
 climb_month           string
+description           text
 
 CLIMB_CLASS
-name                  string
+code                  string
 description           string
 
 CLIMB_GRADS
-name                  string
+code                  string
 description           string
 
-CLIMB_RESTRICTIONS
-name                  string
+CLIMB_TAG
+code                  string
 description           string
 
 MOUNTAIN
