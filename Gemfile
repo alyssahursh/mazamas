@@ -56,7 +56,6 @@ gem "schema_plus_enums"
 
 
 
-
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
@@ -66,7 +65,7 @@ group :development, :test do
   gem 'awesome_print'
   gem 'minitest-reporters'
   gem 'simplecov'
-  
+
   # Use faker for seeding placeholder user data
   gem "faker"
 end
@@ -80,6 +79,9 @@ group :development do
 
   # Rake erd to get a ERD of the current schema
   gem "rails-erd"
+
+  # Use Rails Panel for Chrome for logs
+  gem 'meta_request'
 end
 
 group :production do
