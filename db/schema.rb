@@ -21,7 +21,7 @@ ActiveRecord::Schema.define(version: 20170112031616) do
   create_enum "climb_status", "unpublished", "open", "full", "waitlist", "cancelled", "completed"
   create_enum "climb_type", "mazamas", "private", "other"
   create_enum "membership_status", "nonmember", "active", "lapsed"
-  create_enum "registration_status", "appliedacceptedrejectedwaitlistleaderassistant"
+  create_enum "registration_status", "applied", "accepted", "rejected", "waitlist", "leader", "assistant"
   create_enum "snow_angle", "notapplicable", "35to50", "over50", "upto35"
   create_enum "typical_gear", "snow", "scramble", "rock", "rockandsnow"
   create_enum "typical_season", "springsummer", "summerautumn"
@@ -51,7 +51,7 @@ ActiveRecord::Schema.define(version: 20170112031616) do
     t.text     "climb_preferences"
     t.text     "volunteer_history"
     t.text     "climb_achievements"
-    t.text     "climb_philsophy"
+    t.text     "climb_philosophy"
     t.text     "summit_treat"
     t.datetime "created_at",         :null=>false
     t.datetime "updated_at",         :null=>false
