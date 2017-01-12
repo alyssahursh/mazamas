@@ -74,7 +74,7 @@ ActiveRecord::Schema.define(version: 20170112165512) do
     t.integer  "year"
   end
 
-  create_table "climb_tags", force: :cascade do |t|
+  create_table "s", force: :cascade do |t|
     t.string   "code"
     t.string   "description"
     t.datetime "created_at",  :null=>false
