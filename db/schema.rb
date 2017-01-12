@@ -53,10 +53,10 @@ ActiveRecord::Schema.define(version: 20170112020558) do
     t.text     "climb_achievements"
     t.text     "climb_philsophy"
     t.text     "summit_treat"
-    t.text     "profile"
     t.datetime "created_at",         :null=>false
     t.datetime "updated_at",         :null=>false
     t.string   "photo_link"
+    t.string   "bio"
   end
 
 # Could not dump table "climb_registrations" because of following StandardError
