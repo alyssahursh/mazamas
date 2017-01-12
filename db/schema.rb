@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170110040501) do
+ActiveRecord::Schema.define(version: 20170112001131) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -117,9 +117,18 @@ ActiveRecord::Schema.define(version: 20170110040501) do
 
   create_table "mountains", force: :cascade do |t|
     t.string   "name"
-    t.string   "peak_coordinates"
     t.datetime "created_at",       :null=>false
     t.datetime "updated_at",       :null=>false
+    t.string   "latitude"
+    t.string   "longitude"
+    t.string   "state"
+    t.string   "country"
+    t.string   "continent"
+    t.string   "summit_post_url"
+    t.string   "google_maps_url"
+    t.string   "elevation_feet"
+    t.string   "elevation_meters"
+    t.string   "summit_post_name"
   end
 
   create_table "routes", force: :cascade do |t|
