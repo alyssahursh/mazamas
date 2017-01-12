@@ -15,6 +15,7 @@ EducationProgram.create(abbreviation: "AR",   name: "Advanced Rock",            
 EducationProgram.create(abbreviation: "ASI",  name: "Advanced Snow and Ice",            description: "")
 EducationProgram.create(abbreviation: "SM",   name: "Ski Mountaineering",               description: "")
 EducationProgram.create(abbreviation: "FM",   name: "Families Mountaineering",          description: "")
+puts "Seeded Education Programs. Total Education Count: #{EducationProgram.all.length}"
 
 # All User Roles
 UserRole.create(role: "Climber",              description: "General role for all climbers")
@@ -23,6 +24,8 @@ UserRole.create(role: "A-Level Climb Leader", description: "Climb leader restric
 UserRole.create(role: "Provisional Leader",   description: "Provisional leader; requires Climb Leader-level assistant")
 UserRole.create(role: "Leader Candidate",     description: "Leadership development candidate")
 UserRole.create(role: "Admin",                description: "Adminstration role for staff and volunteers")
+puts "Seeded User Roles. Total User Roles: #{UserRole.all.length}"
+
 
 # All ClimbClasses (RouteGrades)
 ClimbClass.create(code: "A", description: "May require off-trail hiking, ice axe and crampon use on moderately steep slopes, and self-arrest. (examples: Mt. St. Helens, Mt Adams)")
@@ -30,6 +33,8 @@ ClimbClass.create(code: "B", description: "May require off-trail hiking, ice axe
 ClimbClass.create(code: "C", description: "May require off-trail hiking, ice axe and crampon use on moderately steep slopes, self-arrest, as well as glacier travel, roped climbing, crevasse rescue skills, belaying, rappelling, and low 5th class rock climbing. (examples: DC and Emmons on Mt. Rainier, Mt Washington in Oregon)")
 ClimbClass.create(code: "D", description: "May require off-trail hiking, ice axe and crampon use on moderately steep slopes, self-arrest, as well as glacier travel, roped climbing, crevasse rescue skills, belaying, rappelling, with potential travel on steep snow slopes or 5th class rock climbing. (examples: West Ridge of Mt. Stuart, Sandy Glacier Headwall on Mt Hood)")
 ClimbClass.create(code: "E", description: "Multi-pitch technical routes with high degree of self-sufficiency and proficiency using technical skills under high exposure, sharing high angle leads, setting protection and anchors.  (examples: North ridge of Mt. Stuart, Beckey Route, Liberty Bell)")
+puts "Seeded Climb Classes. Total Climb Classes: #{ClimbClass.all.length}"
+
 
 # All ClimbTags
 ClimbTag.create(code: "Base Camp",                  description: "Multi-day climb with pack-in to base camp.")
@@ -41,12 +46,16 @@ ClimbTag.create(code: "Linked Climbs",              description: "Two or more cl
 ClimbTag.create(code: "Adjacent Climbs",            description: "Two or more climbs in a similar area. Climbers may apply to one or all.")
 ClimbTag.create(code: "Ski Mountaineering",         description: "Backcountry skie or snowboard gear required")
 ClimbTag.create(code: "Adventurous Young Mazamas",  description: "For those young or young at heart")
+puts "Seeded Climb Tags. Total Climb Tags: #{ClimbTag.all.length}"
+
 
 # Sample Climb Schedules
 ClimbSchedule.create(season: "Winter", year: 2016-2017)
 ClimbSchedule.create(season: "Summer", year: 2017)
 ClimbSchedule.create(season: "Winter", year: 2017-2018)
 ClimbSchedule.create(season: "Summer", year: 2018)
+puts "Seeded Climb Schedules. Total Climb Schedules: #{ClimbSchedule.all.length}"
+
 
 # Use Faker to create 100 users
 100.times do |x|
@@ -76,49 +85,58 @@ ClimbSchedule.create(season: "Summer", year: 2018)
     volunteer_history:      Faker::Lorem.paragraph(0, true, 4)
   )
 end
+puts "Seeded Users. Total Users: #{User.all.length}"
+puts "Seeded Climber Profiles. Total Climber Profiles: #{ClimberProfile.all.length}"
 
 
-# CSV.foreach('db/leader_data.csv', headers: true) do |line|
-#    puts line
-#    climb_leader = User.create(
-#     first_name:             line[0],
-#     last_name:              line[1],
-#     email:                  Faker::Internet.email,
-#     phone:                  Faker::PhoneNumber.phone_number,
-#     emergency_contact:      Faker::Name.name,
-#     emergency_phone:        Faker::PhoneNumber.phone_number,
-#     birthdate:              Faker::Date.between(80.years.ago, 20.years.ago),
-#     address1:               Faker::Address.street_address,
-#     address2:               Faker::Address.secondary_address,
-#     city:                   Faker::Address.city,
-#     state:                  Faker::Address.state_abbr,
-#     zip:                    Faker::Address.zip,
-#     # membership_status:      statuses[0],
-#     user_roles:             [UserRole.find_by_role("Climber"), UserRole.find_by_role("Climb Leader")]
-#   )
-#   ClimberProfile.create(
-#     user:                   climb_leader,
-#     bio:                    Faker::Lorem.paragraph,
-#     physical_conditioning:  Faker::Lorem.paragraph(2, true, 2),
-#     medical_condition:      Faker::Lorem.paragraph(0, true, 2),
-#     medication:             Faker::Lorem.sentence(0, true, 6),
-#     volunteer_history:      Faker::Lorem.paragraph(0, true, 4)
-#   )
-#   ClimbLeaderProfile.create(
-#     user:                   climb_leader,
-#     climbing_since:         line[3],
-#     leader_since:           line[4],
-#     pace:                   line[6],
-#     climb_preferences:      line[7],
-#     volunteer_history:      line[8],
-#     climb_achievements:     line[9],
-#     climb_philsophy:        line[10],
-#     summit_treat:           line[11],
-#     bio:                    line[12],
-#     photo_link:             line[2]
-#   )
-# end
-#
+CSV.foreach('db/leader_data.csv', headers: true) do |line|
+  #  puts line[0]
+   climb_leader = User.create(
+    first_name:             line[0],
+    last_name:              line[1],
+    email:                  Faker::Internet.email,
+    phone:                  Faker::PhoneNumber.phone_number,
+    emergency_contact:      Faker::Name.name,
+    emergency_phone:        Faker::PhoneNumber.phone_number,
+    birthdate:              Faker::Date.between(80.years.ago, 20.years.ago),
+    address1:               Faker::Address.street_address,
+    address2:               Faker::Address.secondary_address,
+    city:                   Faker::Address.city,
+    state:                  Faker::Address.state_abbr,
+    zip:                    Faker::Address.zip,
+    membership_status:      "active",
+    user_roles:             [UserRole.find_by_role("Climber"), UserRole.find_by_role("Climb Leader")]
+  )
+  # puts "created user #{climb_leader}"
+  ClimberProfile.create(
+    user:                   climb_leader,
+    bio:                    Faker::Lorem.paragraph,
+    physical_conditioning:  Faker::Lorem.paragraph(2, true, 2),
+    medical_condition:      Faker::Lorem.paragraph(0, true, 2),
+    medication:             Faker::Lorem.sentence(0, true, 6),
+    volunteer_history:      Faker::Lorem.paragraph(0, true, 4)
+  )
+  # puts "created climber profile #{climb_leader.climber_profile}"
+  ClimbLeaderProfile.create(
+    user:                   climb_leader,
+    climbing_since:         line[3],
+    leader_since:           line[4],
+    pace:                   line[6],
+    climb_preferences:      line[7],
+    volunteer_history:      line[8],
+    climb_achievements:     line[9],
+    climb_philosophy:       line[10],
+    summit_treat:           line[11],
+    bio:                    line[12],
+    photo_link:             line[2]
+  )
+  # puts "created climb leader profile #{climb_leader.climb_leader_profile}"
+end
+puts "Seeded Climb Leader Users. Total Users is now: #{User.all.length}"
+puts "Seeded Climb Leader Climber Profiles. Total Climber Profiles is now: #{ClimberProfile.all.length}"
+puts "Seeded Climb Leader Profiles. Total Climb Leader Profiles: #{ClimbLeaderProfile.all.length}"
+
+
 CSV.foreach('db/mountain_data.csv', headers: true) do |line|
   Mountain.create(
     name:                   line[0],
@@ -134,36 +152,48 @@ CSV.foreach('db/mountain_data.csv', headers: true) do |line|
     elevation_meters:       line[10]
   )
 end
+puts "Seeded Mountains. Total Mountains: #{Mountain.all.length}"
 
-# CSV.foreach('db/route_data.csv', headers: true) do |line|
-#   Route.create(
-#     # begin
-#     #   mountain_id:            Mountain.find_by_name(line[0]),
-#     # rescue
-#     #   puts "Failed on #{line[0]}"
-#     # end
-#     #
-#     # begin
-#     #   secondary_peak:         Mountain.find_by_name(line[1]),
-#     # rescue
-#     #   puts "Failed on #{line[0]}"
-#     # end
-#
-#     name:                   line[2],
-#     climb_class:            ClimbClass.find_by_code(line[3]),
-#     elevation_gane:         line[4],
-#     driving_distance:       line[5],
-#     driving_time:           line[6],
-#     typical_duration:       line[7],
-#     typical_season:         line[8],
-#     glaciated_peak:         line[9],
-#     rock_class:             line[10],
-#     snow_angle:             line[11],
-#     rapelling:              line[12],
-#     crevasse_rescue:        line[13],
-#     typical_gear:           line[14],
-#     notes:                  line[15],
-#     guidebooks:             line[16],
-#     phone_numbers:          line[17]
-#   )
-# end
+
+CSV.foreach('db/route_data_clean2.csv', headers: true) do |line|
+  # begin
+    # puts line[0], line[2]
+
+    secondary_peak_id = nil
+    if !line[1].nil?
+      begin
+        secondary_peak_id = Mountain.find_by_name(line[1]).id
+      rescue
+        puts "Couldn't find secondary peak #{line[1]}"
+      end
+    end
+
+    if Mountain.find_by_name(line[0]).nil?
+      puts "Couldn't find primary peak #{line[0]}"
+    end
+
+    Route.create(
+      mountain:               Mountain.find_by_name(line[0]),
+      secondary_peak:         secondary_peak_id,
+      name:                   line[2],
+      climb_class:            ClimbClass.find_by_code(line[3]),
+      elevation_gain:         line[4],
+      driving_distance:       line[5],
+      driving_time:           line[6],
+      typical_duration:       line[7],
+      typical_season:         line[8],
+      glaciated_peak:         line[9],
+      rock_class:             line[10],
+      snow_angle:             line[11],
+      rappelling:             line[12],
+      crevasse_rescue:        line[13],
+      typical_gear:           line[14].downcase,
+      notes:                  line[15],
+      guidebooks:             line[16],
+      phone_numbers:          line[17]
+    )
+  # rescue
+  #   puts "Failed on #{line[2]} route for #{line[0]}, sp: #{line[1]}"
+  # end
+end
+puts "Seeded Routes. Total Routes: #{Route.all.length}"

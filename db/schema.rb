@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170112031616) do
+ActiveRecord::Schema.define(version: 20170112165512) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,7 +30,9 @@ ActiveRecord::Schema.define(version: 20170112031616) do
     t.string   "description"
     t.datetime "created_at",  :null=>false
     t.datetime "updated_at",  :null=>false
+    t.integer  "route_id"
   end
+  add_index "climb_classes", ["route_id"], :name=>"index_climb_classes_on_route_id", :using=>:btree
 
   create_table "climb_grad_emphases", force: :cascade do |t|
     t.string   "code"
@@ -139,7 +141,9 @@ ActiveRecord::Schema.define(version: 20170112031616) do
     t.string   "elevation_feet"
     t.string   "elevation_meters"
     t.string   "summit_post_name"
+    t.integer  "route_id"
   end
+  add_index "mountains", ["route_id"], :name=>"index_mountains_on_route_id", :using=>:btree
 
 # Could not dump table "routes" because of following StandardError
 #   Unknown type 'typical_season' for column 'typical_season'
@@ -171,12 +175,14 @@ ActiveRecord::Schema.define(version: 20170112031616) do
 #   Unknown type 'membership_status' for column 'membership_status'
 
 
+  add_foreign_key "climb_classes", "routes"
   add_foreign_key "climb_leader_profiles", "users"
   add_foreign_key "climber_educations", "education_programs"
   add_foreign_key "climber_profiles", "users"
   add_foreign_key "climbs", "general_dates"
   add_foreign_key "climbs", "routes"
   add_foreign_key "climbs", "specific_dates"
+  add_foreign_key "mountains", "routes"
   add_foreign_key "routes", "climb_classes"
   add_foreign_key "routes", "mountains"
 end
