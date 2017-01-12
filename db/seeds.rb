@@ -51,27 +51,70 @@ ClimbSchedule.create(season: "Summer", year: 2018)
 # Use Faker to create 100 users
 100.times do |x|
   statuses = ["nonmember", "active", "lapsed"]
-  User.create(
-    first_name:         Faker::Name.first_name,
-    last_name:          Faker::Name.last_name,
-    email:              Faker::Internet.email,
-    phone:              Faker::PhoneNumber.phone_number,
-    emergency_contact:  Faker::Name.name,
-    emergency_phone:    Faker::PhoneNumber.phone_number,
-    birthdate:          Faker::Date.between(80.years.ago, 20.years.ago),
-    address1:           Faker::Address.street_address,
-    address2:           Faker::Address.secondary_address,
-    city:               Faker::Address.city,
-    state:              Faker::Address.state_abbr,
-    zip:                Faker::Address.zip,
-    membership_status:  statuses[rand(0..2)]
+  climber = User.create(
+    first_name:             Faker::Name.first_name,
+    last_name:              Faker::Name.last_name,
+    email:                  Faker::Internet.email,
+    phone:                  Faker::PhoneNumber.phone_number,
+    emergency_contact:      Faker::Name.name,
+    emergency_phone:        Faker::PhoneNumber.phone_number,
+    birthdate:              Faker::Date.between(80.years.ago, 20.years.ago),
+    address1:               Faker::Address.street_address,
+    address2:               Faker::Address.secondary_address,
+    city:                   Faker::Address.city,
+    state:                  Faker::Address.state_abbr,
+    zip:                    Faker::Address.zip,
+    membership_status:      statuses[rand(0..2)]
+    user_roles:             [UserRole.find_by_role("Climber")]
   )
   ClimberProfile.create(
-    user_id:                x,
+    user_id:                climber.id,
     bio:                    Faker::Lorem.paragraph,
     physical_conditioning:  Faker::Lorem.paragraph(2, true 2),
     medical_condition:      Faker::Lorem.paragraph(0, true, 2),
     medication:             Faker::Lorem.sentence(0, true, 6),
     volunteer_history:      Faker::Lorem.paragraph(0, true, 4)
+  )
+
+end
+
+
+CSV.foreach('leader_data.csv', 'r', headers: true) do |line|
+   climb_leader = User.create(
+    first_name:             line[0]
+    last_name:              line[1]
+    email:                  Faker::Internet.email,
+    phone:                  Faker::PhoneNumber.phone_number,
+    emergency_contact:      Faker::Name.name,
+    emergency_phone:        Faker::PhoneNumber.phone_number,
+    birthdate:              Faker::Date.between(80.years.ago, 20.years.ago),
+    address1:               Faker::Address.street_address,
+    address2:               Faker::Address.secondary_address,
+    city:                   Faker::Address.city,
+    state:                  Faker::Address.state_abbr,
+    zip:                    Faker::Address.zip,
+    membership_status:      statuses[0]
+    user_roles:             [UserRole.find_by_role("Climber"), UserRole.find_by_role("Climb Leader")]
+  )
+  ClimberProfile.create(
+    user_id:                climb_leader.id,
+    bio:                    Faker::Lorem.paragraph,
+    physical_conditioning:  Faker::Lorem.paragraph(2, true 2),
+    medical_condition:      Faker::Lorem.paragraph(0, true, 2),
+    medication:             Faker::Lorem.sentence(0, true, 6),
+    volunteer_history:      Faker::Lorem.paragraph(0, true, 4)
+  )
+  ClimbLeaderProfile.create(
+    user_id:                climb_leader.id,
+    climbing_since:         line[3]
+    leader_since:           line[4]
+    pace:                   line[6]
+    climb_prefences:        line[7]
+    volunteer_history:      line[8]
+    climb_achievements:     line[9]
+    climb_achievements:     line[10]
+    summit_treat:           line[11]
+    bio:                    line[12]
+    photo_link:             line[2]
   )
 end
