@@ -51,7 +51,6 @@ ClimbSchedule.create(season: "Summer", year: 2018)
 # Use Faker to create 100 users
 100.times do |x|
   statuses = ["nonmember", "active", "lapsed"]
-
   User.create(
     first_name:         Faker::Name.first_name,
     last_name:          Faker::Name.last_name,
@@ -67,3 +66,12 @@ ClimbSchedule.create(season: "Summer", year: 2018)
     zip:                Faker::Address.zip,
     membership_status:  statuses[rand(0..2)]
   )
+  ClimberProfile.create(
+    user_id:                x,
+    bio:                    Faker::Lorem.paragraph,
+    physical_conditioning:  Faker::Lorem.paragraph(2, true 2),
+    medical_condition:      Faker::Lorem.paragraph(0, true, 2),
+    medication:             Faker::Lorem.sentence(0, true, 6),
+    volunteer_history:      Faker::Lorem.paragraph(0, true, 4)
+  )
+end
