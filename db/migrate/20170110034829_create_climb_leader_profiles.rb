@@ -7,7 +7,7 @@ class CreateClimbLeaderProfiles < ActiveRecord::Migration
       t.text :climb_preferences
       t.text :volunteer_history
       t.text :climb_achievements
-      t.text :climb_philsophy
+      t.text :climb_philosophy
       t.text :summit_treat
       t.text :profile
 
