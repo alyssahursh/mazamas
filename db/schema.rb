@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170112020558) do
+ActiveRecord::Schema.define(version: 20170112031616) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -57,7 +57,9 @@ ActiveRecord::Schema.define(version: 20170112020558) do
     t.datetime "updated_at",         :null=>false
     t.string   "photo_link"
     t.string   "bio"
+    t.integer  "user_id"
   end
+  add_index "climb_leader_profiles", ["user_id"], :name=>"index_climb_leader_profiles_on_user_id", :using=>:btree
 
 # Could not dump table "climb_registrations" because of following StandardError
 #   Unknown type 'registration_status' for column 'registration_status'
@@ -65,9 +67,9 @@ ActiveRecord::Schema.define(version: 20170112020558) do
 
   create_table "climb_schedules", force: :cascade do |t|
     t.string   "season"
-    t.integer  "date"
     t.datetime "created_at", :null=>false
     t.datetime "updated_at", :null=>false
+    t.integer  "year"
   end
 
   create_table "climb_tags", force: :cascade do |t|
@@ -85,9 +87,11 @@ ActiveRecord::Schema.define(version: 20170112020558) do
   create_table "climber_educations", force: :cascade do |t|
     t.integer  "year"
     t.string   "leader"
-    t.datetime "created_at", :null=>false
-    t.datetime "updated_at", :null=>false
+    t.datetime "created_at",           :null=>false
+    t.datetime "updated_at",           :null=>false
+    t.integer  "education_program_id"
   end
+  add_index "climber_educations", ["education_program_id"], :name=>"index_climber_educations_on_education_program_id", :using=>:btree
 
 # Could not dump table "climber_experiences" because of following StandardError
 #   Unknown type 'climb_type' for column 'climb_type'
@@ -101,7 +105,9 @@ ActiveRecord::Schema.define(version: 20170112020558) do
     t.text     "medication"
     t.datetime "created_at",            :null=>false
     t.datetime "updated_at",            :null=>false
+    t.integer  "user_id"
   end
+  add_index "climber_profiles", ["user_id"], :name=>"index_climber_profiles_on_user_id", :using=>:btree
 
 # Could not dump table "climbs" because of following StandardError
 #   Unknown type 'climb_status' for column 'climb_status'
@@ -165,4 +171,12 @@ ActiveRecord::Schema.define(version: 20170112020558) do
 #   Unknown type 'membership_status' for column 'membership_status'
 
 
+  add_foreign_key "climb_leader_profiles", "users"
+  add_foreign_key "climber_educations", "education_programs"
+  add_foreign_key "climber_profiles", "users"
+  add_foreign_key "climbs", "general_dates"
+  add_foreign_key "climbs", "routes"
+  add_foreign_key "climbs", "specific_dates"
+  add_foreign_key "routes", "climb_classes"
+  add_foreign_key "routes", "mountains"
 end
