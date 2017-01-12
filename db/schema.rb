@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170112001131) do
+ActiveRecord::Schema.define(version: 20170112004125) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,6 +22,9 @@ ActiveRecord::Schema.define(version: 20170112001131) do
   create_enum "climb_type", "mazamas", "private", "other"
   create_enum "membership_status", "nonmember", "active", "lapsed"
   create_enum "registration_status", "appliedacceptedrejectedwaitlistleaderassistant"
+  create_enum "snow_angle", "notapplicable", "35to50", "over50", "upto35"
+  create_enum "typical_gear", "snow", "scramble", "rock", "rockandsnow"
+  create_enum "typical_season", "springsummer", "summerautumn"
   create_table "climb_classes", force: :cascade do |t|
     t.string   "code"
     t.string   "description"
@@ -131,13 +134,9 @@ ActiveRecord::Schema.define(version: 20170112001131) do
     t.string   "summit_post_name"
   end
 
-  create_table "routes", force: :cascade do |t|
-    t.string   "name"
-    t.string   "description"
-    t.string   "trailhead_coordinates"
-    t.datetime "created_at",            :null=>false
-    t.datetime "updated_at",            :null=>false
-  end
+# Could not dump table "routes" because of following StandardError
+#   Unknown type 'typical_season' for column 'typical_season'
+
 
   create_table "specific_dates", force: :cascade do |t|
     t.date     "date_leave_town"
