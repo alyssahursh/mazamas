@@ -225,7 +225,6 @@ GEM
       actionpack (>= 4.0)
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
-    sqlite3 (1.3.13)
     stormpath-rails (2.4.0)
       rails (>= 3.1)
       recursive-open-struct
@@ -293,7 +292,6 @@ DEPENDENCIES
   sdoc (~> 0.4.0)
   simplecov
   spring
-  sqlite3
   stormpath-rails
   stormpath-sdk
   stripe!
