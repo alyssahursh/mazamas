@@ -5,7 +5,7 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
-
+require 'csv'
 
 # All Education Programs
 EducationProgram.create(abbreviation: "BCEP", name: "Basic Climbing Education Program", description: "")
@@ -64,57 +64,106 @@ ClimbSchedule.create(season: "Summer", year: 2018)
     city:                   Faker::Address.city,
     state:                  Faker::Address.state_abbr,
     zip:                    Faker::Address.zip,
-    membership_status:      statuses[rand(0..2)]
+    membership_status:      statuses[rand(0..2)],
     user_roles:             [UserRole.find_by_role("Climber")]
   )
   ClimberProfile.create(
-    user_id:                climber.id,
+    user:                   climber,
     bio:                    Faker::Lorem.paragraph,
-    physical_conditioning:  Faker::Lorem.paragraph(2, true 2),
+    physical_conditioning:  Faker::Lorem.paragraph(2, true, 2),
     medical_condition:      Faker::Lorem.paragraph(0, true, 2),
     medication:             Faker::Lorem.sentence(0, true, 6),
     volunteer_history:      Faker::Lorem.paragraph(0, true, 4)
   )
-
 end
 
 
-CSV.foreach('leader_data.csv', 'r', headers: true) do |line|
-   climb_leader = User.create(
-    first_name:             line[0]
-    last_name:              line[1]
-    email:                  Faker::Internet.email,
-    phone:                  Faker::PhoneNumber.phone_number,
-    emergency_contact:      Faker::Name.name,
-    emergency_phone:        Faker::PhoneNumber.phone_number,
-    birthdate:              Faker::Date.between(80.years.ago, 20.years.ago),
-    address1:               Faker::Address.street_address,
-    address2:               Faker::Address.secondary_address,
-    city:                   Faker::Address.city,
-    state:                  Faker::Address.state_abbr,
-    zip:                    Faker::Address.zip,
-    membership_status:      statuses[0]
-    user_roles:             [UserRole.find_by_role("Climber"), UserRole.find_by_role("Climb Leader")]
-  )
-  ClimberProfile.create(
-    user_id:                climb_leader.id,
-    bio:                    Faker::Lorem.paragraph,
-    physical_conditioning:  Faker::Lorem.paragraph(2, true 2),
-    medical_condition:      Faker::Lorem.paragraph(0, true, 2),
-    medication:             Faker::Lorem.sentence(0, true, 6),
-    volunteer_history:      Faker::Lorem.paragraph(0, true, 4)
-  )
-  ClimbLeaderProfile.create(
-    user_id:                climb_leader.id,
-    climbing_since:         line[3]
-    leader_since:           line[4]
-    pace:                   line[6]
-    climb_prefences:        line[7]
-    volunteer_history:      line[8]
-    climb_achievements:     line[9]
-    climb_achievements:     line[10]
-    summit_treat:           line[11]
-    bio:                    line[12]
-    photo_link:             line[2]
+# CSV.foreach('db/leader_data.csv', headers: true) do |line|
+#    puts line
+#    climb_leader = User.create(
+#     first_name:             line[0],
+#     last_name:              line[1],
+#     email:                  Faker::Internet.email,
+#     phone:                  Faker::PhoneNumber.phone_number,
+#     emergency_contact:      Faker::Name.name,
+#     emergency_phone:        Faker::PhoneNumber.phone_number,
+#     birthdate:              Faker::Date.between(80.years.ago, 20.years.ago),
+#     address1:               Faker::Address.street_address,
+#     address2:               Faker::Address.secondary_address,
+#     city:                   Faker::Address.city,
+#     state:                  Faker::Address.state_abbr,
+#     zip:                    Faker::Address.zip,
+#     # membership_status:      statuses[0],
+#     user_roles:             [UserRole.find_by_role("Climber"), UserRole.find_by_role("Climb Leader")]
+#   )
+#   ClimberProfile.create(
+#     user:                   climb_leader,
+#     bio:                    Faker::Lorem.paragraph,
+#     physical_conditioning:  Faker::Lorem.paragraph(2, true, 2),
+#     medical_condition:      Faker::Lorem.paragraph(0, true, 2),
+#     medication:             Faker::Lorem.sentence(0, true, 6),
+#     volunteer_history:      Faker::Lorem.paragraph(0, true, 4)
+#   )
+#   ClimbLeaderProfile.create(
+#     user:                   climb_leader,
+#     climbing_since:         line[3],
+#     leader_since:           line[4],
+#     pace:                   line[6],
+#     climb_preferences:      line[7],
+#     volunteer_history:      line[8],
+#     climb_achievements:     line[9],
+#     climb_philsophy:        line[10],
+#     summit_treat:           line[11],
+#     bio:                    line[12],
+#     photo_link:             line[2]
+#   )
+# end
+#
+CSV.foreach('db/mountain_data.csv', headers: true) do |line|
+  Mountain.create(
+    name:                   line[0],
+    state:                  line[1],
+    country:                line[2],
+    continent:              line[3],
+    summit_post_url:        line[4],
+    latitude:               line[5],
+    longitude:              line[6],
+    google_maps_url:        line[7],
+    summit_post_name:       line[8],
+    elevation_feet:         line[9],
+    elevation_meters:       line[10]
   )
 end
+
+# CSV.foreach('db/route_data.csv', headers: true) do |line|
+#   Route.create(
+#     # begin
+#     #   mountain_id:            Mountain.find_by_name(line[0]),
+#     # rescue
+#     #   puts "Failed on #{line[0]}"
+#     # end
+#     #
+#     # begin
+#     #   secondary_peak:         Mountain.find_by_name(line[1]),
+#     # rescue
+#     #   puts "Failed on #{line[0]}"
+#     # end
+#
+#     name:                   line[2],
+#     climb_class:            ClimbClass.find_by_code(line[3]),
+#     elevation_gane:         line[4],
+#     driving_distance:       line[5],
+#     driving_time:           line[6],
+#     typical_duration:       line[7],
+#     typical_season:         line[8],
+#     glaciated_peak:         line[9],
+#     rock_class:             line[10],
+#     snow_angle:             line[11],
+#     rapelling:              line[12],
+#     crevasse_rescue:        line[13],
+#     typical_gear:           line[14],
+#     notes:                  line[15],
+#     guidebooks:             line[16],
+#     phone_numbers:          line[17]
+#   )
+# end
