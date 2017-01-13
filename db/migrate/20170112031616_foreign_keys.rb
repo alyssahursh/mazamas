@@ -7,6 +7,13 @@ class ForeignKeys < ActiveRecord::Migration
     add_reference :users, :climber_profile, index: true
     add_foreign_key :users, :climber_profiles
 
+    # Connect Climber Profile and Climber Experiences
+    add_reference :climber_experiences, :climber_profile, index: true
+    add_foreign_key :climber_experiences, :climber_profiles
+
+    add_reference :climber_profiles, :climber_experience, index: true
+    add_foreign_key :climber_profiles, :climber_experiences
+
     # Connect User and Climb Leader Profile
     add_reference :climb_leader_profiles, :user, index: true
     add_foreign_key :climb_leader_profiles, :users
