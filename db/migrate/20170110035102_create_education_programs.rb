@@ -1,6 +1,6 @@
 class CreateEducationPrograms < ActiveRecord::Migration
   def change
-    create_table :education_programs do |t|
+    create_table :educations do |t|
       t.string :abbreviation
       t.string :name
       t.string :description
