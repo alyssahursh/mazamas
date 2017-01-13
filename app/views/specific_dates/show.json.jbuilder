@@ -1,0 +1,1 @@
+json.partial! "specific_dates/specific_date", specific_date: @specific_date

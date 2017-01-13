@@ -1,0 +1,1 @@
+json.array! @climb_classes, partial: 'climb_classes/climb_class', as: :climb_class

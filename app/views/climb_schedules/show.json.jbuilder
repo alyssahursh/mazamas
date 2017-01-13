@@ -1,0 +1,1 @@
+json.partial! "climb_schedules/climb_schedule", climb_schedule: @climb_schedule

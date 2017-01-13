@@ -1,0 +1,1 @@
+json.array! @specific_dates, partial: 'specific_dates/specific_date', as: :specific_date

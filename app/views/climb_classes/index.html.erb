@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Climb Classes</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @climb_classes.each do |climb_class| %>
+      <tr>
+        <td><%= link_to 'Show', climb_class %></td>
+        <td><%= link_to 'Edit', edit_climb_class_path(climb_class) %></td>
+        <td><%= link_to 'Destroy', climb_class, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Climb class', new_climb_class_path %>
