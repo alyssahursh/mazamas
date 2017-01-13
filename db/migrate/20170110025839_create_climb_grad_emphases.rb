@@ -1,6 +1,6 @@
 class CreateClimbGradEmphases < ActiveRecord::Migration
   def change
-    create_table :climb_grad_emphases do |t|
+    create_table :grad_prefs do |t|
       t.string :code
       t.string :description
 
