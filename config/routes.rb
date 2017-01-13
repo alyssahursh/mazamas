@@ -8,7 +8,22 @@ Rails.application.routes.draw do
   post 'payments/stripe', to: 'payments#stripe'
   get 'payments/stripe', to: 'payments#stripe', as: 'payments'
 
-
+  resources :climb_classes,
+            :climb_leader_profiles,
+            :climb_schedules,
+            :climb_tags,
+            :climbs,
+            :climber_educations,
+            :climber_experiences,
+            :climber_profiles,
+            :educations,
+            :general_dates,
+            :mountains,
+            :registrations,
+            :routes,
+            :specific_dates,
+            :user_roles,
+            :users
 
 
 
