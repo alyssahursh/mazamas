@@ -17,7 +17,7 @@ ActiveRecord::Schema.define(version: 20170113033524) do
   enable_extension "plpgsql"
 
 
-  create_enum "climb_month", "january", "february", "march", "april", "may", "june", "july", "august", "september,october", "november", "december"
+  create_enum "climb_month", "january", "february", "march", "april", "may", "june", "july", "august", "september", "october", "november", "december"
   create_enum "climb_status", "unpublished", "open", "full", "waitlist", "cancelled", "completed"
   create_enum "climb_type", "mazamas", "private", "other"
   create_enum "membership_status", "nonmember", "active", "lapsed"
@@ -89,7 +89,9 @@ ActiveRecord::Schema.define(version: 20170113033524) do
     t.datetime "created_at",            :null=>false
     t.datetime "updated_at",            :null=>false
     t.integer  "user_id"
+    t.integer  "climber_experience_id"
   end
+  add_index "climber_profiles", ["climber_experience_id"], :name=>"index_climber_profiles_on_climber_experience_id", :using=>:btree
   add_index "climber_profiles", ["user_id"], :name=>"index_climber_profiles_on_user_id", :using=>:btree
 
 # Could not dump table "climbs" because of following StandardError
@@ -196,6 +198,8 @@ ActiveRecord::Schema.define(version: 20170113033524) do
   add_foreign_key "climb_tags", "climbs"
   add_foreign_key "climber_educations", "educations"
   add_foreign_key "climber_educations", "users"
+  add_foreign_key "climber_experiences", "climber_profiles"
+  add_foreign_key "climber_profiles", "climber_experiences"
   add_foreign_key "climber_profiles", "users"
   add_foreign_key "climbs", "climb_schedules"
   add_foreign_key "climbs", "climb_tags"
