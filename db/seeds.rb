@@ -7,6 +7,10 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 # require 'csv'
 #
+
+# rake db:schema:dump && rake db:drop && rake db:create && rake db:migrate
+
+
 # All Education Programs
 Education.create(abbreviation: "BCEP", name: "Basic Climbing Education Program", description: "")
 Education.create(abbreviation: "ICS",  name: "Intermediate Climbing School",     description: "")
@@ -56,42 +60,9 @@ ClimbSchedule.create(season: "Winter", year: 2017-2018)
 ClimbSchedule.create(season: "Summer", year: 2018)
 puts "Seeded Climb Schedules. Total Climb Schedules: #{ClimbSchedule.all.length}"
 
-
-# Use Faker to create 100 users
-100.times do |x|
-  statuses = ["nonmember", "active", "lapsed"]
-  climber = User.create(
-    first_name:             Faker::Name.first_name,
-    last_name:              Faker::Name.last_name,
-    email:                  Faker::Internet.email,
-    phone:                  Faker::PhoneNumber.phone_number,
-    emergency_contact:      Faker::Name.name,
-    emergency_phone:        Faker::PhoneNumber.phone_number,
-    birthdate:              Faker::Date.between(80.years.ago, 20.years.ago),
-    address1:               Faker::Address.street_address,
-    address2:               Faker::Address.secondary_address,
-    city:                   Faker::Address.city,
-    state:                  Faker::Address.state_abbr,
-    zip:                    Faker::Address.zip,
-    membership_status:      statuses[rand(0..2)],
-    user_roles:             [UserRole.find_by_role("Climber")]
-  )
-  ClimberProfile.create(
-    user:                   climber,
-    bio:                    Faker::Lorem.paragraph,
-    physical_conditioning:  Faker::Lorem.paragraph(2, true, 2),
-    medical_condition:      Faker::Lorem.paragraph(0, true, 2),
-    medication:             Faker::Lorem.sentence(0, true, 6),
-    volunteer_history:      Faker::Lorem.paragraph(0, true, 4)
-  )
-end
-puts "Seeded Users. Total Users: #{User.all.length}"
-puts "Seeded Climber Profiles. Total Climber Profiles: #{ClimberProfile.all.length}"
-
-
 CSV.foreach('db/leader_data.csv', headers: true) do |line|
-  #  puts line[0]
-   climb_leader = User.create(
+  # Add a new user
+  climb_leader = User.create(
     first_name:             line[0],
     last_name:              line[1],
     email:                  Faker::Internet.email,
@@ -107,7 +78,8 @@ CSV.foreach('db/leader_data.csv', headers: true) do |line|
     membership_status:      "active",
     user_roles:             [UserRole.find_by_role("Climber"), UserRole.find_by_role("Climb Leader")]
   )
-  # puts "created user #{climb_leader}"
+
+  # Add the user's climber profile
   ClimberProfile.create(
     user:                   climb_leader,
     bio:                    Faker::Lorem.paragraph,
@@ -116,7 +88,8 @@ CSV.foreach('db/leader_data.csv', headers: true) do |line|
     medication:             Faker::Lorem.sentence(0, true, 6),
     volunteer_history:      Faker::Lorem.paragraph(0, true, 4)
   )
-  # puts "created climber profile #{climb_leader.climber_profile}"
+
+  # Add the user's leader profile
   ClimbLeaderProfile.create(
     user:                   climb_leader,
     climbing_since:         line[3],
@@ -130,7 +103,6 @@ CSV.foreach('db/leader_data.csv', headers: true) do |line|
     bio:                    line[12],
     photo_link:             line[2]
   )
-  # puts "created climb leader profile #{climb_leader.climb_leader_profile}"
 end
 puts "Seeded Climb Leader Users. Total Users is now: #{User.all.length}"
 puts "Seeded Climb Leader Climber Profiles. Total Climber Profiles is now: #{ClimberProfile.all.length}"
@@ -199,7 +171,69 @@ end
 puts "Seeded Routes. Total Routes: #{Route.all.length}"
 
 
-1.times do |x|
+
+
+
+# Use Faker to create 100 users
+100.times do |x|
+  statuses = ["nonmember", "active", "lapsed"]
+  climber = User.create(
+    first_name:             Faker::Name.first_name,
+    last_name:              Faker::Name.last_name,
+    email:                  Faker::Internet.email,
+    phone:                  Faker::PhoneNumber.phone_number,
+    emergency_contact:      Faker::Name.name,
+    emergency_phone:        Faker::PhoneNumber.phone_number,
+    birthdate:              Faker::Date.between(80.years.ago, 20.years.ago),
+    address1:               Faker::Address.street_address,
+    address2:               Faker::Address.secondary_address,
+    city:                   Faker::Address.city,
+    state:                  Faker::Address.state_abbr,
+    zip:                    Faker::Address.zip,
+    membership_status:      statuses[rand(0..2)],
+    user_roles:             [UserRole.find_by_role("Climber")]
+  )
+  climber_profile = ClimberProfile.create(
+    user:                   climber,
+    bio:                    Faker::Lorem.paragraph,
+    physical_conditioning:  Faker::Lorem.paragraph(2, true, 2),
+    medical_condition:      Faker::Lorem.paragraph(0, true, 2),
+    medication:             Faker::Lorem.sentence(0, true, 6),
+    volunteer_history:      Faker::Lorem.paragraph(0, true, 4)
+  )
+  rand(3..20).times do |x|
+    mountain = Mountain.find(rand(1..Mountain.all.length))
+    mountain_name = mountain.name
+
+    if mountain.routes.length != 0
+      route_count = mountain.routes.length
+      route_name = mountain.routes[rand(0...route_count)].name
+    else
+      route_name = ""
+    end
+
+    climb_leader = ClimbLeaderProfile.find(rand(1..ClimbLeaderProfile.all.length))
+    climb_leader_name = "#{climb_leader.user.first_name} #{climb_leader.user.last_name}"
+
+    ClimberExperience.create(
+      climber_profile:      climber_profile,
+      month:                rand(1..12),
+      year:                 rand(2000..2017),
+      mountain:             mountain_name,
+      route:                route_name,
+      climb_leader:         climb_leader_name
+    )
+  end
+end
+puts "Seeded Users. Total Users: #{User.all.length}"
+puts "Seeded Climber Profiles. Total Climber Profiles: #{ClimberProfile.all.length}"
+puts "Seeded Climber Experience. Total Experiences: #{ClimberExperience.all.length}"
+
+
+
+
+
+300.times do |x|
   random_date = Faker::Date.forward(rand(100..200))
   Climb.create(
     climb_status:             "open",
@@ -217,6 +251,27 @@ puts "Seeded Routes. Total Routes: #{Route.all.length}"
     educations:               [Education.find(rand(1..Education.all.length))],
     climb_schedule:           ClimbSchedule.find(1)
   )
+  # ADD REGISTRATION FOR LEADER AND ASSISTANT!!
 end
-puts "Seeded Climbs. Total Climbs: #{Climb.all.length}"
-puts "Seeded Specific Dates. Total Dates: #{SpecificDates.all.length}"
+puts "Seeded Open Summer Climbs. Total Climbs: #{Climb.all.length}"
+puts "Seeded Specific Dates. Total Dates: #{SpecificDate.all.length}"
+
+50.times do |x|
+  winter_months = ["october", "november", "december"]
+  Climb.create(
+    climb_status:             "open",
+    description:              Faker::Lorem.paragraph,
+    general_date:             GeneralDate.new(
+                                climb_month:    winter_months[rand(0..2)],
+                                climb_year:     2017
+                              ),
+    last_updated:             Time.now,
+    party_size:               rand(6..13),
+    route:                    Route.find(rand(1..Route.all.length)),
+    educations:               [Education.find(rand(1..Education.all.length))],
+    climb_schedule:           ClimbSchedule.find(2)
+  )
+  # ADD REGISTRATION FOR LEADER AND ASSISTANT!!
+end
+puts "Seeded Open Winter Climbs. Total Climbs: #{Climb.all.length}"
+puts "Seeded Specific Dates. Total Dates: #{GeneralDate.all.length}"
