@@ -123,11 +123,13 @@ ActiveRecord::Schema.define(version: 20170113033524) do
     t.string   "abbreviation"
     t.string   "name"
     t.string   "description"
-    t.datetime "created_at",   :null=>false
-    t.datetime "updated_at",   :null=>false
+    t.datetime "created_at",           :null=>false
+    t.datetime "updated_at",           :null=>false
+    t.integer  "climber_education_id"
     t.integer  "climb_id"
   end
   add_index "educations", ["climb_id"], :name=>"index_educations_on_climb_id", :using=>:btree
+  add_index "educations", ["climber_education_id"], :name=>"index_educations_on_climber_education_id", :using=>:btree
 
 # Could not dump table "general_dates" because of following StandardError
 #   Unknown type 'climb_month' for column 'climb_month'
@@ -205,14 +207,20 @@ ActiveRecord::Schema.define(version: 20170113033524) do
   add_foreign_key "climbs", "climb_tags"
   add_foreign_key "climbs", "educations"
   add_foreign_key "climbs", "general_dates"
+  add_foreign_key "climbs", "registrations"
   add_foreign_key "climbs", "routes"
   add_foreign_key "climbs", "specific_dates"
+  add_foreign_key "educations", "climber_educations"
   add_foreign_key "educations", "climbs"
   add_foreign_key "general_dates", "climbs"
+  add_foreign_key "registrations", "climbs"
+  add_foreign_key "registrations", "users"
   add_foreign_key "routes", "climb_classes"
   add_foreign_key "routes", "climbs"
   add_foreign_key "routes", "mountains"
   add_foreign_key "specific_dates", "climbs"
   add_foreign_key "users", "climb_leader_profiles"
+  add_foreign_key "users", "climber_educations"
   add_foreign_key "users", "climber_profiles"
+  add_foreign_key "users", "registrations"
 end

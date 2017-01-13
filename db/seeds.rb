@@ -8,7 +8,7 @@
 # require 'csv'
 #
 
-# rake db:schema:dump && rake db:drop && rake db:create && rake db:migrate
+# rake db:schema:dump && rake db:drop && rake db:create && rake db:migrate && rake db:seed
 
 
 # All Education Programs
@@ -224,10 +224,26 @@ puts "Seeded Routes. Total Routes: #{Route.all.length}"
       climb_leader:         climb_leader_name
     )
   end
+
+  education_count = rand(1..Education.all.length)
+  education_count.times do |x|
+    climb_leader = ClimbLeaderProfile.find(rand(1..ClimbLeaderProfile.all.length))
+    climb_leader_name = "#{climb_leader.user.first_name} #{climb_leader.user.last_name}"
+
+    ClimberEducation.create(
+      user:                 climber,
+      education:            Education.find(x+1),
+      leader:               climb_leader_name,
+      year:                 rand(2000..2017)
+    )
+  end
+
 end
 puts "Seeded Users. Total Users: #{User.all.length}"
 puts "Seeded Climber Profiles. Total Climber Profiles: #{ClimberProfile.all.length}"
 puts "Seeded Climber Experience. Total Experiences: #{ClimberExperience.all.length}"
+puts "Seeded Climber Educations. Total Educations: #{ClimberEducation.all.length}"
+
 
 
 
@@ -235,7 +251,7 @@ puts "Seeded Climber Experience. Total Experiences: #{ClimberExperience.all.leng
 
 300.times do |x|
   random_date = Faker::Date.forward(rand(100..200))
-  Climb.create(
+  climb = Climb.create(
     climb_status:             "open",
     description:              Faker::Lorem.paragraph,
     specific_date:            SpecificDate.new(
@@ -251,14 +267,26 @@ puts "Seeded Climber Experience. Total Experiences: #{ClimberExperience.all.leng
     educations:               [Education.find(rand(1..Education.all.length))],
     climb_schedule:           ClimbSchedule.find(1)
   )
-  # ADD REGISTRATION FOR LEADER AND ASSISTANT!!
+  Registration.create(
+    climb:                    climb,
+    user:                     ClimbLeaderProfile.find(rand(1..ClimbLeaderProfile.all.length)).user,
+    registration_status:      "leader"
+  )
+  rand(3..20).times do |x|
+    Registration.create(
+      climb:                    climb,
+      user:                     User.find(rand(1..User.all.length)),
+      registration_status:      "applied"
+    )
+  end
 end
+puts "Seeded Leader and Climber Registrations. Total Registrations: #{Registration.all.length}"
 puts "Seeded Open Summer Climbs. Total Climbs: #{Climb.all.length}"
 puts "Seeded Specific Dates. Total Dates: #{SpecificDate.all.length}"
 
 50.times do |x|
   winter_months = ["october", "november", "december"]
-  Climb.create(
+  climb = Climb.create(
     climb_status:             "open",
     description:              Faker::Lorem.paragraph,
     general_date:             GeneralDate.new(
@@ -271,7 +299,19 @@ puts "Seeded Specific Dates. Total Dates: #{SpecificDate.all.length}"
     educations:               [Education.find(rand(1..Education.all.length))],
     climb_schedule:           ClimbSchedule.find(2)
   )
-  # ADD REGISTRATION FOR LEADER AND ASSISTANT!!
+  Registration.create(
+    climb:                    climb,
+    user:                     ClimbLeaderProfile.find(rand(1..ClimbLeaderProfile.all.length)).user,
+    registration_status:      "leader"
+  )
+  rand(3..20).times do |x|
+    Registration.create(
+      climb:                    climb,
+      user:                     User.find(rand(1..User.all.length)),
+      registration_status:      "applied"
+    )
+  end
 end
+puts "Seeded Leader and Climber Registrations. Total Registrations: #{Registration.all.length}"
 puts "Seeded Open Winter Climbs. Total Climbs: #{Climb.all.length}"
 puts "Seeded Specific Dates. Total Dates: #{GeneralDate.all.length}"
