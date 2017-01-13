@@ -1,2 +1,15 @@
-<h1>YOU DID IT!</h1>
-<h2>YOU PUT THIS ON THE INTERNET!</h2>
+<h1>WELCOME TO THE MAZAMAS CLIMB REGISTRATION SYSTEM</h1>
+
+
+<!-- THIS NEEDS TO BE UPDATED TO THE CORRECT ACTION -->
+<form action="/payments/stripe" method="POST">
+  <script
+    src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+    data-key="pk_test_uuP4f9lToS2cmYlc6RneOwqV"
+    data-amount="6000"
+    data-name="Mazamas"
+    data-description="Annual Membership"
+    data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
+    data-locale="auto">
+  </script>
+</form>

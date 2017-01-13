@@ -4,7 +4,7 @@ source 'https://rubygems.org'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.7'
 # Use sqlite3 as the database for Active Record
-gem 'sqlite3'
+gem 'pg', '~> 0.19.0'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
@@ -23,6 +23,28 @@ gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc
 
+# Use Stripe for payment processing
+gem 'stripe', :git => 'https://github.com/stripe/stripe-ruby'
+
+# Use Mandrill for transactional emails
+gem 'mandrill-api'
+
+# Use Stormpath for user authentication
+gem 'stormpath-sdk'
+gem 'stormpath-rails'
+
+# Use dotenv to load environment variables
+gem 'dotenv-rails', '~> 2.1', '>= 2.1.1'
+
+# For API interaction
+gem 'httparty'
+gem 'webmock'
+
+# Add postgresql enum functionatlity to migrations
+gem "schema_plus_enums"
+
+
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
@@ -32,9 +54,20 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  # gem 'byebug'
+  gem 'byebug'
+
+  # Standard testing suite
+  gem 'better_errors'
+  gem 'awesome_print'
+  gem 'minitest-reporters'
+  gem 'simplecov'
+
+  # Use faker for seeding placeholder user data
+  gem "faker"
 end
 
 group :development do
@@ -43,17 +76,15 @@ group :development do
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
+
+  # Rake erd to get a ERD of the current schema
+  gem "rails-erd"
+
+  # Use Rails Panel for Chrome for logs
+  gem 'meta_request'
 end
 
 group :production do
   # Use PostgreSQL as the database for Active Record
   gem 'pg', '~> 0.19.0'
 end
-
-
-# platforms :rbx do
-#   gem 'rubysl', '~> 2.0'
-#   gem 'racc'
-#   gem 'minitest'
-#   gem 'rubinius-developer_tools'
-# end

@@ -1,8 +1,17 @@
 Rails.application.routes.draw do
-
   root to: 'pages#index'
 
+  stormpath_rails_routes
+
   get 'pages/index'
+
+  post 'payments/stripe', to: 'payments#stripe'
+  get 'payments/stripe', to: 'payments#stripe', as: 'payments'
+
+
+
+
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

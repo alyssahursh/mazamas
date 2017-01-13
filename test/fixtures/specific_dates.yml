@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  date_leave_town: 2017-01-09
+  date_leave_trailhead: 2017-01-09
+  date_summit: 2017-01-09
+  date_return_trailhead: 2017-01-09
+  date_return_town: 2017-01-09
+
+two:
+  date_leave_town: 2017-01-09
+  date_leave_trailhead: 2017-01-09
+  date_summit: 2017-01-09
+  date_return_trailhead: 2017-01-09
+  date_return_town: 2017-01-09
