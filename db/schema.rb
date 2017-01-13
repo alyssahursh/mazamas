@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170113000208) do
+ActiveRecord::Schema.define(version: 20170113033524) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -61,24 +61,19 @@ ActiveRecord::Schema.define(version: 20170113000208) do
     t.string   "description"
     t.datetime "created_at",  :null=>false
     t.datetime "updated_at",  :null=>false
+    t.integer  "climb_id"
   end
-
-  create_table "climb_tags_climbs", id: false, force: :cascade do |t|
-    t.integer "climb_tag_id", :null=>false
-    t.integer "climb_id",     :null=>false
-  end
-  add_index "climb_tags_climbs", ["climb_id", "climb_tag_id"], :name=>"index_climb_tags_climbs_on_climb_id_and_climb_tag_id", :using=>:btree
-  add_index "climb_tags_climbs", ["climb_tag_id", "climb_id"], :name=>"index_climb_tags_climbs_on_climb_tag_id_and_climb_id", :using=>:btree
+  add_index "climb_tags", ["climb_id"], :name=>"index_climb_tags_on_climb_id", :using=>:btree
 
   create_table "climber_educations", force: :cascade do |t|
     t.integer  "year"
     t.string   "leader"
-    t.datetime "created_at",           :null=>false
-    t.datetime "updated_at",           :null=>false
-    t.integer  "education_program_id"
+    t.datetime "created_at",   :null=>false
+    t.datetime "updated_at",   :null=>false
+    t.integer  "education_id"
     t.integer  "user_id"
   end
-  add_index "climber_educations", ["education_program_id"], :name=>"index_climber_educations_on_education_program_id", :using=>:btree
+  add_index "climber_educations", ["education_id"], :name=>"index_climber_educations_on_education_id", :using=>:btree
   add_index "climber_educations", ["user_id"], :name=>"index_climber_educations_on_user_id", :using=>:btree
 
 # Could not dump table "climber_experiences" because of following StandardError
@@ -101,6 +96,13 @@ ActiveRecord::Schema.define(version: 20170113000208) do
 #   Unknown type 'climb_status' for column 'climb_status'
 
 
+  create_table "climbs_educations", id: false, force: :cascade do |t|
+    t.integer "education_id", :null=>false
+    t.integer "climb_id",     :null=>false
+  end
+  add_index "climbs_educations", ["climb_id", "education_id"], :name=>"index_climbs_educations_on_climb_id_and_education_id", :using=>:btree
+  add_index "climbs_educations", ["education_id", "climb_id"], :name=>"index_climbs_educations_on_education_id_and_climb_id", :using=>:btree
+
   create_table "climbs_grad_prefs", id: false, force: :cascade do |t|
     t.integer "grad_pref_id", :null=>false
     t.integer "climb_id",     :null=>false
@@ -115,13 +117,15 @@ ActiveRecord::Schema.define(version: 20170113000208) do
   add_index "climbs_registrations", ["climb_id", "registration_id"], :name=>"index_climbs_registrations_on_climb_id_and_registration_id", :using=>:btree
   add_index "climbs_registrations", ["registration_id", "climb_id"], :name=>"index_climbs_registrations_on_registration_id_and_climb_id", :using=>:btree
 
-  create_table "education_programs", force: :cascade do |t|
+  create_table "educations", force: :cascade do |t|
     t.string   "abbreviation"
     t.string   "name"
     t.string   "description"
     t.datetime "created_at",   :null=>false
     t.datetime "updated_at",   :null=>false
+    t.integer  "climb_id"
   end
+  add_index "educations", ["climb_id"], :name=>"index_educations_on_climb_id", :using=>:btree
 
 # Could not dump table "general_dates" because of following StandardError
 #   Unknown type 'climb_month' for column 'climb_month'
@@ -166,7 +170,9 @@ ActiveRecord::Schema.define(version: 20170113000208) do
     t.date     "date_return_town"
     t.datetime "created_at",            :null=>false
     t.datetime "updated_at",            :null=>false
+    t.integer  "climb_id"
   end
+  add_index "specific_dates", ["climb_id"], :name=>"index_specific_dates_on_climb_id", :using=>:btree
 
   create_table "user_roles", force: :cascade do |t|
     t.string   "role"
@@ -187,16 +193,22 @@ ActiveRecord::Schema.define(version: 20170113000208) do
 
 
   add_foreign_key "climb_leader_profiles", "users"
-  add_foreign_key "climber_educations", "education_programs"
+  add_foreign_key "climb_tags", "climbs"
+  add_foreign_key "climber_educations", "educations"
   add_foreign_key "climber_educations", "users"
   add_foreign_key "climber_profiles", "users"
   add_foreign_key "climbs", "climb_schedules"
   add_foreign_key "climbs", "climb_tags"
+  add_foreign_key "climbs", "educations"
   add_foreign_key "climbs", "general_dates"
   add_foreign_key "climbs", "routes"
   add_foreign_key "climbs", "specific_dates"
+  add_foreign_key "educations", "climbs"
+  add_foreign_key "general_dates", "climbs"
   add_foreign_key "routes", "climb_classes"
+  add_foreign_key "routes", "climbs"
   add_foreign_key "routes", "mountains"
+  add_foreign_key "specific_dates", "climbs"
   add_foreign_key "users", "climb_leader_profiles"
   add_foreign_key "users", "climber_profiles"
 end

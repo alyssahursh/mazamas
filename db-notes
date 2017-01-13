@@ -90,7 +90,7 @@ year                integer
 
 rails g model EducationProgram abbreviation:string name:string description:string
 
-EDUCATION_PROGRAM
+education
 name                string
 description         string
 
@@ -98,7 +98,7 @@ description         string
 rails g ClimberEducation year:integer leader:string
 *** CLIMBER_EDUCATION *** JOIN!
 belongs_to          user_id
-has_one             education_program
+has_one             education
 year                string
 has_one             user_id (climb_leader)
 

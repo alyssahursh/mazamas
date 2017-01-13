@@ -5,17 +5,17 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
-require 'csv'
-
+# require 'csv'
+#
 # All Education Programs
-EducationProgram.create(abbreviation: "BCEP", name: "Basic Climbing Education Program", description: "")
-EducationProgram.create(abbreviation: "ICS",  name: "Intermediate Climbing School",     description: "")
-EducationProgram.create(abbreviation: "MFA",  name: "Mountaineering First Aid",         description: "")
-EducationProgram.create(abbreviation: "AR",   name: "Advanced Rock",                    description: "")
-EducationProgram.create(abbreviation: "ASI",  name: "Advanced Snow and Ice",            description: "")
-EducationProgram.create(abbreviation: "SM",   name: "Ski Mountaineering",               description: "")
-EducationProgram.create(abbreviation: "FM",   name: "Families Mountaineering",          description: "")
-puts "Seeded Education Programs. Total Education Count: #{EducationProgram.all.length}"
+Education.create(abbreviation: "BCEP", name: "Basic Climbing Education Program", description: "")
+Education.create(abbreviation: "ICS",  name: "Intermediate Climbing School",     description: "")
+Education.create(abbreviation: "MFA",  name: "Mountaineering First Aid",         description: "")
+Education.create(abbreviation: "AR",   name: "Advanced Rock",                    description: "")
+Education.create(abbreviation: "ASI",  name: "Advanced Snow and Ice",            description: "")
+Education.create(abbreviation: "SM",   name: "Ski Mountaineering",               description: "")
+Education.create(abbreviation: "FM",   name: "Families Mountaineering",          description: "")
+puts "Seeded Education Programs. Total Education Count: #{Education.all.length}"
 
 # All User Roles
 UserRole.create(role: "Climber",              description: "General role for all climbers")
@@ -197,3 +197,26 @@ CSV.foreach('db/route_data_clean2.csv', headers: true) do |line|
   # end
 end
 puts "Seeded Routes. Total Routes: #{Route.all.length}"
+
+
+1.times do |x|
+  random_date = Faker::Date.forward(rand(100..200))
+  Climb.create(
+    climb_status:             "open",
+    description:              Faker::Lorem.paragraph,
+    specific_date:            SpecificDate.new(
+                                date_leave_town: random_date,
+                                date_leave_trailhead: random_date + rand(0..1),
+                                date_return_town: random_date + rand(0..1),
+                                date_return_trailhead: random_date + rand(0..1),
+                                date_summit: random_date + rand(0..1)
+                              ),
+    last_updated:             Time.now,
+    party_size:               rand(6..13),
+    route:                    Route.find(rand(1..Route.all.length)),
+    educations:               [Education.find(rand(1..Education.all.length))],
+    climb_schedule:           ClimbSchedule.find(1)
+  )
+end
+puts "Seeded Climbs. Total Climbs: #{Climb.all.length}"
+puts "Seeded Specific Dates. Total Dates: #{SpecificDates.all.length}"

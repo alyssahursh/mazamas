@@ -22,12 +22,21 @@ class ForeignKeys < ActiveRecord::Migration
     add_reference :climbs, :specific_date, index: true
     add_foreign_key :climbs, :specific_dates
 
+    add_reference :specific_dates, :climb, index: true
+    add_foreign_key :specific_dates, :climbs
+
     add_reference :climbs, :general_date, index: true
     add_foreign_key :climbs, :general_dates
+
+    add_reference :general_dates, :climb, index: true
+    add_foreign_key :general_dates, :climbs
 
     # Add Route and Climb Schedule to Climbs
     add_reference :climbs, :route, index: true
     add_foreign_key :climbs, :routes
+
+    add_reference :routes, :climb, index: true
+    add_foreign_key :routes, :climbs
 
     add_reference :climbs, :climb_schedule, index: true
     add_foreign_key :climbs, :climb_schedules
@@ -35,9 +44,12 @@ class ForeignKeys < ActiveRecord::Migration
     add_reference :climbs, :climb_tag, index: true
     add_foreign_key :climbs, :climb_tags
 
+    add_reference :climb_tags, :climb, index: true
+    add_foreign_key :climb_tags, :climbs
+
     # Add Education Programs and User to Climber Educations
-    add_reference :climber_educations, :education_program, index: true
-    add_foreign_key :climber_educations, :education_programs
+    add_reference :climber_educations, :education, index: true
+    add_foreign_key :climber_educations, :educations
 
     add_reference :climber_educations, :user, index: true
     add_foreign_key :climber_educations, :users
@@ -46,5 +58,11 @@ class ForeignKeys < ActiveRecord::Migration
     add_reference :routes, :climb_class, index: true
     add_foreign_key :routes, :climb_classes
 
+    # Connect Climb and Education Programs (for preferences)
+    add_reference :climbs, :education, index: true
+    add_foreign_key :climbs, :educations, index: true
+
+    add_reference :educations, :climb, index: true
+    add_foreign_key :educations, :climbs, index: true
   end
 end

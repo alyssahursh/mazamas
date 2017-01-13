@@ -337,7 +337,7 @@ CREATE TABLE climber_educations (
     leader character varying,
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL,
-    education_program_id integer
+    education_id integer
 );
 
 
@@ -397,10 +397,10 @@ ALTER SEQUENCE climber_profiles_id_seq OWNED BY climber_profiles.id;
 
 
 --
--- Name: education_programs; Type: TABLE; Schema: public; Owner: -
+-- Name: educations; Type: TABLE; Schema: public; Owner: -
 --
 
-CREATE TABLE education_programs (
+CREATE TABLE educations (
     id integer NOT NULL,
     abbreviation character varying,
     name character varying,
@@ -411,10 +411,10 @@ CREATE TABLE education_programs (
 
 
 --
--- Name: education_programs_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+-- Name: educations_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
-CREATE SEQUENCE education_programs_id_seq
+CREATE SEQUENCE educations_id_seq
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -423,10 +423,10 @@ CREATE SEQUENCE education_programs_id_seq
 
 
 --
--- Name: education_programs_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+-- Name: educations_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
-ALTER SEQUENCE education_programs_id_seq OWNED BY education_programs.id;
+ALTER SEQUENCE educations_id_seq OWNED BY educations.id;
 
 
 --
@@ -597,10 +597,10 @@ ALTER TABLE ONLY climber_profiles ALTER COLUMN id SET DEFAULT nextval('climber_p
 
 
 --
--- Name: education_programs id; Type: DEFAULT; Schema: public; Owner: -
+-- Name: educations id; Type: DEFAULT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY education_programs ALTER COLUMN id SET DEFAULT nextval('education_programs_id_seq'::regclass);
+ALTER TABLE ONLY educations ALTER COLUMN id SET DEFAULT nextval('educations_id_seq'::regclass);
 
 
 --
@@ -681,11 +681,11 @@ ALTER TABLE ONLY climber_profiles
 
 
 --
--- Name: education_programs education_programs_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: educations educations_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY education_programs
-    ADD CONSTRAINT education_programs_pkey PRIMARY KEY (id);
+ALTER TABLE ONLY educations
+    ADD CONSTRAINT educations_pkey PRIMARY KEY (id);
 
 
 --
@@ -727,10 +727,10 @@ CREATE INDEX index_climb_leader_profiles_on_user_id ON climb_leader_profiles USI
 
 
 --
--- Name: index_climber_educations_on_education_program_id; Type: INDEX; Schema: public; Owner: -
+-- Name: index_climber_educations_on_education_id; Type: INDEX; Schema: public; Owner: -
 --
 
-CREATE INDEX index_climber_educations_on_education_program_id ON climber_educations USING btree (education_program_id);
+CREATE INDEX index_climber_educations_on_education_id ON climber_educations USING btree (education_id);
 
 
 --
