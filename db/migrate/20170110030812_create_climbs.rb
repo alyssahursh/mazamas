@@ -20,8 +20,20 @@ class CreateClimbs < ActiveRecord::Migration
     add_reference :climbs, :climb_tag, index: true
     add_foreign_key :climbs, :climb_tags
 
+    add_reference :climbs, :leader_1, index: true
+    # add_foreign_key :climbs, :users
+
+    add_reference :climbs, :leader_2, index: true
+    # add_foreign_key :climbs, :users
+
+    add_reference :climbs, :assistant_1, index: true
+    # add_foreign_key :climbs, :users
+
+    add_reference :climbs, :assistant_2, index: true
+    # add_foreign_key :climbs, :users
+
     add_reference :registrations, :climb, index: true
-    add_foreign_key :registrations, :climbs
+    # add_foreign_key :registrations, :climbs
 
     add_reference :specific_dates, :climb, index: true
     add_foreign_key :specific_dates, :climbs

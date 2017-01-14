@@ -1,16 +1,16 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
+# # This file should contain all the record creation needed to seed the database with its default values.
+# # The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
+# #
+# # Examples:
+# #
+# #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
+# #   Mayor.create(name: 'Emanuel', city: cities.first)
+# # require 'csv'
+# #
 #
-# Examples:
+# # rake db:schema:dump && rake db:drop && rake db:create && rake db:migrate && rake db:seed
 #
-#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
-#   Mayor.create(name: 'Emanuel', city: cities.first)
-# require 'csv'
 #
-
-# rake db:schema:dump && rake db:drop && rake db:create && rake db:migrate && rake db:seed
-
-
 # All Education Programs
 Education.create(abbreviation: "BCEP", name: "Basic Climbing Education Program", description: "")
 Education.create(abbreviation: "ICS",  name: "Intermediate Climbing School",     description: "")
@@ -54,9 +54,9 @@ puts "Seeded Climb Tags. Total Climb Tags: #{ClimbTag.all.length}"
 
 
 # Sample Climb Schedules
-ClimbSchedule.create(season: "Winter", year: 2016-2017)
+ClimbSchedule.create(season: "Winter", year: 2017)
 ClimbSchedule.create(season: "Summer", year: 2017)
-ClimbSchedule.create(season: "Winter", year: 2017-2018)
+ClimbSchedule.create(season: "Winter", year: 2018)
 ClimbSchedule.create(season: "Summer", year: 2018)
 puts "Seeded Climb Schedules. Total Climb Schedules: #{ClimbSchedule.all.length}"
 
@@ -247,9 +247,9 @@ puts "Seeded Climber Educations. Total Educations: #{ClimberEducation.all.length
 
 
 
+registration_status = ["applied", "accepted", "rejected", "waitlist"]
 
-
-300.times do |x|
+1.times do |x|
   random_date = Faker::Date.forward(rand(100..200))
   climb = Climb.create(
     climb_status:             "open",
@@ -266,18 +266,15 @@ puts "Seeded Climber Educations. Total Educations: #{ClimberEducation.all.length
     party_size:               rand(6..13),
     route:                    Route.find(rand(1..Route.all.length)),
     educations:               [Education.find(rand(1..Education.all.length))],
-    climb_schedule:           ClimbSchedule.find(1)
-  )
-  Registration.create(
-    climb:                    climb,
-    user:                     ClimbLeaderProfile.find(rand(1..ClimbLeaderProfile.all.length)).user,
-    registration_status:      "leader"
+    climb_schedule:           ClimbSchedule.find(2),
+    leader_1:                 ClimbLeaderProfile.find(rand(1..ClimbLeaderProfile.all.length)).user,
+    assistant_1:              ClimberProfile.find(rand(1..ClimberProfile.all.length)).user
   )
   rand(3..20).times do |x|
     Registration.create(
       climb:                    climb,
       user:                     User.find(rand(1..User.all.length)),
-      registration_status:      "applied"
+      registration_status:      registration_status[rand(0..registration_status.length)]
     )
   end
 end
@@ -285,7 +282,7 @@ puts "Seeded Leader and Climber Registrations. Total Registrations: #{Registrati
 puts "Seeded Open Summer Climbs. Total Climbs: #{Climb.all.length}"
 puts "Seeded Specific Dates. Total Dates: #{SpecificDate.all.length}"
 
-50.times do |x|
+1.times do |x|
   winter_months = ["october", "november", "december"]
   climb = Climb.create(
     climb_status:             "open",
@@ -299,18 +296,15 @@ puts "Seeded Specific Dates. Total Dates: #{SpecificDate.all.length}"
     party_size:               rand(6..13),
     route:                    Route.find(rand(1..Route.all.length)),
     educations:               [Education.find(rand(1..Education.all.length))],
-    climb_schedule:           ClimbSchedule.find(2)
-  )
-  Registration.create(
-    climb:                    climb,
-    user:                     ClimbLeaderProfile.find(rand(1..ClimbLeaderProfile.all.length)).user,
-    registration_status:      "leader"
+    climb_schedule:           ClimbSchedule.find(3),
+    leader_1:                 ClimbLeaderProfile.find(rand(1..ClimbLeaderProfile.all.length)).user,
+    assistant_1:              ClimberProfile.find(rand(1..ClimberProfile.all.length)).user
   )
   rand(3..20).times do |x|
     Registration.create(
       climb:                    climb,
       user:                     User.find(rand(1..User.all.length)),
-      registration_status:      "applied"
+      registration_status:      registration_status[rand(0..registration_status.length)]
     )
   end
 end
