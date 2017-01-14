@@ -1,4 +1,4 @@
 class ClimberEducation < ActiveRecord::Base
-  belongs_to :user
-  has_one :education
+  belongs_to :climber_profile
+  belongs_to :education
 end

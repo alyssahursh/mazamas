@@ -1,4 +1,4 @@
-class JoinTableClimbEducationPrograms < ActiveRecord::Migration
+class CreateJoinTableClimbEducationPrograms < ActiveRecord::Migration
   def change
       create_join_table :educations, :climbs do |t|
         t.index [:education_id, :climb_id]

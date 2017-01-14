@@ -9,9 +9,13 @@ class CreateClimbLeaderProfiles < ActiveRecord::Migration
       t.text :climb_achievements
       t.text :climb_philosophy
       t.text :summit_treat
-      t.text :profile
+      t.text :bio
+      t.text :photo_link
 
       t.timestamps null: false
     end
+    add_reference :climb_leader_profiles, :user, index: true
+    # add_foreign_key :climb_leader_profiles, :users
+
   end
 end

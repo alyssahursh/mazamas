@@ -19,5 +19,12 @@ class CreateUsers < ActiveRecord::Migration
       t.timestamps null: false
     end
     add_column :users, :membership_status, :membership_status
+
+    add_reference :users, :climber_profile, index: true
+    # add_foreign_key :users, :climber_profiles
+
+    add_reference :users, :climb_leader_profile, index: true
+    # add_foreign_key :users, :climb_leader_profiles
+    
   end
 end
