@@ -1,0 +1,1 @@
+json.partial! "climb_leader_profiles/climb_leader_profile", climb_leader_profile: @climb_leader_profile

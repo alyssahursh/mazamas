@@ -1,0 +1,1 @@
+json.array! @climb_schedules, partial: 'climb_schedules/climb_schedule', as: :climb_schedule

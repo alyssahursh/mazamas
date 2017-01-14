@@ -1,0 +1,1 @@
+json.array! @climb_tags, partial: 'climb_tags/climb_tag', as: :climb_tag

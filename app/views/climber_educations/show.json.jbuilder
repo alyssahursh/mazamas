@@ -1,0 +1,1 @@
+json.partial! "climber_educations/climber_education", climber_education: @climber_education

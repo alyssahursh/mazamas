@@ -6,5 +6,8 @@ class CreateClimberEducations < ActiveRecord::Migration
 
       t.timestamps null: false
     end
+    add_reference :climber_educations, :education, index: true
+    add_foreign_key :climber_educations, :educations
+
   end
 end

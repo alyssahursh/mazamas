@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Mountains</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @mountains.each do |mountain| %>
+      <tr>
+        <td><%= link_to 'Show', mountain %></td>
+        <td><%= link_to 'Edit', edit_mountain_path(mountain) %></td>
+        <td><%= link_to 'Destroy', mountain, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Mountain', new_mountain_path %>

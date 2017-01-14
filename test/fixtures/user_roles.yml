@@ -1,9 +1,37 @@
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
-
-one:
-  role: MyString
-  description: MyString
-
-two:
-  role: MyString
-  description: MyString
+---
+UserRole_1:
+  id: 1
+  role: Climber
+  description: General role for all climbers
+  created_at: 2017-01-14 05:32:53.589658000 Z
+  updated_at: 2017-01-14 05:32:53.589658000 Z
+UserRole_2:
+  id: 2
+  role: Climb Leader
+  description: Full climb leader, no restrictions
+  created_at: 2017-01-14 05:32:53.606387000 Z
+  updated_at: 2017-01-14 05:32:53.606387000 Z
+UserRole_3:
+  id: 3
+  role: A-Level Climb Leader
+  description: Climb leader restricted to A-level climbs
+  created_at: 2017-01-14 05:32:53.620302000 Z
+  updated_at: 2017-01-14 05:32:53.620302000 Z
+UserRole_4:
+  id: 4
+  role: Provisional Leader
+  description: Provisional leader; requires Climb Leader-level assistant
+  created_at: 2017-01-14 05:32:53.626715000 Z
+  updated_at: 2017-01-14 05:32:53.626715000 Z
+UserRole_5:
+  id: 5
+  role: Leader Candidate
+  description: Leadership development candidate
+  created_at: 2017-01-14 05:32:53.639598000 Z
+  updated_at: 2017-01-14 05:32:53.639598000 Z
+UserRole_6:
+  id: 6
+  role: Admin
+  description: Adminstration role for staff and volunteers
+  created_at: 2017-01-14 05:32:53.650450000 Z
+  updated_at: 2017-01-14 05:32:53.650450000 Z

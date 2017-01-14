@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Climb Tags</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @climb_tags.each do |climb_tag| %>
+      <tr>
+        <td><%= link_to 'Show', climb_tag %></td>
+        <td><%= link_to 'Edit', edit_climb_tag_path(climb_tag) %></td>
+        <td><%= link_to 'Destroy', climb_tag, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Climb tag', new_climb_tag_path %>

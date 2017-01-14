@@ -1,33 +1,190 @@
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+---
+User_1:
+  id: 1
+  first_name: Wim
+  last_name: Aarts
+  email: cecelia@kuvalis.co
+  emergency_contact: Moshe Murray
+  emergency_phone: 1-983-182-2805
+  address1: 75668 Senger Forge
+  address2: Suite 587
+  city: Cullenburgh
+  state: MS
+  zip: '68786'
+  phone: 1-507-504-6325 x493
+  birthdate: 1992-04-02
+  created_at: 2017-01-14 05:32:54.485581000 Z
+  updated_at: 2017-01-14 05:32:54.485581000 Z
+  membership_status: active
+User_2:
+  id: 2
+  first_name: Gary
+  last_name: Ballou
+  email: unique@paucek.co
+  emergency_contact: Brennon Smith
+  emergency_phone: 1-433-744-3737
+  address1: 7632 Kshlerin Burg
+  address2: Suite 835
+  city: North Giuseppeville
+  state: AL
+  zip: '49200'
+  phone: 120-943-2522
+  birthdate: 1969-12-25
+  created_at: 2017-01-14 05:32:54.623520000 Z
+  updated_at: 2017-01-14 05:32:54.623520000 Z
+  membership_status: active
+User_3:
+  id: 3
+  first_name: Larry
+  last_name: Beck
+  email: percival@walter.io
+  emergency_contact: Mr. Freeman Murazik
+  emergency_phone: 834-975-4187
+  address1: 537 Paxton Route
+  address2: Apt. 817
+  city: West Berthafurt
+  state: SD
+  zip: '75855'
+  phone: 1-658-474-5697 x495
+  birthdate: 1984-07-07
+  created_at: 2017-01-14 05:32:54.675873000 Z
+  updated_at: 2017-01-14 05:32:54.675873000 Z
+  membership_status: active
+User_4:
+  id: 4
+  first_name: Gary
+  last_name: Bishop
+  email: laurie@casper.co
+  emergency_contact: Lempi Buckridge
+  emergency_phone: 650-516-6225 x88798
+  address1: 26314 Lowe Parks
+  address2: Suite 324
+  city: Lefflerton
+  state: LA
+  zip: '48147'
+  phone: 1-174-538-3664
+  birthdate: 1942-06-16
+  created_at: 2017-01-14 05:32:54.717889000 Z
+  updated_at: 2017-01-14 05:32:54.717889000 Z
+  membership_status: active
+User_5:
+  id: 5
+  first_name: Andrew
+  last_name: Bodien
+  email: adella_bartell@hammesmacejkovic.biz
+  emergency_contact: Greta Koelpin II
+  emergency_phone: "(882) 699-1918 x3541"
+  address1: 43184 Jerod Extensions
+  address2: Suite 178
+  city: Greenburgh
+  state: MS
+  zip: '16239'
+  phone: 1-618-901-9984 x877
+  birthdate: 1949-07-31
+  created_at: 2017-01-14 05:32:54.751432000 Z
+  updated_at: 2017-01-14 05:32:54.751432000 Z
+  membership_status: active
 
-one:
-  first_name: MyString
-  last_name: MyString
-  email: MyString
-  emergency_contact: MyString
-  emergency_phone: MyString
-  address1: MyString
-  address2: MyString
-  city: MyString
-  state: MyString
-  zip: MyString
-  phone: MyString
-  birthdate: 2017-01-09
-  age: 1
-  membership_status: 
 
-two:
-  first_name: MyString
-  last_name: MyString
-  email: MyString
-  emergency_contact: MyString
-  emergency_phone: MyString
-  address1: MyString
-  address2: MyString
-  city: MyString
-  state: MyString
-  zip: MyString
-  phone: MyString
-  birthdate: 2017-01-09
-  age: 1
-  membership_status: 
+User_100:
+  id: 100
+  first_name: Pamela
+  last_name: Weissnat
+  email: trevion_cruickshank@vandervortvonrueden.co
+  emergency_contact: Ms. Crystel Daniel
+  emergency_phone: 326-503-2064 x427
+  address1: 2351 Toby Flats
+  address2: Apt. 445
+  city: North Emmy
+  state: CA
+  zip: '68674'
+  phone: 1-813-212-1107 x4971
+  birthdate: 1980-07-08
+  created_at: 2017-01-14 05:33:10.108269000 Z
+  updated_at: 2017-01-14 05:33:10.108269000 Z
+  membership_status: active
+User_101:
+  id: 101
+  first_name: Rodrigo
+  last_name: Nicolas
+  email: amparo.schmitt@doyle.co
+  emergency_contact: Forest Rau MD
+  emergency_phone: 1-546-367-5611 x793
+  address1: 954 Will Corners
+  address2: Apt. 112
+  city: New Bayleestad
+  state: MD
+  zip: 33236-8905
+  phone: 408.920.6352 x7086
+  birthdate: 1949-12-07
+  created_at: 2017-01-14 05:33:10.302723000 Z
+  updated_at: 2017-01-14 05:33:10.302723000 Z
+  membership_status: nonmember
+User_102:
+  id: 102
+  first_name: Michael
+  last_name: Murphy
+  email: neal_bednar@anderson.co
+  emergency_contact: Verlie Haley
+  emergency_phone: 811-699-8798 x5034
+  address1: 81929 Jast Mountains
+  address2: Apt. 907
+  city: North Mableburgh
+  state: TX
+  zip: 60869-4231
+  phone: "(918) 487-8696 x5605"
+  birthdate: 1952-10-28
+  created_at: 2017-01-14 05:33:10.566704000 Z
+  updated_at: 2017-01-14 05:33:10.566704000 Z
+  membership_status: active
+User_103:
+  id: 103
+  first_name: Sven
+  last_name: Gislason
+  email: blanca@ondrickafisher.org
+  emergency_contact: Ewald Torp Sr.
+  emergency_phone: "(232) 993-0701 x2363"
+  address1: 579 Delphine Port
+  address2: Apt. 578
+  city: Schaeferview
+  state: GA
+  zip: '31858'
+  phone: 1-910-137-7527 x60275
+  birthdate: 1983-07-25
+  created_at: 2017-01-14 05:33:10.933360000 Z
+  updated_at: 2017-01-14 05:33:10.933360000 Z
+  membership_status: active
+User_104:
+  id: 104
+  first_name: Quinn
+  last_name: Senger
+  email: kurt.hagenes@buckridgeabernathy.com
+  emergency_contact: Abby Greenholt
+  emergency_phone: 1-177-872-5513
+  address1: 8765 Gabe Hollow
+  address2: Apt. 334
+  city: Archport
+  state: VA
+  zip: '97278'
+  phone: "(865) 255-1825"
+  birthdate: 1943-08-13
+  created_at: 2017-01-14 05:33:11.241578000 Z
+  updated_at: 2017-01-14 05:33:11.241578000 Z
+  membership_status: lapsed
+User_105:
+  id: 105
+  first_name: Rafael
+  last_name: Deckow
+  email: lea@rath.net
+  emergency_contact: Karina Jones
+  emergency_phone: 280-761-8344 x12663
+  address1: 84292 Jenifer Harbors
+  address2: Apt. 837
+  city: Jacobsonfurt
+  state: WY
+  zip: 91776-3702
+  phone: 559.109.3909 x96802
+  birthdate: 1953-12-27
+  created_at: 2017-01-14 05:33:11.504140000 Z
+  updated_at: 2017-01-14 05:33:11.504140000 Z
+  membership_status: nonmember

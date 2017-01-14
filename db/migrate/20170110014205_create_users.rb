@@ -19,5 +19,6 @@ class CreateUsers < ActiveRecord::Migration
       t.timestamps null: false
     end
     add_column :users, :membership_status, :membership_status
+
   end
 end

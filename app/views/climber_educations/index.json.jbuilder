@@ -1,0 +1,1 @@
+json.array! @climber_educations, partial: 'climber_educations/climber_education', as: :climber_education
