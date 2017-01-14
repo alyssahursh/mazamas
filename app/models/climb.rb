@@ -11,16 +11,15 @@ class Climb < ActiveRecord::Base
   has_one       :climb_class,   through: :route
 
   def leader
-    leader_reg = registrations.find_by(registration_status: 'leader')
-    leader = User.find(leader_reg.user)
+    leader_reg = registrations.where(registration_status: 'leader').first&.user
   end
-
-  def spots_available
-    occupied = registrations.where(registration_status: 'accepted').length
-    occupied += registrations.where(registration_status: 'leader').length
-    occupied += registrations.where(registration_status: 'assistant').length
-    
-    available = party_size - occupied
-  end
+  #
+  # def spots_available
+  #   occupied = registrations.where(registration_status: 'accepted').length
+  #   occupied += registrations.where(registration_status: 'leader').length
+  #   occupied += registrations.where(registration_status: 'assistant').length
+  #
+  #   available = party_size - occupied
+  # end
 
 end

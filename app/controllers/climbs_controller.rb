@@ -4,7 +4,13 @@ class ClimbsController < ApplicationController
   # GET /climbs
   # GET /climbs.json
   def index
-    @climbs = Climb.all
+    @climbs = Climb.includes(
+      :route,
+      :mountain,
+      :registrations,
+      :climb_class,
+      :climb_schedule
+    ) 
   end
 
   # GET /climbs/1

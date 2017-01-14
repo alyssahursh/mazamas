@@ -53,7 +53,7 @@ h3 {
   padding: 0;
   height: 12vw;
 }
- 
+
 ul {
   padding: 0;
   list-style: none;
@@ -71,4 +71,55 @@ ul.navlinks li {
   margin: 0 2vw;
   font-size: .73em;
   letter-spacing: .2em;
+}
+
+
+/**********************************************************/
+/*                   SEARCH BAR STYLES                    */
+/**********************************************************/
+
+.input[type=text] {
+    width: 130px;
+    -webkit-transition: width 0.4s ease-in-out;
+    transition: width 0.4s ease-in-out;
+}
+
+/* When the input field gets focus, change its width to 100% */
+input[type=text]:focus {
+    width: 100%;
+}
+
+/**********************************************************/
+/*                      TABLE STYLES                      */
+/**********************************************************/
+
+.climb-overview {
+  width: 100%;
+  border: 1px solid red;
+  margin: 5% 0;
+}
+
+.climb-overview h2,
+.climb-overview h3,
+.climb-overview p {
+  text-transform: capitalize;
+  text-align: left;
+}
+
+.climb-overview h2 {
+  font: normal normal 1em/1 'Helvetica', sans-serif;
+}
+
+.climb-overview h3 {
+  font: normal normal .75em/1 'Helvetica', sans-serif;
+}
+
+.climb-overview p {
+  display: inline-block;
+}
+
+
+.six.columns.centered {
+  margin-left: 26%;
+  /*margin*/
 }
