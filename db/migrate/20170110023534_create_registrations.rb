@@ -1,6 +1,6 @@
 class CreateRegistrations < ActiveRecord::Migration
   def change
-    create_enum :registration_status, 'applied', 'accepted', 'rejected', 'waitlist', 'leader', 'assistant'
+    create_enum :registration_status, 'applied', 'accepted', 'rejected', 'waitlist'
     create_table :registrations do |t|
       t.date :application_date
 
