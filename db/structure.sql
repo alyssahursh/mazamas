@@ -43,7 +43,8 @@ CREATE TYPE climb_month AS ENUM (
     'june',
     'july',
     'august',
-    'september,october',
+    'september',
+    'october',
     'november',
     'december'
 );
@@ -146,8 +147,7 @@ CREATE TABLE climb_classes (
     code character varying,
     description character varying,
     created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL,
-    route_id integer
+    updated_at timestamp without time zone NOT NULL
 );
 
 
@@ -171,48 +171,6 @@ ALTER SEQUENCE climb_classes_id_seq OWNED BY climb_classes.id;
 
 
 --
--- Name: climb_grad_emphases; Type: TABLE; Schema: public; Owner: -
---
-
-CREATE TABLE climb_grad_emphases (
-    id integer NOT NULL,
-    code character varying,
-    description character varying,
-    created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
-);
-
-
---
--- Name: climb_grad_emphases_climbs; Type: TABLE; Schema: public; Owner: -
---
-
-CREATE TABLE climb_grad_emphases_climbs (
-    climb_grad_emphasis_id integer NOT NULL,
-    climb_id integer NOT NULL
-);
-
-
---
--- Name: climb_grad_emphases_id_seq; Type: SEQUENCE; Schema: public; Owner: -
---
-
-CREATE SEQUENCE climb_grad_emphases_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: climb_grad_emphases_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
---
-
-ALTER SEQUENCE climb_grad_emphases_id_seq OWNED BY climb_grad_emphases.id;
-
-
---
 -- Name: climb_leader_profiles; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -226,10 +184,10 @@ CREATE TABLE climb_leader_profiles (
     climb_achievements text,
     climb_philosophy text,
     summit_treat text,
+    bio text,
+    photo_link text,
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL,
-    photo_link character varying,
-    bio character varying,
     user_id integer
 );
 
@@ -260,9 +218,9 @@ ALTER SEQUENCE climb_leader_profiles_id_seq OWNED BY climb_leader_profiles.id;
 CREATE TABLE climb_schedules (
     id integer NOT NULL,
     season character varying,
+    year integer,
     created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL,
-    year integer
+    updated_at timestamp without time zone NOT NULL
 );
 
 
@@ -337,7 +295,8 @@ CREATE TABLE climber_educations (
     leader character varying,
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL,
-    education_id integer
+    education_id integer,
+    climber_profile_id integer
 );
 
 
@@ -358,6 +317,44 @@ CREATE SEQUENCE climber_educations_id_seq
 --
 
 ALTER SEQUENCE climber_educations_id_seq OWNED BY climber_educations.id;
+
+
+--
+-- Name: climber_experiences; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE climber_experiences (
+    id integer NOT NULL,
+    mountain character varying,
+    route character varying,
+    climb_leader character varying,
+    role character varying,
+    month integer,
+    year integer,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL,
+    climb_type climb_type,
+    climber_profile_id integer
+);
+
+
+--
+-- Name: climber_experiences_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE climber_experiences_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: climber_experiences_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE climber_experiences_id_seq OWNED BY climber_experiences.id;
 
 
 --
@@ -397,6 +394,54 @@ ALTER SEQUENCE climber_profiles_id_seq OWNED BY climber_profiles.id;
 
 
 --
+-- Name: climbs; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE climbs (
+    id integer NOT NULL,
+    description text,
+    party_size integer,
+    spots_available integer,
+    last_updated timestamp without time zone,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL,
+    climb_status climb_status,
+    route_id integer,
+    climb_schedule_id integer,
+    climb_tag_id integer
+);
+
+
+--
+-- Name: climbs_educations; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE climbs_educations (
+    education_id integer NOT NULL,
+    climb_id integer NOT NULL
+);
+
+
+--
+-- Name: climbs_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE climbs_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: climbs_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE climbs_id_seq OWNED BY climbs.id;
+
+
+--
 -- Name: educations; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -430,14 +475,46 @@ ALTER SEQUENCE educations_id_seq OWNED BY educations.id;
 
 
 --
+-- Name: general_dates; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE general_dates (
+    id integer NOT NULL,
+    climb_year integer,
+    description text,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL,
+    climb_month climb_month,
+    climb_id integer
+);
+
+
+--
+-- Name: general_dates_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE general_dates_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: general_dates_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE general_dates_id_seq OWNED BY general_dates.id;
+
+
+--
 -- Name: mountains; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE mountains (
     id integer NOT NULL,
     name character varying,
-    created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL,
     latitude character varying,
     longitude character varying,
     state character varying,
@@ -447,7 +524,9 @@ CREATE TABLE mountains (
     google_maps_url character varying,
     elevation_feet character varying,
     elevation_meters character varying,
-    summit_post_name character varying
+    summit_post_name character varying,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
 );
 
 
@@ -471,6 +550,97 @@ ALTER SEQUENCE mountains_id_seq OWNED BY mountains.id;
 
 
 --
+-- Name: registrations; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE registrations (
+    id integer NOT NULL,
+    application_date date,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL,
+    registration_status registration_status,
+    user_id integer,
+    climb_id integer
+);
+
+
+--
+-- Name: registrations_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE registrations_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: registrations_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE registrations_id_seq OWNED BY registrations.id;
+
+
+--
+-- Name: routes; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE routes (
+    id integer NOT NULL,
+    name character varying,
+    elevation_gain character varying,
+    driving_distance integer,
+    driving_time double precision,
+    typical_duration integer,
+    glaciated_peak boolean,
+    rock_class integer,
+    rappelling boolean,
+    crevasse_rescue boolean,
+    notes text,
+    guidebooks text,
+    phone_numbers text,
+    secondary_peak integer,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL,
+    snow_angle snow_angle,
+    typical_gear typical_gear,
+    typical_season typical_season,
+    climb_class_id integer,
+    mountain_id integer
+);
+
+
+--
+-- Name: routes_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE routes_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: routes_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE routes_id_seq OWNED BY routes.id;
+
+
+--
+-- Name: schema_migrations; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE schema_migrations (
+    version character varying NOT NULL
+);
+
+
+--
 -- Name: specific_dates; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -482,7 +652,8 @@ CREATE TABLE specific_dates (
     date_return_trailhead date,
     date_return_town date,
     created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
+    updated_at timestamp without time zone NOT NULL,
+    climb_id integer
 );
 
 
@@ -548,17 +719,56 @@ CREATE TABLE user_roles_users (
 
 
 --
+-- Name: users; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE users (
+    id integer NOT NULL,
+    first_name character varying,
+    last_name character varying,
+    email character varying,
+    emergency_contact character varying,
+    emergency_phone character varying,
+    address1 character varying,
+    address2 character varying,
+    city character varying,
+    state character varying,
+    zip character varying,
+    phone character varying,
+    birthdate date,
+    age integer,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL,
+    membership_status membership_status,
+    climber_profile_id integer,
+    climb_leader_profile_id integer
+);
+
+
+--
+-- Name: users_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE users_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: users_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE users_id_seq OWNED BY users.id;
+
+
+--
 -- Name: climb_classes id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY climb_classes ALTER COLUMN id SET DEFAULT nextval('climb_classes_id_seq'::regclass);
-
-
---
--- Name: climb_grad_emphases id; Type: DEFAULT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY climb_grad_emphases ALTER COLUMN id SET DEFAULT nextval('climb_grad_emphases_id_seq'::regclass);
 
 
 --
@@ -590,10 +800,24 @@ ALTER TABLE ONLY climber_educations ALTER COLUMN id SET DEFAULT nextval('climber
 
 
 --
+-- Name: climber_experiences id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY climber_experiences ALTER COLUMN id SET DEFAULT nextval('climber_experiences_id_seq'::regclass);
+
+
+--
 -- Name: climber_profiles id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY climber_profiles ALTER COLUMN id SET DEFAULT nextval('climber_profiles_id_seq'::regclass);
+
+
+--
+-- Name: climbs id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY climbs ALTER COLUMN id SET DEFAULT nextval('climbs_id_seq'::regclass);
 
 
 --
@@ -604,10 +828,31 @@ ALTER TABLE ONLY educations ALTER COLUMN id SET DEFAULT nextval('educations_id_s
 
 
 --
+-- Name: general_dates id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY general_dates ALTER COLUMN id SET DEFAULT nextval('general_dates_id_seq'::regclass);
+
+
+--
 -- Name: mountains id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY mountains ALTER COLUMN id SET DEFAULT nextval('mountains_id_seq'::regclass);
+
+
+--
+-- Name: registrations id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY registrations ALTER COLUMN id SET DEFAULT nextval('registrations_id_seq'::regclass);
+
+
+--
+-- Name: routes id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY routes ALTER COLUMN id SET DEFAULT nextval('routes_id_seq'::regclass);
 
 
 --
@@ -625,19 +870,18 @@ ALTER TABLE ONLY user_roles ALTER COLUMN id SET DEFAULT nextval('user_roles_id_s
 
 
 --
+-- Name: users id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY users ALTER COLUMN id SET DEFAULT nextval('users_id_seq'::regclass);
+
+
+--
 -- Name: climb_classes climb_classes_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY climb_classes
     ADD CONSTRAINT climb_classes_pkey PRIMARY KEY (id);
-
-
---
--- Name: climb_grad_emphases climb_grad_emphases_pkey; Type: CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY climb_grad_emphases
-    ADD CONSTRAINT climb_grad_emphases_pkey PRIMARY KEY (id);
 
 
 --
@@ -673,11 +917,27 @@ ALTER TABLE ONLY climber_educations
 
 
 --
+-- Name: climber_experiences climber_experiences_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY climber_experiences
+    ADD CONSTRAINT climber_experiences_pkey PRIMARY KEY (id);
+
+
+--
 -- Name: climber_profiles climber_profiles_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY climber_profiles
     ADD CONSTRAINT climber_profiles_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: climbs climbs_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY climbs
+    ADD CONSTRAINT climbs_pkey PRIMARY KEY (id);
 
 
 --
@@ -689,11 +949,35 @@ ALTER TABLE ONLY educations
 
 
 --
+-- Name: general_dates general_dates_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY general_dates
+    ADD CONSTRAINT general_dates_pkey PRIMARY KEY (id);
+
+
+--
 -- Name: mountains mountains_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY mountains
     ADD CONSTRAINT mountains_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: registrations registrations_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY registrations
+    ADD CONSTRAINT registrations_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: routes routes_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY routes
+    ADD CONSTRAINT routes_pkey PRIMARY KEY (id);
 
 
 --
@@ -713,10 +997,11 @@ ALTER TABLE ONLY user_roles
 
 
 --
--- Name: index_climb_classes_on_route_id; Type: INDEX; Schema: public; Owner: -
+-- Name: users users_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
-CREATE INDEX index_climb_classes_on_route_id ON climb_classes USING btree (route_id);
+ALTER TABLE ONLY users
+    ADD CONSTRAINT users_pkey PRIMARY KEY (id);
 
 
 --
@@ -727,10 +1012,38 @@ CREATE INDEX index_climb_leader_profiles_on_user_id ON climb_leader_profiles USI
 
 
 --
+-- Name: index_climb_tags_climbs_on_climb_id_and_climb_tag_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_climb_tags_climbs_on_climb_id_and_climb_tag_id ON climb_tags_climbs USING btree (climb_id, climb_tag_id);
+
+
+--
+-- Name: index_climb_tags_climbs_on_climb_tag_id_and_climb_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_climb_tags_climbs_on_climb_tag_id_and_climb_id ON climb_tags_climbs USING btree (climb_tag_id, climb_id);
+
+
+--
+-- Name: index_climber_educations_on_climber_profile_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_climber_educations_on_climber_profile_id ON climber_educations USING btree (climber_profile_id);
+
+
+--
 -- Name: index_climber_educations_on_education_id; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX index_climber_educations_on_education_id ON climber_educations USING btree (education_id);
+
+
+--
+-- Name: index_climber_experiences_on_climber_profile_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_climber_experiences_on_climber_profile_id ON climber_experiences USING btree (climber_profile_id);
 
 
 --
@@ -741,8 +1054,158 @@ CREATE INDEX index_climber_profiles_on_user_id ON climber_profiles USING btree (
 
 
 --
+-- Name: index_climbs_educations_on_climb_id_and_education_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_climbs_educations_on_climb_id_and_education_id ON climbs_educations USING btree (climb_id, education_id);
+
+
+--
+-- Name: index_climbs_educations_on_education_id_and_climb_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_climbs_educations_on_education_id_and_climb_id ON climbs_educations USING btree (education_id, climb_id);
+
+
+--
+-- Name: index_climbs_on_climb_schedule_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_climbs_on_climb_schedule_id ON climbs USING btree (climb_schedule_id);
+
+
+--
+-- Name: index_climbs_on_climb_tag_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_climbs_on_climb_tag_id ON climbs USING btree (climb_tag_id);
+
+
+--
+-- Name: index_climbs_on_route_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_climbs_on_route_id ON climbs USING btree (route_id);
+
+
+--
+-- Name: index_general_dates_on_climb_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_general_dates_on_climb_id ON general_dates USING btree (climb_id);
+
+
+--
+-- Name: index_registrations_on_climb_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_registrations_on_climb_id ON registrations USING btree (climb_id);
+
+
+--
+-- Name: index_registrations_on_user_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_registrations_on_user_id ON registrations USING btree (user_id);
+
+
+--
+-- Name: index_routes_on_climb_class_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_routes_on_climb_class_id ON routes USING btree (climb_class_id);
+
+
+--
+-- Name: index_routes_on_mountain_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_routes_on_mountain_id ON routes USING btree (mountain_id);
+
+
+--
+-- Name: index_specific_dates_on_climb_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_specific_dates_on_climb_id ON specific_dates USING btree (climb_id);
+
+
+--
+-- Name: index_user_roles_users_on_user_id_and_user_role_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_user_roles_users_on_user_id_and_user_role_id ON user_roles_users USING btree (user_id, user_role_id);
+
+
+--
+-- Name: index_user_roles_users_on_user_role_id_and_user_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_user_roles_users_on_user_role_id_and_user_id ON user_roles_users USING btree (user_role_id, user_id);
+
+
+--
+-- Name: index_users_on_climb_leader_profile_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_users_on_climb_leader_profile_id ON users USING btree (climb_leader_profile_id);
+
+
+--
+-- Name: index_users_on_climber_profile_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_users_on_climber_profile_id ON users USING btree (climber_profile_id);
+
+
+--
+-- Name: unique_schema_migrations; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE UNIQUE INDEX unique_schema_migrations ON schema_migrations USING btree (version);
+
+
+--
 -- PostgreSQL database dump complete
 --
 
 SET search_path TO "$user", public;
+
+INSERT INTO schema_migrations (version) VALUES ('20170110014205');
+
+INSERT INTO schema_migrations (version) VALUES ('20170110014221');
+
+INSERT INTO schema_migrations (version) VALUES ('20170110023534');
+
+INSERT INTO schema_migrations (version) VALUES ('20170110024254');
+
+INSERT INTO schema_migrations (version) VALUES ('20170110024709');
+
+INSERT INTO schema_migrations (version) VALUES ('20170110025316');
+
+INSERT INTO schema_migrations (version) VALUES ('20170110025801');
+
+INSERT INTO schema_migrations (version) VALUES ('20170110025919');
+
+INSERT INTO schema_migrations (version) VALUES ('20170110030002');
+
+INSERT INTO schema_migrations (version) VALUES ('20170110030051');
+
+INSERT INTO schema_migrations (version) VALUES ('20170110030812');
+
+INSERT INTO schema_migrations (version) VALUES ('20170110032825');
+
+INSERT INTO schema_migrations (version) VALUES ('20170110034315');
+
+INSERT INTO schema_migrations (version) VALUES ('20170110034829');
+
+INSERT INTO schema_migrations (version) VALUES ('20170110035102');
+
+INSERT INTO schema_migrations (version) VALUES ('20170110035446');
+
+INSERT INTO schema_migrations (version) VALUES ('20170110040138');
+
+INSERT INTO schema_migrations (version) VALUES ('20170110040501');
+
+INSERT INTO schema_migrations (version) VALUES ('20170113033524');
 

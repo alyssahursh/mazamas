@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Specific Dates</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @specific_dates.each do |specific_date| %>
+      <tr>
+        <td><%= link_to 'Show', specific_date %></td>
+        <td><%= link_to 'Edit', edit_specific_date_path(specific_date) %></td>
+        <td><%= link_to 'Destroy', specific_date, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Specific date', new_specific_date_path %>

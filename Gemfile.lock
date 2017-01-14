@@ -74,6 +74,7 @@ GEM
     concurrent-ruby (1.0.4)
     crack (0.4.3)
       safe_yaml (~> 1.0.0)
+    db_fixtures_dump (0.1.1)
     debug_inspector (0.0.2)
     descendants_tracker (0.0.4)
       thread_safe (~> 0.3, >= 0.3.1)
@@ -276,6 +277,7 @@ DEPENDENCIES
   better_errors
   byebug
   coffee-rails (~> 4.1.0)
+  db_fixtures_dump
   dotenv-rails (~> 2.1, >= 2.1.1)
   faker
   httparty

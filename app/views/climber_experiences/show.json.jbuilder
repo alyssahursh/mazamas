@@ -1,0 +1,1 @@
+json.partial! "climber_experiences/climber_experience", climber_experience: @climber_experience

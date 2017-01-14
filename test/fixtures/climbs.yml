@@ -1,13 +1,57 @@
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
-
-one:
-  description: MyText
-  party_size: 1
-  spots_available: 1
-  last_updated: 2017-01-09 19:08:12
-
-two:
-  description: MyText
-  party_size: 1
-  spots_available: 1
-  last_updated: 2017-01-09 19:08:12
+---
+Climb_1:
+  id: 1
+  description: Libero voluptatem numquam rerum sunt tempore. Saepe occaecati temporibus
+    eaque ipsa provident. Voluptate est vero ut eligendi.
+  party_size: 12
+  last_updated: 2017-01-14 05:33:50.973148000 Z
+  created_at: 2017-01-14 05:33:51.042396000 Z
+  updated_at: 2017-01-14 05:33:51.042396000 Z
+  climb_status: open
+  route_id: 1
+  climb_schedule_id: 1
+Climb_2:
+  id: 2
+  description: Nostrum libero voluptatibus quia rem placeat. Et et qui quia reprehenderit.
+    Tenetur cupiditate architecto cum. Reiciendis ducimus vitae dolorum quia quisquam
+    voluptas. Dolores aut dolore provident.
+  party_size: 8
+  last_updated: 2017-01-14 05:33:51.276376000 Z
+  created_at: 2017-01-14 05:33:51.307074000 Z
+  updated_at: 2017-01-14 05:33:51.307074000 Z
+  climb_status: open
+  route_id: 2
+  climb_schedule_id: 1
+Climb_3:
+  id: 3
+  description: Et qui in esse corrupti. Autem voluptates aut. Repellat ut non reprehenderit
+    voluptas beatae doloribus eaque. Voluptas possimus fugit eos reiciendis quis sit.
+  party_size: 10
+  last_updated: 2017-01-14 05:33:51.490693000 Z
+  created_at: 2017-01-14 05:33:51.515401000 Z
+  updated_at: 2017-01-14 05:33:51.515401000 Z
+  climb_status: open
+  route_id: 3
+  climb_schedule_id: 1
+Climb_4:
+  id: 4
+  description: Reprehenderit et vel aut maiores aspernatur labore quaerat. Ex tempore
+    sint perferendis. Ab consectetur facere nemo nisi vero labore.
+  party_size: 9
+  last_updated: 2017-01-14 05:33:51.777177000 Z
+  created_at: 2017-01-14 05:33:51.800743000 Z
+  updated_at: 2017-01-14 05:33:51.800743000 Z
+  climb_status: open
+  route_id: 4
+  climb_schedule_id: 1
+Climb_5:
+  id: 5
+  description: Et quidem harum dolorem distinctio et voluptatem est. Fugit rerum architecto
+    voluptas atque eum. Harum est animi aut et ut distinctio.
+  party_size: 8
+  last_updated: 2017-01-14 05:33:51.937290000 Z
+  created_at: 2017-01-14 05:33:51.958022000 Z
+  updated_at: 2017-01-14 05:33:51.958022000 Z
+  climb_status: open
+  route_id: 5
+  climb_schedule_id: 1

@@ -1,0 +1,36 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Climbs</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @climbs.each do |climb| %>
+      <tr>
+        <td><%= climb.route.name %></td>
+        <td><%= climb.mountain.name %></td>
+        <td><%= climb.climb_class.code %></td>
+        <td><%= climb.climb_schedule.season %> <%= climb.climb_schedule.year %></td>
+        <td><%= climb.leader.first_name %> <%= climb.leader.last_name %></td>
+
+        <td><%= climb.climb_status %></td>
+        <td><%= climb.party_size %></td>
+        <td><%= climb.spots_available %></td>
+
+
+        <td><%= link_to 'Details', climb %></td>
+        <td><%= link_to 'Edit', edit_climb_path(climb) %></td>
+        <td><%= link_to 'Destroy', climb, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Climb', new_climb_path %>

@@ -1,0 +1,1 @@
+json.partial! "general_dates/general_date", general_date: @general_date
