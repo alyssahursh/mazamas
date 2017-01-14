@@ -9,7 +9,7 @@ class CreateRegistrations < ActiveRecord::Migration
     add_column :registrations, :registration_status, :registration_status
 
     add_reference :registrations, :user, index: true
-    # add_foreign_key :registrations, :users
+    add_foreign_key :registrations, :users
 
   end
 

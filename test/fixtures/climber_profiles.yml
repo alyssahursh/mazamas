@@ -1,4 +1,62 @@
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
-
-one:
+---
+ClimberProfile_1:
   id: 1
+  bio: Quidem consequatur sit quae consequuntur deserunt voluptate. A ad voluptatem
+    consequatur voluptate. Necessitatibus et est nihil itaque.
+  volunteer_history: Theca perferendis alii cumque claro ut laborum. Compono cotidie
+    claudeo substantia id videlicet aufero. Substantia cicuta denuo tertius tamisium
+    vaco aveho cruciamentum.
+  physical_conditioning: Accendo patior assumenda cognatus audentia temperantia. Carcer
+    victoria est deripio aequitas abduco sed utilis. Ustulo ambulo coerceo ut.
+  medical_condition: Tenus autus viscus admitto amoveo decipio.
+  medication: Contra contigo.
+  created_at: 2017-01-14 05:32:54.553214000 Z
+  updated_at: 2017-01-14 05:32:54.553214000 Z
+  user_id: 1
+ClimberProfile_2:
+  id: 2
+  bio: Sapiente voluptatem porro est est ut. Iure minima in. Ut soluta eos quos.
+  volunteer_history: ''
+  physical_conditioning: Cerno angelus vis illo calcar. Vinculum ventito bardus vos.
+  medical_condition: Abbas theatrum cimentarius.
+  medication: Non patruus.
+  created_at: 2017-01-14 05:32:54.645974000 Z
+  updated_at: 2017-01-14 05:32:54.645974000 Z
+  user_id: 2
+ClimberProfile_3:
+  id: 3
+  bio: Delectus excepturi rerum nihil unde consequatur at sed. Sed recusandae repudiandae.
+    Molestiae consequuntur dicta hic quidem itaque voluptatibus quis. Placeat possimus
+    labore quisquam accusamus ut autem quos.
+  volunteer_history: Adsidue vulgivagus ulterius.
+  physical_conditioning: Audentia venia atrox vulgus cunae cuppedia. Et vociferor
+    textus sub sulum unde.
+  medical_condition: Aut temeritas patior optio voluptatibus celer.
+  medication: Adhuc.
+  created_at: 2017-01-14 05:32:54.697457000 Z
+  updated_at: 2017-01-14 05:32:54.697457000 Z
+  user_id: 3
+ClimberProfile_4:
+  id: 4
+  bio: Cum nemo dignissimos qui. Consequuntur quos sed sequi quisquam exercitationem
+    asperiores. Atque aliquam alias perferendis. At facilis quas quis.
+  volunteer_history: Theologus ultio tero.
+  physical_conditioning: Vestrum aequitas cultellus verus cubitum arbustum rerum solio.
+    Conculco ut corrumpo subiungo minus ver enim.
+  medical_condition: Aurum fugit deficio benevolentia.
+  medication: Conduco video arceo sperno abutor.
+  created_at: 2017-01-14 05:32:54.732963000 Z
+  updated_at: 2017-01-14 05:32:54.732963000 Z
+  user_id: 4
+ClimberProfile_5:
+  id: 5
+  bio: Voluptas et consequatur. Cum ea sed dignissimos. Sit veniam et est veritatis
+    quis.
+  volunteer_history: ''
+  physical_conditioning: Peior ustulo qui thermae. Tantum dignissimos summisse voluptatem
+    deserunt vos rerum amet. Cuppedia ut virgo.
+  medical_condition: ''
+  medication: "."
+  created_at: 2017-01-14 05:32:54.766984000 Z
+  updated_at: 2017-01-14 05:32:54.766984000 Z
+  user_id: 5

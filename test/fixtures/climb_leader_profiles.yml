@@ -1,23 +1,103 @@
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
-
-one:
-  climbing_since: 1
-  leader_since: 1
-  pace: 1
-  climb_preferences: MyText
-  volunteer_history: MyText
-  climb_achievements: MyText
-  climb_philosophy: MyText
-  summit_treat: MyText
-  bio: MyText
-
-two:
-  climbing_since: 1
-  leader_since: 1
-  pace: 1
-  climb_preferences: MyText
-  volunteer_history: MyText
-  climb_achievements: MyText
-  climb_philosophy: MyText
-  summit_treat: MyText
-  bio: MyText
+---
+ClimbLeaderProfile_1:
+  id: 1
+  climbing_since: 1986
+  leader_since: 2004
+  pace: 3
+  climb_preferences: Snow
+  volunteer_history: 'For the last five years ski mountaineering has ruled my winter
+    life and the last three years I had the honor and pleasure of being the chair
+    of this committee. Assisting with basic school and ICS. Supported and actively
+    implemented the Avalanche and Crevasse Rescue skillbuilder classes. '
+  climb_achievements: 'Ski mountaineering more than 200 trips in the European Alps
+    living in Southern Germany. Climbing lesser known peaks in the Cordillera Real
+    around La Paz Bolivia, Ski mountaineering expedition to Muztagh Ata on the Pakistan-China
+    border. And of course most ice and steep snow chutes on our own Mt. Hood. '
+  climb_philosophy: 'Be safe, teach AND learn on each and every climb, have fun. There
+    is no ski slope or summit that''s worth risking your life, you want to go on to
+    do a lot more other adventures. No matter how rewarding the summit is, the trip
+    preparation, the approach and the safe return will make up for a lost summit. '
+  summit_treat: Ritter Sport yoghurt, but hey I'm not a fussy eater, surprise me.
+  bio: I grew up in a small town in the Netherlands. After working in South America
+    and South East Asia I ended up living in southern Germany for 10 years in my wife's
+    home area. Here I learned to climb and ski mountaineer. In 1993 I finished my
+    training as a ski mountaineering climb leader for the German Alpine Society. We
+    have one teenage son in high school. Running and biking has been my method of
+    conditioning, but much more than that it serves as stress relieve and meditation.
+  photo_link: http://mazamas.org/images/leaders/aarts.jpg
+  created_at: 2017-01-14 05:32:54.588760000 Z
+  updated_at: 2017-01-14 05:32:54.588760000 Z
+  user_id: 1
+ClimbLeaderProfile_2:
+  id: 2
+  climbing_since: 1992
+  leader_since: 2012
+  pace: 3
+  climb_preferences: Everything
+  volunteer_history: ICS assistant, BCEP assistant, Intro to Rock sessions (3 years),
+    assistant coordinator ICS 2012-13, leading ICS 2013-14
+  climb_achievements: Learning the skills to be able to get up pretty much any peak
+    in the Pacific Northwest.That's a lot of peaks.
+  climb_philosophy: 'You can expect three things will be of high importance on my
+    climbs: safety, personal responsibility and enjoyment.Take the time to appreciate
+    this wonderful world we live in, and the ability to enjoy it before and after
+    a climb.Even if it might mean staying at camp an extra day.'
+  summit_treat: Good times with fellow climbers. And Snickers bars
+  bio: Lived in Oregon since 1965, moved to Portland in 1976.Worked in construction
+    since 1977.Love the outdoors, backpacking and cross country skiing since I was
+    in high school.Started climbing with Portland Parks in the early years, finally
+    joined Mazamas in 2008 to fill out my climbing knowledge and never looked back.
+  photo_link: http://mazamas.org/images/leaders/Gary_Ballou.jpg
+  created_at: 2017-01-14 05:32:54.660978000 Z
+  updated_at: 2017-01-14 05:32:54.660978000 Z
+  user_id: 2
+ClimbLeaderProfile_3:
+  id: 3
+  climbing_since: 2006
+  leader_since: 2013
+  pace: 2
+  climb_preferences: Everything
+  volunteer_history: ICS Assistant 2011-13, BCEP team co-leader 2013, Crevasse Rescue
+    Skill Builder Instructor 2011-12, Mazama Lodge volunteer  2011-13, Published author
+    in the Mazama Bulletin (2010) and Mazama Annual (2011)
+  climb_achievements: My first Mazama climb - Mt. Adams (2006), Mt. Whitney  Mountaineer's
+    Route (2011), Mt. Hood (2008) after several cancellations due to weather, Mt.
+    St. Helen's (2007) with my three kids
+  climb_philosophy: The next humbling experience is just around the corner, and so
+    is the next spectacular reward.
+  summit_treat: 'Anything heavy and tasty carried by someone else:fresh fruit: grapes,
+    pineapple, chocolate anything: cookies, brownies, espresso beans, salty: chips,
+    Chex mix, nuts, back at the trailhead:chips and oranges'
+  bio: Born in Nebraska, moved to Oregon in 1983 for law school, life-long sailor,
+    former professional sailor-charter boat captain in the Virgin Islands and Maine,
+    backpacker, civil practice attorney, three adult children who climb, sail, backpack
+    and are active in the outdoors.I signed up for BCEP in 2006 at the suggestion
+    of a friend with much hesitation.Climbing mountains and rock seemed risky and
+    foolish.I got the bug and am so fortunate to be a part of this special community
+    of Mazamas who have shared and taught me so much.It has been life changing and
+    I am truly thankful. I look forward to continuing this adventure and giving back
+    as a leader.
+  photo_link: http://mazamas.org/images/leaders/becklarry.JPG
+  created_at: 2017-01-14 05:32:54.704873000 Z
+  updated_at: 2017-01-14 05:32:54.704873000 Z
+  user_id: 3
+ClimbLeaderProfile_4:
+  id: 4
+  climbing_since: 2001
+  leader_since: 2012
+  pace: 3
+  climb_preferences: Everything
+  volunteer_history: Hike Leader since 2008. Outings Leader since 2010. Assisted with
+    BCEP 2009-11 and ICS 2010-12.
+  climb_achievements: Mt Whitney (3 times) and Mauna Loa, whose unearthly landscape
+    was both beautiful and mind-numbingly stark at the same time. I also section hiked
+    the PCT
+  climb_philosophy: Safety first and definitely a team centered philosophy with all
+    members contributing to the common goal, enjoying and having fun in the mountains
+  summit_treat: Snickers, the complete trail-mountain snack.
+  bio: Born and raised in Portland. Feel very spoiled to have such a wonderful playground
+    in our backyard.
+  photo_link: http://mazamas.org/images/leaders/Gary_Bishiop.jpg
+  created_at: 2017-01-14 05:32:54.739110000 Z
+  updated_at: 2017-01-14 05:32:54.739110000 Z
+  user_id: 4

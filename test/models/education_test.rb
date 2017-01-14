@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class ClimbLeaderProfileTest < ActiveSupport::TestCase
+class EducationTest < ActiveSupport::TestCase
   test "the truth" do
     assert true
   end

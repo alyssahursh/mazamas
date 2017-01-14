@@ -10,10 +10,13 @@ class CreateClimberProfiles < ActiveRecord::Migration
       t.timestamps null: false
     end
     add_reference :climber_profiles, :user, index: true
-    # add_foreign_key :climber_profiles, :users
+    add_foreign_key :climber_profiles, :users
 
     add_reference :climber_experiences, :climber_profile, index: true
-    # add_foreign_key :climber_experiences, :climber_profiles
+    add_foreign_key :climber_experiences, :climber_profiles
+
+    add_reference :climber_educations, :climber_profile, index: true
+    add_foreign_key :climber_educations, :climber_profiles
 
   end
 end

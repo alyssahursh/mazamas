@@ -43,6 +43,8 @@ gem 'webmock'
 # Add postgresql enum functionatlity to migrations
 gem "schema_plus_enums"
 
+# Fixture fixer
+gem 'db_fixtures_dump'
 
 
 # Use ActiveModel has_secure_password

@@ -1,15 +1,51 @@
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
-
-one:
-  date_leave_town: 2017-01-09
-  date_leave_trailhead: 2017-01-09
-  date_summit: 2017-01-09
-  date_return_trailhead: 2017-01-09
-  date_return_town: 2017-01-09
-
-two:
-  date_leave_town: 2017-01-09
-  date_leave_trailhead: 2017-01-09
-  date_summit: 2017-01-09
-  date_return_trailhead: 2017-01-09
-  date_return_town: 2017-01-09
+---
+SpecificDate_1:
+  id: 1
+  date_leave_town: 2017-04-13
+  date_leave_trailhead: 2017-04-13
+  date_summit: 2017-04-14
+  date_return_trailhead: 2017-04-13
+  date_return_town: 2017-04-13
+  created_at: 2017-01-14 05:33:51.061882000 Z
+  updated_at: 2017-01-14 05:33:51.061882000 Z
+  climb_id: 1
+SpecificDate_2:
+  id: 2
+  date_leave_town: 2017-05-03
+  date_leave_trailhead: 2017-05-04
+  date_summit: 2017-05-04
+  date_return_trailhead: 2017-05-04
+  date_return_town: 2017-05-04
+  created_at: 2017-01-14 05:33:51.318487000 Z
+  updated_at: 2017-01-14 05:33:51.318487000 Z
+  climb_id: 2
+SpecificDate_3:
+  id: 3
+  date_leave_town: 2017-01-18
+  date_leave_trailhead: 2017-01-18
+  date_summit: 2017-01-18
+  date_return_trailhead: 2017-01-19
+  date_return_town: 2017-01-18
+  created_at: 2017-01-14 05:33:51.522930000 Z
+  updated_at: 2017-01-14 05:33:51.522930000 Z
+  climb_id: 3
+SpecificDate_4:
+  id: 4
+  date_leave_town: 2017-03-28
+  date_leave_trailhead: 2017-03-29
+  date_summit: 2017-03-29
+  date_return_trailhead: 2017-03-28
+  date_return_town: 2017-03-29
+  created_at: 2017-01-14 05:33:51.810299000 Z
+  updated_at: 2017-01-14 05:33:51.810299000 Z
+  climb_id: 4
+SpecificDate_5:
+  id: 5
+  date_leave_town: 2017-03-02
+  date_leave_trailhead: 2017-03-02
+  date_summit: 2017-03-03
+  date_return_trailhead: 2017-03-03
+  date_return_town: 2017-03-03
+  created_at: 2017-01-14 05:33:51.965892000 Z
+  updated_at: 2017-01-14 05:33:51.965892000 Z
+  climb_id: 5

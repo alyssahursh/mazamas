@@ -174,4 +174,18 @@ ActiveRecord::Schema.define(version: 20170113033524) do
 #   Unknown type 'membership_status' for column 'membership_status'
 
 
+  add_foreign_key "climb_leader_profiles", "users"
+  add_foreign_key "climber_educations", "climber_profiles"
+  add_foreign_key "climber_educations", "educations"
+  add_foreign_key "climber_experiences", "climber_profiles"
+  add_foreign_key "climber_profiles", "users"
+  add_foreign_key "climbs", "climb_schedules"
+  add_foreign_key "climbs", "climb_tags"
+  add_foreign_key "climbs", "routes"
+  add_foreign_key "general_dates", "climbs"
+  add_foreign_key "registrations", "climbs"
+  add_foreign_key "registrations", "users"
+  add_foreign_key "routes", "climb_classes"
+  add_foreign_key "routes", "mountains"
+  add_foreign_key "specific_dates", "climbs"
 end

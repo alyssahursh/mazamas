@@ -1,8 +1,131 @@
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
-
-one:
-  name: MyString
-
-
-two:
-  name: MyString
+---
+Route_1:
+  id: 1
+  name: Annette Lake
+  elevation_gain: '1500'
+  driving_distance: 200
+  driving_time: 4.0
+  typical_duration: 1
+  glaciated_peak: false
+  rappelling: false
+  crevasse_rescue: false
+  notes: These walk up peaks are located just south of Snoqualmie Pass.
+  guidebooks: 'Cascade Alpine Guide: Columbia River to Stevens Pass by Fred Beckey'
+  phone_numbers: none
+  secondary_peak: 274
+  created_at: 2017-01-14 05:33:02.071590000 Z
+  updated_at: 2017-01-14 05:33:02.071590000 Z
+  typical_gear: scramble
+  typical_season: summerautumn
+  climb_class_id: 1
+  mountain_id: 1
+Route_2:
+  id: 2
+  name: PCT Route
+  elevation_gain: '1500'
+  driving_distance: 200
+  driving_time: 4.0
+  typical_duration: 1
+  glaciated_peak: false
+  rappelling: false
+  crevasse_rescue: false
+  notes: These walk up peaks are located just south of Snoqualmie Pass.
+  guidebooks: 'Cascade Alpine Guide: Columbia River to Stevens Pass by Fred Beckey'
+  phone_numbers: none
+  secondary_peak: 274
+  created_at: 2017-01-14 05:33:02.090147000 Z
+  updated_at: 2017-01-14 05:33:02.090147000 Z
+  typical_gear: scramble
+  typical_season: summerautumn
+  climb_class_id: 1
+  mountain_id: 1
+Route_3:
+  id: 3
+  name: Peregrine Travers
+  elevation_gain: '800'
+  driving_distance: 253
+  driving_time: 5.0
+  typical_duration: 1
+  rock_class: 5
+  crevasse_rescue: false
+  notes: Acker Rock is a ridge-like formation that towers 3000 feet above the South
+    Umpqua and Buckeye Creek valleys in Oregon's southern Cascades. Acker's summit
+    is home to the historic Acker Rock Lookout, and is available for rent from June
+    23rd through October according to G. Orton's guidebook. The Peregrine Travers
+    is Oregon's longest rock route, comprised of 10 pitches, 5.7 with substantial
+    exposure.
+  guidebooks: Peregrine Traverse in Weekend Rock Oregon by Ron Horton http://www.summitpost.org/peregrine-traverse/162438
+  phone_numbers: Tiller Range District - 541-825-3100
+  created_at: 2017-01-14 05:33:02.100589000 Z
+  updated_at: 2017-01-14 05:33:02.100589000 Z
+  typical_gear: rock
+  typical_season: summerautumn
+  climb_class_id: 4
+  mountain_id: 2
+Route_4:
+  id: 4
+  name: Southeast Arete
+  elevation_gain: '640'
+  typical_duration: 1
+  glaciated_peak: false
+  rock_class: 5
+  rappelling: true
+  crevasse_rescue: false
+  notes: The Aiguille de l'Index is a fine rock summit in the Aiguilles Rouges. While
+    there are many routes on this peak by far the most popular, and also one of the
+    best, is the Southeast Arete. What makes this route so good is its position and
+    views. Facing south, the whole of the Mont Blanc chain rests just over your shoulder,
+    and on belays, it is all too easy to get "lost" in the maze of spires and glaciers.
+    But the route on the Index is also on a sharp ridge, and the exposure and "airyness"
+    of the climb also draw our attention. Finally the summit is a very well-defined
+    point and the very steep rappel descent only emphasizes this. This route is of
+    moderate difficulty, with rock climbing to about 5.7 (French 5a) at its hardest.
+    The crux comes early, on the first pitch, but there are a few moves sprinkled
+    here and there for fun. The climb is about 6 or 7 pitches in length, which makes
+    it a good choice for a relatively relaxed day on the hill. Because the descent
+    is via rappel on the north side of the peak, we need to carry our hiking shoes
+    and extra clothing over the top in small day packs.
+  guidebooks: 'Mont Blanc Massif; 100 Finest Routes by Gaston Rebuffat Mont Blanc
+    Massif: Climbs, Volume II'
+  phone_numbers: tel:+33(0)4 50 53 22 75
+  created_at: 2017-01-14 05:33:02.111151000 Z
+  updated_at: 2017-01-14 05:33:02.111151000 Z
+  typical_gear: rock
+  typical_season: summerautumn
+  climb_class_id: 4
+  mountain_id: 3
+Route_5:
+  id: 5
+  name: Arete des Cosmiques
+  elevation_gain: '984'
+  typical_duration: 1
+  glaciated_peak: true
+  rock_class: 5
+  rappelling: true
+  crevasse_rescue: true
+  notes: Cosmiques Ridge commences from the Abri Simond hut from where it climbs 150m
+    to 3770m. Despite the short distance, the route usually takes about half a day.
+    Initially the climbing is up an easy snow slope and then mixed ground. As you
+    approach the first gendarme of the subsidiary summit (3731m), climb the inclined
+    slabs (4b). Follow the crest of the ridge to the second subsidiary summit. Make
+    a descending traverse (exposed, possible abseil) across two steps. Follow the
+    steps to the end where it passes between two rock walls. Abseil 30m in two pitches
+    via the bolted belays. Continue traversing along terraces to go round the first
+    big tower. Climb an awkward chimney (4a) to reach a good ledge on the right. Climb
+    back onto the ridge via a snow slope that overlooks the Cosmiques Couloir. Go
+    right round a second tower. Alternatively skirt the second tower to the left,
+    going through a small notch and descending a small ice couloir. Follow the ridge
+    to the foot of the crux slab. The crux slab is only 5m and has an in-situ sling
+    and pegs in the diagonal crack running up it but is rated 4c. Above the slab,
+    traverse right along the narrow ledge. Climb a few metres to a terrace on the
+    left and move onto the NW face. Gain a couloir-chimney, then climb clacks (2 pitches
+    3c/4a). Go up onto the final snowy shoulder and climb the metal ladder to the
+    terrace on the South pinnacle
+  phone_numbers: "+33(0)4 50 53 22 75"
+  created_at: 2017-01-14 05:33:02.121065000 Z
+  updated_at: 2017-01-14 05:33:02.121065000 Z
+  snow_angle: 35to50
+  typical_gear: rockandsnow
+  typical_season: springsummer
+  climb_class_id: 4
+  mountain_id: 4

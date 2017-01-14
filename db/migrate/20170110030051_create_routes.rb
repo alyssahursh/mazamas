@@ -26,9 +26,9 @@ class CreateRoutes < ActiveRecord::Migration
     add_column :routes, :typical_season, :typical_season
 
     add_reference :routes, :climb_class, index: true
-    # add_foreign_key :routes, :climb_class
+    add_foreign_key :routes, :climb_classes
 
     add_reference :routes, :mountain, index: true
-    # add_foreign_key :routes, :mountains
+    add_foreign_key :routes, :mountains
   end
 end

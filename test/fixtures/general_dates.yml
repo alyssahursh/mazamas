@@ -1,9 +1,36 @@
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
-
-one:
-  climb_year: 1
-  description: MyText
-
-two:
-  climb_year: 1
-  description: MyText
+---
+GeneralDate_1:
+  id: 1
+  climb_year: 2017
+  created_at: 2017-01-14 05:34:56.772698000 Z
+  updated_at: 2017-01-14 05:34:56.772698000 Z
+  climb_month: december
+  climb_id: 1
+GeneralDate_2:
+  id: 2
+  climb_year: 2017
+  created_at: 2017-01-14 05:34:56.971216000 Z
+  updated_at: 2017-01-14 05:34:56.971216000 Z
+  climb_month: october
+  climb_id: 2
+GeneralDate_3:
+  id: 3
+  climb_year: 2017
+  created_at: 2017-01-14 05:34:57.201174000 Z
+  updated_at: 2017-01-14 05:34:57.201174000 Z
+  climb_month: october
+  climb_id: 3
+GeneralDate_4:
+  id: 4
+  climb_year: 2017
+  created_at: 2017-01-14 05:34:57.572313000 Z
+  updated_at: 2017-01-14 05:34:57.572313000 Z
+  climb_month: november
+  climb_id: 4
+GeneralDate_5:
+  id: 5
+  climb_year: 2017
+  created_at: 2017-01-14 05:34:57.929595000 Z
+  updated_at: 2017-01-14 05:34:57.929595000 Z
+  climb_month: november
+  climb_id: 5

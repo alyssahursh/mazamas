@@ -1,9 +1,25 @@
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
-
-one:
-  season: MyString
+---
+ClimbSchedule_1:
+  id: 1
+  season: Winter
   year: 2017
-
-two:
-  season: MyString
+  created_at: 2017-01-14 05:32:53.805198000 Z
+  updated_at: 2017-01-14 05:32:53.805198000 Z
+ClimbSchedule_2:
+  id: 2
+  season: Summer
   year: 2017
+  created_at: 2017-01-14 05:32:53.819687000 Z
+  updated_at: 2017-01-14 05:32:53.819687000 Z
+ClimbSchedule_3:
+  id: 3
+  season: Winter
+  year: 2018
+  created_at: 2017-01-14 05:32:53.825297000 Z
+  updated_at: 2017-01-14 05:32:53.825297000 Z
+ClimbSchedule_4:
+  id: 4
+  season: Summer
+  year: 2018
+  created_at: 2017-01-14 05:32:53.833285000 Z
+  updated_at: 2017-01-14 05:32:53.833285000 Z

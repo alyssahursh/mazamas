@@ -14,8 +14,9 @@ class CreateClimbLeaderProfiles < ActiveRecord::Migration
 
       t.timestamps null: false
     end
+    
     add_reference :climb_leader_profiles, :user, index: true
-    # add_foreign_key :climb_leader_profiles, :users
+    add_foreign_key :climb_leader_profiles, :users
 
   end
 end

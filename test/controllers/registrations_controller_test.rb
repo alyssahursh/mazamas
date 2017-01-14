@@ -2,7 +2,7 @@ require 'test_helper'
 
 class RegistrationsControllerTest < ActionController::TestCase
   setup do
-    @registration = registrations(:one)
+    @registration = registrations(:Registration_1)
   end
 
   test "should get index" do
@@ -39,11 +39,4 @@ class RegistrationsControllerTest < ActionController::TestCase
     assert_redirected_to registration_path(assigns(:registration))
   end
 
-  test "should destroy registration" do
-    assert_difference('Registration.count', -1) do
-      delete :destroy, id: @registration
-    end
-
-    assert_redirected_to registrations_path
-  end
 end

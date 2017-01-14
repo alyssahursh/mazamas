@@ -2,7 +2,7 @@ require 'test_helper'
 
 class MountainsControllerTest < ActionController::TestCase
   setup do
-    @mountain = mountains(:one)
+    @mountain = mountains(:Mountain_1)
   end
 
   test "should get index" do
@@ -39,11 +39,4 @@ class MountainsControllerTest < ActionController::TestCase
     assert_redirected_to mountain_path(assigns(:mountain))
   end
 
-  test "should destroy mountain" do
-    assert_difference('Mountain.count', -1) do
-      delete :destroy, id: @mountain
-    end
-
-    assert_redirected_to mountains_path
-  end
 end
