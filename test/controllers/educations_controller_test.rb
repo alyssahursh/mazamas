@@ -2,7 +2,7 @@ require 'test_helper'
 
 class EducationsControllerTest < ActionController::TestCase
   setup do
-    @education = educations(:one)
+    @education = educations(:Education_1)
   end
 
   test "should get index" do
@@ -39,11 +39,4 @@ class EducationsControllerTest < ActionController::TestCase
     assert_redirected_to education_path(assigns(:education))
   end
 
-  test "should destroy education" do
-    assert_difference('Education.count', -1) do
-      delete :destroy, id: @education
-    end
-
-    assert_redirected_to educations_path
-  end
 end

@@ -1,9 +1,57 @@
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
-
-one:
-  code: MyString
-  description: MyString
-
-two:
-  code: MyString
-  description: MyString
+---
+ClimbTag_1:
+  id: 1
+  code: Base Camp
+  description: Multi-day climb with pack-in to base camp.
+  created_at: 2017-01-14 05:32:53.729565000 Z
+  updated_at: 2017-01-14 05:32:53.729565000 Z
+ClimbTag_2:
+  id: 2
+  code: Classic Climbers
+  description: Climbers 55 years of age and older are given preference
+  created_at: 2017-01-14 05:32:53.749303000 Z
+  updated_at: 2017-01-14 05:32:53.749303000 Z
+ClimbTag_3:
+  id: 3
+  code: Exploratory
+  description: The leader has not previously climbed this route
+  created_at: 2017-01-14 05:32:53.757732000 Z
+  updated_at: 2017-01-14 05:32:53.757732000 Z
+ClimbTag_4:
+  id: 4
+  code: Family
+  description: Kid friendly climb at a moderate pace
+  created_at: 2017-01-14 05:32:53.762146000 Z
+  updated_at: 2017-01-14 05:32:53.762146000 Z
+ClimbTag_5:
+  id: 5
+  code: Hike to the Summit
+  description: Nonmembers given preference for glaciated peak climb
+  created_at: 2017-01-14 05:32:53.767524000 Z
+  updated_at: 2017-01-14 05:32:53.767524000 Z
+ClimbTag_6:
+  id: 6
+  code: Linked Climbs
+  description: Two or more climbs from the same base camp. Climbers must apply to
+    all related climbs
+  created_at: 2017-01-14 05:32:53.772319000 Z
+  updated_at: 2017-01-14 05:32:53.772319000 Z
+ClimbTag_7:
+  id: 7
+  code: Adjacent Climbs
+  description: Two or more climbs in a similar area. Climbers may apply to one or
+    all.
+  created_at: 2017-01-14 05:32:53.778882000 Z
+  updated_at: 2017-01-14 05:32:53.778882000 Z
+ClimbTag_8:
+  id: 8
+  code: Ski Mountaineering
+  description: Backcountry skie or snowboard gear required
+  created_at: 2017-01-14 05:32:53.785490000 Z
+  updated_at: 2017-01-14 05:32:53.785490000 Z
+ClimbTag_9:
+  id: 9
+  code: Adventurous Young Mazamas
+  description: For those young or young at heart
+  created_at: 2017-01-14 05:32:53.789953000 Z
+  updated_at: 2017-01-14 05:32:53.789953000 Z

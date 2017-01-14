@@ -1,17 +1,51 @@
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
-
-one:
-  mountain: MyString
-  route: MyString
-  climb_leader: MyString
-  role: MyString
-  month: 1
-  year: 1
-
-two:
-  mountain: MyString
-  route: MyString
-  climb_leader: MyString
-  role: MyString
-  month: 1
-  year: 1
+---
+ClimberExperience_1:
+  id: 1
+  mountain: The Brothers
+  route: South Couloir / Lena Lake
+  climb_leader: Alex Fox
+  month: 4
+  year: 2015
+  created_at: 2017-01-14 05:33:08.232646000 Z
+  updated_at: 2017-01-14 05:33:08.232646000 Z
+  climber_profile_id: 1
+ClimberExperience_2:
+  id: 2
+  mountain: Tolmie Peak
+  route: Mowich Lake
+  climb_leader: Paul Underwood
+  month: 8
+  year: 2014
+  created_at: 2017-01-14 05:33:08.269987000 Z
+  updated_at: 2017-01-14 05:33:08.269987000 Z
+  climber_profile_id: 2
+ClimberExperience_3:
+  id: 3
+  mountain: Mt. Deception
+  route: Royal Basin
+  climb_leader: Chris Kruell
+  month: 3
+  year: 2015
+  created_at: 2017-01-14 05:33:08.291467000 Z
+  updated_at: 2017-01-14 05:33:08.291467000 Z
+  climber_profile_id: 3
+ClimberExperience_4:
+  id: 4
+  mountain: Petunia Peak
+  route: ''
+  climb_leader: Jon Major
+  month: 6
+  year: 2009
+  created_at: 2017-01-14 05:33:08.427128000 Z
+  updated_at: 2017-01-14 05:33:08.427128000 Z
+  climber_profile_id: 4
+ClimberExperience_5:
+  id: 5
+  mountain: Grand Teton
+  route: Exum Ridge
+  climb_leader: John Meckel
+  month: 7
+  year: 2007
+  created_at: 2017-01-14 05:33:08.447892000 Z
+  updated_at: 2017-01-14 05:33:08.447892000 Z
+  climber_profile_id: 5

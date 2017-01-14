@@ -1,9 +1,72 @@
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
-
-one:
-  name: MyString
-  peak_coordinates: MyString
-
-two:
-  name: MyString
-  peak_coordinates: MyString
+---
+Mountain_1:
+  id: 1
+  name: Abiel Peak
+  latitude: '47.35207'
+  longitude: "-121.46933"
+  state: Washington
+  country: United States
+  continent: North America
+  summit_post_url: http://www.summitpost.org/abiel-peak/567364
+  google_maps_url: https://www.google.com/maps/place/47.35207,-121.46933
+  elevation_feet: '5365'
+  elevation_meters: '1635'
+  summit_post_name: Abiel Peak
+  created_at: 2017-01-14 05:32:58.727736000 Z
+  updated_at: 2017-01-14 05:32:58.727736000 Z
+Mountain_2:
+  id: 2
+  name: Acker Rock
+  latitude: '43.053'
+  longitude: "-122.644"
+  state: Oregon
+  country: United States
+  continent: North America
+  summit_post_url: http://www.summitpost.org/acker-rock/153184
+  google_maps_url: https://www.google.com/maps/place/43.05300,-122.64400
+  elevation_feet: '4112'
+  elevation_meters: '1253'
+  summit_post_name: Acker Rock
+  created_at: 2017-01-14 05:32:58.752909000 Z
+  updated_at: 2017-01-14 05:32:58.752909000 Z
+Mountain_3:
+  id: 3
+  name: Aiguille de I'Index
+  state: Haute Savoie
+  country: France
+  continent: Europe
+  summit_post_url: http://www.summitpost.org/aiguille-l-index/151095
+  elevation_feet: '8514'
+  elevation_meters: '2595'
+  created_at: 2017-01-14 05:32:58.762238000 Z
+  updated_at: 2017-01-14 05:32:58.762238000 Z
+Mountain_4:
+  id: 4
+  name: Aiguille du Midi
+  latitude: '45.8789'
+  longitude: '6.8878'
+  state: Mont Blanc
+  country: France
+  continent: Europe
+  summit_post_url: http://www.summitpost.org/aiguille-du-midi/150216
+  google_maps_url: https://www.google.com/maps/place/45.87890,6.88780
+  elevation_feet: '12605'
+  elevation_meters: '3842'
+  summit_post_name: Aiguille du Midi
+  created_at: 2017-01-14 05:32:58.767723000 Z
+  updated_at: 2017-01-14 05:32:58.767723000 Z
+Mountain_5:
+  id: 5
+  name: Aneroid Mountain
+  latitude: '45.2033'
+  longitude: "-117.1736"
+  state: Oregon
+  country: United States
+  continent: North America
+  summit_post_url: http://www.summitpost.org/aneroid-mountain/150916
+  google_maps_url: https://www.google.com/maps/place/45.20330,-117.17360
+  elevation_feet: '9702'
+  elevation_meters: '2957'
+  summit_post_name: Aneroid Mountain
+  created_at: 2017-01-14 05:32:58.773494000 Z
+  updated_at: 2017-01-14 05:32:58.773494000 Z

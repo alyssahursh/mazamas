@@ -2,7 +2,7 @@ require 'test_helper'
 
 class UserRolesControllerTest < ActionController::TestCase
   setup do
-    @user_role = user_roles(:one)
+    @user_role = user_roles(:UserRole_1)
   end
 
   test "should get index" do
@@ -39,11 +39,4 @@ class UserRolesControllerTest < ActionController::TestCase
     assert_redirected_to user_role_path(assigns(:user_role))
   end
 
-  test "should destroy user_role" do
-    assert_difference('UserRole.count', -1) do
-      delete :destroy, id: @user_role
-    end
-
-    assert_redirected_to user_roles_path
-  end
 end

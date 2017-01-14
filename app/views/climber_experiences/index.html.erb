@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Climber Experiences</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @climber_experiences.each do |climber_experience| %>
+      <tr>
+        <td><%= link_to 'Show', climber_experience %></td>
+        <td><%= link_to 'Edit', edit_climber_experience_path(climber_experience) %></td>
+        <td><%= link_to 'Destroy', climber_experience, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Climber experience', new_climber_experience_path %>

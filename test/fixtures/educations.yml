@@ -1,0 +1,50 @@
+---
+Education_1:
+  id: 1
+  abbreviation: BCEP
+  name: Basic Climbing Education Program
+  description: ''
+  created_at: 2017-01-14 05:32:53.480411000 Z
+  updated_at: 2017-01-14 05:32:53.480411000 Z
+Education_2:
+  id: 2
+  abbreviation: ICS
+  name: Intermediate Climbing School
+  description: ''
+  created_at: 2017-01-14 05:32:53.534538000 Z
+  updated_at: 2017-01-14 05:32:53.534538000 Z
+Education_3:
+  id: 3
+  abbreviation: MFA
+  name: Mountaineering First Aid
+  description: ''
+  created_at: 2017-01-14 05:32:53.541829000 Z
+  updated_at: 2017-01-14 05:32:53.541829000 Z
+Education_4:
+  id: 4
+  abbreviation: AR
+  name: Advanced Rock
+  description: ''
+  created_at: 2017-01-14 05:32:53.549522000 Z
+  updated_at: 2017-01-14 05:32:53.549522000 Z
+Education_5:
+  id: 5
+  abbreviation: ASI
+  name: Advanced Snow and Ice
+  description: ''
+  created_at: 2017-01-14 05:32:53.555531000 Z
+  updated_at: 2017-01-14 05:32:53.555531000 Z
+Education_6:
+  id: 6
+  abbreviation: SM
+  name: Ski Mountaineering
+  description: ''
+  created_at: 2017-01-14 05:32:53.561112000 Z
+  updated_at: 2017-01-14 05:32:53.561112000 Z
+Education_7:
+  id: 7
+  abbreviation: FM
+  name: Families Mountaineering
+  description: ''
+  created_at: 2017-01-14 05:32:53.566714000 Z
+  updated_at: 2017-01-14 05:32:53.566714000 Z

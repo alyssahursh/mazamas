@@ -2,7 +2,7 @@ require 'test_helper'
 
 class SpecificDatesControllerTest < ActionController::TestCase
   setup do
-    @specific_date = specific_dates(:one)
+    @specific_date = specific_dates(:SpecificDate_1)
   end
 
   test "should get index" do
@@ -39,11 +39,4 @@ class SpecificDatesControllerTest < ActionController::TestCase
     assert_redirected_to specific_date_path(assigns(:specific_date))
   end
 
-  test "should destroy specific_date" do
-    assert_difference('SpecificDate.count', -1) do
-      delete :destroy, id: @specific_date
-    end
-
-    assert_redirected_to specific_dates_path
-  end
 end

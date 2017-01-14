@@ -231,7 +231,7 @@ puts "Seeded Routes. Total Routes: #{Route.all.length}"
     climb_leader_name = "#{climb_leader.user.first_name} #{climb_leader.user.last_name}"
 
     ClimberEducation.create(
-      user:                 climber,
+      climber_profile:      climber_profile,
       education:            Education.find(x+1),
       leader:               climb_leader_name,
       year:                 rand(2000..2017)
@@ -255,6 +255,7 @@ puts "Seeded Climber Educations. Total Educations: #{ClimberEducation.all.length
     climb_status:             "open",
     description:              Faker::Lorem.paragraph,
     specific_date:            SpecificDate.new(
+                                climb:  climb,
                                 date_leave_town: random_date,
                                 date_leave_trailhead: random_date + rand(0..1),
                                 date_return_town: random_date + rand(0..1),
@@ -290,6 +291,7 @@ puts "Seeded Specific Dates. Total Dates: #{SpecificDate.all.length}"
     climb_status:             "open",
     description:              Faker::Lorem.paragraph,
     general_date:             GeneralDate.new(
+                                climb:  climb,
                                 climb_month:    winter_months[rand(0..2)],
                                 climb_year:     2017
                               ),

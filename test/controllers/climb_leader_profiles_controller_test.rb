@@ -2,7 +2,7 @@ require 'test_helper'
 
 class ClimbLeaderProfilesControllerTest < ActionController::TestCase
   setup do
-    @climb_leader_profile = climb_leader_profiles(:one)
+    @climb_leader_profile = climb_leader_profiles(:ClimbLeaderProfile_1)
   end
 
   test "should get index" do
@@ -39,11 +39,4 @@ class ClimbLeaderProfilesControllerTest < ActionController::TestCase
     assert_redirected_to climb_leader_profile_path(assigns(:climb_leader_profile))
   end
 
-  test "should destroy climb_leader_profile" do
-    assert_difference('ClimbLeaderProfile.count', -1) do
-      delete :destroy, id: @climb_leader_profile
-    end
-
-    assert_redirected_to climb_leader_profiles_path
-  end
 end

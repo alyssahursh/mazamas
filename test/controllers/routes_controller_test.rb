@@ -2,7 +2,7 @@ require 'test_helper'
 
 class RoutesControllerTest < ActionController::TestCase
   setup do
-    @route = routes(:one)
+    @route = routes(:Route_1)
   end
 
   test "should get index" do
@@ -39,11 +39,4 @@ class RoutesControllerTest < ActionController::TestCase
     assert_redirected_to route_path(assigns(:route))
   end
 
-  test "should destroy route" do
-    assert_difference('Route.count', -1) do
-      delete :destroy, id: @route
-    end
-
-    assert_redirected_to routes_path
-  end
 end
