@@ -1,15 +1,4 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  bio: MyText
-  volunteer_history: MyText
-  physical_conditioning: MyText
-  medical_condition: MyText
-  medication: MyText
-
-two:
-  bio: MyText
-  volunteer_history: MyText
-  physical_conditioning: MyText
-  medical_condition: MyText
-  medication: MyText
+  id: 1

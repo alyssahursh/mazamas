@@ -7,9 +7,9 @@ one:
   climb_preferences: MyText
   volunteer_history: MyText
   climb_achievements: MyText
-  climb_philsophy: MyText
+  climb_philosophy: MyText
   summit_treat: MyText
-  profile: MyText
+  bio: MyText
 
 two:
   climbing_since: 1
@@ -18,6 +18,6 @@ two:
   climb_preferences: MyText
   volunteer_history: MyText
   climb_achievements: MyText
-  climb_philsophy: MyText
+  climb_philosophy: MyText
   summit_treat: MyText
-  profile: MyText
+  bio: MyText

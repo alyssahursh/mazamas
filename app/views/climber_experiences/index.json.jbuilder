@@ -1,0 +1,1 @@
+json.array! @climber_experiences, partial: 'climber_experiences/climber_experience', as: :climber_experience

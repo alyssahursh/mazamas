@@ -2,8 +2,8 @@
 
 one:
   season: MyString
-  date: 1
+  year: 2017
 
 two:
   season: MyString
-  date: 1
+  year: 2017

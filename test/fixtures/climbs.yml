@@ -1,13 +1,15 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  description: MyText
-  party_size: 1
-  spots_available: 1
-  last_updated: 2017-01-09 19:08:12
+  bio: MyText
+  volunteer_history: MyText
+  physical_conditioning: MyText
+  medical_condition: MyText
+  medication: MyText
 
 two:
-  description: MyText
-  party_size: 1
-  spots_available: 1
-  last_updated: 2017-01-09 19:08:12
+  bio: MyText
+  volunteer_history: MyText
+  physical_conditioning: MyText
+  medical_condition: MyText
+  medication: MyText
