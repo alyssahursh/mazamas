@@ -10,6 +10,8 @@ class ClimbsController < ApplicationController
   # GET /climbs/1
   # GET /climbs/1.json
   def show
+    @climb = climb
+    @leader = climb.leader
   end
 
   # GET /climbs/new
