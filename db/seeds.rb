@@ -249,7 +249,7 @@ puts "Seeded Climber Educations. Total Educations: #{ClimberEducation.all.length
 
 registration_status = ["applied", "accepted", "rejected", "waitlist"]
 
-1.times do |x|
+300.times do |x|
   random_date = Faker::Date.forward(rand(100..200))
   climb = Climb.create(
     climb_status:             "open",
@@ -282,7 +282,7 @@ puts "Seeded Leader and Climber Registrations. Total Registrations: #{Registrati
 puts "Seeded Open Summer Climbs. Total Climbs: #{Climb.all.length}"
 puts "Seeded Specific Dates. Total Dates: #{SpecificDate.all.length}"
 
-1.times do |x|
+50.times do |x|
   winter_months = ["october", "november", "december"]
   climb = Climb.create(
     climb_status:             "open",
