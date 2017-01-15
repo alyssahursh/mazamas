@@ -16,6 +16,7 @@ gem 'coffee-rails', '~> 4.1.0'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
+
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
@@ -43,8 +44,13 @@ gem 'webmock'
 # Add postgresql enum functionatlity to migrations
 gem "schema_plus_enums"
 
-# Fixture fixer
-gem 'db_fixtures_dump'
+
+# Pagination gem
+gem 'will_paginate', '~> 3.1.0'
+
+
+
+
 
 
 # Use ActiveModel has_secure_password
@@ -70,6 +76,9 @@ group :development, :test do
 
   # Use faker for seeding placeholder user data
   gem "faker"
+
+  # Fixture fixer
+  gem 'db_fixtures_dump'
 end
 
 group :development do
