@@ -7,20 +7,12 @@
 
   <input type="text" name="search" placeholder="Search..">
 
-  <% @climbs.each do |climb| %>
-    <section class="climb-overview">
-      <h2><%= climb.mountain.name %></h2>
-      <h3><%= climb.route.name %></h3>
-      <p><%= climb.climb_class.code %></p>
-      <p><%= climb.climb_status %></p>
-      <p><%= climb.party_size %></p>
-      <p><%= climb.leader_1.first_name %> <%= climb.leader_1.last_name %></p>
-      <button><%= link_to 'Details', climb %></button>
-    </section>
-  <% end %>
+  <div id="all-climbs">
+    <%= render @climbs %>
+  </div>
 
-
-  <br>
-  <%= link_to 'New Climb', new_climb_path %>
+  <div id="infinite-scrolling">
+    <%= will_paginate @climbs %>
+  </div>
 
 </div>

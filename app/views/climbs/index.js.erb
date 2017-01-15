@@ -1,0 +1,7 @@
+$('#all-climbs').append('<%= j render @climbs %>');
+<% if @climbs.next_page %>
+  $('.pagination').replaceWith('<%= j will_paginate @climbs %>');
+<% else %>
+  $(window).off('scroll');
+  $('.pagination').remove();
+<% end %>

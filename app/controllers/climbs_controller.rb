@@ -4,13 +4,18 @@ class ClimbsController < ApplicationController
   # GET /climbs
   # GET /climbs.json
   def index
-    @climbs = Climb.includes(
-      :route,
-      :mountain,
-      :registrations,
-      :climb_class,
-      :climb_schedule
-    )
+    @climbs = Climb.paginate(:page => params[:page], :per_page => 20)
+    # .includes(
+    #   :route,
+    #   :mountain,
+    #   :registrations,
+    #   :climb_class,
+    #   :climb_schedule
+    # )
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   # GET /climbs/1
