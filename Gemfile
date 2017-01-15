@@ -48,6 +48,8 @@ gem "schema_plus_enums"
 # Pagination gem
 gem 'will_paginate', '~> 3.1.0'
 
+# Maps!
+gem 'mapbox-rails'
 
 
 
