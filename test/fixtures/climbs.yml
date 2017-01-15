@@ -10,6 +10,8 @@ Climb_1:
   climb_status: open
   route_id: 1
   climb_schedule_id: 1
+  leader_1_id: 1
+  assistant_1_id: 1
 Climb_2:
   id: 2
   description: Nostrum libero voluptatibus quia rem placeat. Et et qui quia reprehenderit.
@@ -22,6 +24,8 @@ Climb_2:
   climb_status: open
   route_id: 2
   climb_schedule_id: 1
+  leader_1_id: 1
+  assistant_1_id: 1
 Climb_3:
   id: 3
   description: Et qui in esse corrupti. Autem voluptates aut. Repellat ut non reprehenderit
@@ -33,6 +37,8 @@ Climb_3:
   climb_status: open
   route_id: 3
   climb_schedule_id: 1
+  leader_1_id: 1
+  assistant_1_id: 1
 Climb_4:
   id: 4
   description: Reprehenderit et vel aut maiores aspernatur labore quaerat. Ex tempore
@@ -44,6 +50,8 @@ Climb_4:
   climb_status: open
   route_id: 4
   climb_schedule_id: 1
+  leader_1_id: 1
+  assistant_1_id: 1
 Climb_5:
   id: 5
   description: Et quidem harum dolorem distinctio et voluptatem est. Fugit rerum architecto
@@ -55,3 +63,5 @@ Climb_5:
   climb_status: open
   route_id: 5
   climb_schedule_id: 1
+  leader_1_id: 1
+  assistant_1_id: 1

@@ -10,14 +10,12 @@ class ClimbsController < ApplicationController
       :registrations,
       :climb_class,
       :climb_schedule
-    ) 
+    )
   end
 
   # GET /climbs/1
   # GET /climbs/1.json
   def show
-    @climb = climb
-    @leader = climb.leader
   end
 
   # GET /climbs/new
