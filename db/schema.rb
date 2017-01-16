@@ -122,8 +122,8 @@ ActiveRecord::Schema.define(version: 20170113033524) do
 
   create_table "mountains", force: :cascade do |t|
     t.string   "name"
-    t.string   "latitude"
-    t.string   "longitude"
+    t.float    "latitude"
+    t.float    "longitude"
     t.string   "state"
     t.string   "country"
     t.string   "continent"
