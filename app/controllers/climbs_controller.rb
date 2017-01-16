@@ -15,6 +15,7 @@ class ClimbsController < ApplicationController
     respond_to do |format|
       format.html
       format.js
+      # format.json { render json: # some JSON data }
     end
   end
 

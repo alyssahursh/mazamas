@@ -1,4 +1,31 @@
 <p id="notice"><%= notice %></p>
 
-<%= link_to 'Edit', edit_mountain_path(@mountain) %> |
-<%= link_to 'Back', mountains_path %>
+<div id='map'></div>
+<script>
+mapboxgl.accessToken = 'pk.eyJ1IjoiY2xpbWJ3aXRobWF6YW1hcyIsImEiOiJjaXh5ODdpengwMDRuMndxdW9zNHJqbjNyIn0.ECqrLVMXr5JQ9t1fRdo5lQ';
+
+var zoom = <%= @mountain.map_zoom %>;
+var offset = 0
+console.log(zoom)
+
+if (!window.matchMedia("(orientation: portrait)").matches) {
+  if (zoom == 14) {
+    var offset = .014
+  }
+  if (zoom == 12) {
+    var offset = .055
+  }
+}
+console.log(offset)
+
+
+var map = new mapboxgl.Map({
+    container: 'map', // container id
+    style: 'mapbox://styles/climbwithmazamas/cixyblwnf00202smnf4yywv4g', //stylesheet location
+    center: [<%= @mountain.longitude %> + offset, <%= @mountain.latitude %>], // starting position
+    zoom: zoom // starting zoom
+});
+
+</script>
+
+</body>

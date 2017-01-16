@@ -123,3 +123,11 @@ input[type=text]:focus {
   margin-left: 26%;
   /*margin*/
 }
+
+
+
+#map {
+  /*width: 2000px;
+  position: absolute;*/
+  /*right: 50%;*/
+}

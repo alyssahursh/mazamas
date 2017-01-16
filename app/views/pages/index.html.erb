@@ -2,7 +2,7 @@
 
 
 <!-- THIS NEEDS TO BE UPDATED TO THE CORRECT ACTION -->
-<form action="/payments/stripe" method="POST">
+<!-- <form action="/payments/stripe" method="POST">
   <script
     src="https://checkout.stripe.com/checkout.js" class="stripe-button"
     data-key="pk_test_uuP4f9lToS2cmYlc6RneOwqV"
@@ -12,4 +12,38 @@
     data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
     data-locale="auto">
   </script>
-</form>
+</form> -->
+
+<p>window.matchMedia is <b id="matchmedia-supported">not supported</b></p>
+<p>window.matchMedia for portrait orientation: <b id="portrait-orientation"></b></p>
+
+<script>
+(function () {
+    var matchMediaSupported = document.querySelector("#matchmedia-supported"),
+        portraitOrientation = document.querySelector("#portrait-orientation"),
+        portraitOrientationCheck;
+
+    if (window.matchMedia) {
+        matchMediaSupported.innerHTML = "supported";
+
+        // Establishing media check
+        portraitOrientationCheck = window.matchMedia("(orientation: portrait)").matches;
+        console.log(portraitOrientationCheck);
+
+        // Add listeners for detecting changes
+        // portraitOrientationCheck.addListener(setOrientationValue);
+    }
+
+    function setOrientationValue (mediaQueryList) {
+        portraitOrientation.innerHTML = mediaQueryList.matches;
+    }
+
+    // Setting initial values at load
+    function setValues () {
+        portraitOrientation.innerHTML = portraitOrientationCheck.matches;
+    }
+
+    window.addEventListener("DOMContentLoaded", setValues, false);
+})();
+
+</script>
