@@ -1,49 +1,17 @@
-<h1>WELCOME TO THE MAZAMAS CLIMB REGISTRATION SYSTEM</h1>
+<head>
+  <% title("Home") %>
+</head>
 
+<div class="banner-quote">
+  <h1 class="f4">The Mazamas organize more than 300 climbs across the Pacific Northwest every year.</h1>
+  <h1 class="f4">Climb with us.</h1>
+  <div class="down-arrow">
+    <h5 class="f2">LEARN MORE</h5>
+    <i class="fa fa-angle-down fa-3x" aria-hidden="true"></i>
+  </div>
 
-<!-- THIS NEEDS TO BE UPDATED TO THE CORRECT ACTION -->
-<!-- <form action="/payments/stripe" method="POST">
-  <script
-    src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-    data-key="pk_test_uuP4f9lToS2cmYlc6RneOwqV"
-    data-amount="6000"
-    data-name="Mazamas"
-    data-description="Annual Membership"
-    data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
-    data-locale="auto">
-  </script>
-</form> -->
+</div>
 
-<p>window.matchMedia is <b id="matchmedia-supported">not supported</b></p>
-<p>window.matchMedia for portrait orientation: <b id="portrait-orientation"></b></p>
-
-<script>
-(function () {
-    var matchMediaSupported = document.querySelector("#matchmedia-supported"),
-        portraitOrientation = document.querySelector("#portrait-orientation"),
-        portraitOrientationCheck;
-
-    if (window.matchMedia) {
-        matchMediaSupported.innerHTML = "supported";
-
-        // Establishing media check
-        portraitOrientationCheck = window.matchMedia("(orientation: portrait)").matches;
-        console.log(portraitOrientationCheck);
-
-        // Add listeners for detecting changes
-        // portraitOrientationCheck.addListener(setOrientationValue);
-    }
-
-    function setOrientationValue (mediaQueryList) {
-        portraitOrientation.innerHTML = mediaQueryList.matches;
-    }
-
-    // Setting initial values at load
-    function setValues () {
-        portraitOrientation.innerHTML = portraitOrientationCheck.matches;
-    }
-
-    window.addEventListener("DOMContentLoaded", setValues, false);
-})();
-
-</script>
+<div class='cover-container'>
+  <img src="/assets/eldorado.png" class='banner-image'/>
+</div>
