@@ -1,12 +1,42 @@
+<head>
+  <% title(@mountain.name) %>
+</head>
+
 <p id="notice"><%= notice %></p>
 
+
 <div id='map'></div>
+
+<section id="mountain-description-overlay">
+  <h1><%= @mountain.name %></h1>
+  <h4>Latitude: <%= @mountain.latitude %></h4>
+  <h4>Longitude: <%= @mountain.longitude %></h4>
+  <h4>Elevation: <%= @mountain.elevation_feet %> feet</h4>
+  <a href: <%= @mountain.summit_post_url %>, target: '_blank' >Summit Post</a>
+
+
+  <h4>Routes</h4>
+  <ul>
+    <% @mountain.routes.each do |route| %>
+      <li> <%= link_to(route.name, :controller => 'routes', :action => 'show', :id => route.id) %></li>
+    <% end %>
+  </ul>
+
+
+</section>
+
+
+
+<!-- JAVASCRIPT FOR MAP LOAD. Should be moved to JS files? -->
+
 <script>
+// Unable to use dotenv in this file? Replacing with ENV['MAPBOX_PUBLIC_TOKEN'] fails.
 mapboxgl.accessToken = 'pk.eyJ1IjoiY2xpbWJ3aXRobWF6YW1hcyIsImEiOiJjaXh5ODdpengwMDRuMndxdW9zNHJqbjNyIn0.ECqrLVMXr5JQ9t1fRdo5lQ';
 
 var zoom = <%= @mountain.map_zoom %>;
 var offset = 0
 console.log(zoom)
+
 
 if (!window.matchMedia("(orientation: portrait)").matches) {
   if (zoom == 14) {
