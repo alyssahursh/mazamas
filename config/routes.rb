@@ -4,9 +4,13 @@ Rails.application.routes.draw do
   stormpath_rails_routes
 
   get 'pages/index'
+  get 'pages/test', as: 'test'
 
   post 'payments/stripe', to: 'payments#stripe'
   get 'payments/stripe', to: 'payments#stripe', as: 'payments'
+
+  resources :mountains # param: :name (Attempted to use named routes but stopped)
+
 
   resources :climb_classes,
             :climb_leader_profiles,
@@ -18,7 +22,6 @@ Rails.application.routes.draw do
             :climber_profiles,
             :educations,
             :general_dates,
-            :mountains,
             :registrations,
             :routes,
             :specific_dates,
