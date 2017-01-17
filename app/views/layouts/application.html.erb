@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Capstone</title>
+  <title>Mazamas | <%= if content_for?(:title) then yield(:title) end %></title>
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
     <%= csrf_meta_tags %>
@@ -15,17 +15,21 @@
 </head>
 <body>
   <nav>
-    <h1>Mazamas Climbs</h1>
-    <ul class="navlinks">
-      <li><a href="/">About</a></li>
-      <li><a href="/">Climb</a></li>
-      <li><a href="/">Hike</a></li>
-      <li><a href="/">Buy Something</a></li>
-      <li><a href="/login">Sign In</a></li>
-      <li><a href="/register">Sign Up</a></li>
-    </ul>
+    <h1 class="f3"><a href="/">MAZAMAS CLIMBS</a></h1>
+    <div class="navlinks f2">
+      <!-- Divs closed on following line to remove break between element on page -->
+      <div><h5><a href="/climbs"><i class="fa fa-calendar-o fa-1x" aria-hidden="true"></i>
+Schedule</a></h5></div
+      ><div><h5><a href="/mountains"><i class="fa fa-angle-up fa-2x" aria-hidden="true"></i>
+</i>
+Mountains</a></h5></div
+      ><div><h5><a href="/routes"><i class="fa fa-map-o .fa-1x" aria-hidden="true"></i>
+Routes</a></h5></div
+      ><div><h5><a href="/register"><i class="fa fa-user-circle-o .fa-1x" aria-hidden="true"></i></i> Sign Up</a></h5></div
+      ><div><h5><a href="/login"><i class="fa fa-user-circle .fa-1x" aria-hidden="true"></i>
+Sign In</a></h5></div>
+    </div>
   </nav>
-  <div class="nav-padding"></div>
 <%= yield %>
 
 </body>
