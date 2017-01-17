@@ -22,7 +22,7 @@
 
 
 /**********************************************************/
-/*           PLACE HOLDER STYLING FOR HOME PAGE           */
+/*                        NAV BAR                         */
 /**********************************************************/
 
 body {
@@ -64,7 +64,12 @@ nav h1 {
 }
 
 .navlinks div {
-  flex-basis: 20%
+  flex-basis: 20%;
+  /*flex-grow: 1*/
+}
+
+.navlinks div:nth-of-type(2) {
+  flex-grow: 2
 }
 
 .navlinks div a {
