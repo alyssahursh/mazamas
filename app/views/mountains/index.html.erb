@@ -1,25 +1,43 @@
+<head>
+  <% title("Mountains") %>
+</head>
+
+<div class="nav-spacing"></div>
+
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Mountains</h1>
+<div class="f5 container six columns offset-by-three">
 
-<table>
-  <thead>
-    <tr>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @mountains.each do |mountain| %>
-      <tr>
-        <td><%= link_to 'Show', mountain %></td>
-        <td><%= link_to 'Edit', edit_mountain_path(mountain) %></td>
-        <td><%= link_to 'Destroy', mountain, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+  <div class="search f1">
+    <%= search_form_for @search_mountain do |f| %>
+      <%= f.search_field :name_or_state_or_country_cont, placeholder: "Search Mountains by Name or Location"%>
+      <%= f.submit "", class: "search-button"%>
     <% end %>
-  </tbody>
-</table>
+  </div>
 
-<br>
+  <table>
+    <thead>
+        <td><h4 class="f3">Peak</h4></td>
+        <td><h4 class="f3">Location</h4></td>
+    </thead>
 
-<%= link_to 'New Mountain', new_mountain_path %>
+    <tbody>
+      <% @mountains.each do |mountain| %>
+        <tr>
+          <td><h5 class="f2"><%= link_to mountain.name, mountain %></h5></td>
+          <td><h5 class="f2"><%= mountain.state %><%= mountain.country != "United States" ? ", #{mountain.country}" : "" %></h5></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+</div>
+
+<script>
+$("#route_search input").keypress(function(event) {
+    if (event.which == 13) {
+        event.preventDefault();
+        $("#route_search").submit([name: "commit", value: "search"]);
+    }
+});
+</script>

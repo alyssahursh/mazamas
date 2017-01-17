@@ -1,23 +1,52 @@
+<head>
+  <% title("Climbs") %>
+</head>
+
+<div class="nav-spacing"></div>
+
 <p id="notice"><%= notice %></p>
 
+<div class="f5 container six columns offset-by-three">
 
-<div class="six columns centered">
-
-  <h1>Climbs</h1>
-
-  <input type="text" name="search" placeholder="Search..">
-
-  <div id="all-climbs">
-    <%= render @climbs %>
+  <div class="search f1">
+    <%= search_form_for @search_climb do |f| %>
+      <%= f.search_field :description_cont, placeholder: "Search Climbs by Description"%>
+      <%= f.submit "", class: "search-button"%>
+    <% end %>
   </div>
+
+  <table id="all-climbs">
+    <thead>
+        <td><h4 class="f3">Mountain</h4></td>
+        <td><h4 class="f3">Route</h4></td>
+    </thead>
+
+    <tbody>
+      <% @climbs.each do |climb| %>
+        <tr>
+          <td><h5 class="f2"><%= link_to climb.mountain.name, climb.mountain %></h5></td>
+          <td><h5 class="f2"><%= link_to climb.route.name, climb.route %></h5></td>
+
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 
   <div id="infinite-scrolling">
     <%= will_paginate @climbs %>
   </div>
 
+
 </div>
 
 
-<script type='text/javascript'>
-  var map = L.mapbox.map('map', 'examples.map-y7l23tes').setView([37.9, -77], 5);
+
+
+<script>
+$("#route_search input").keypress(function(event) {
+    if (event.which == 13) {
+        event.preventDefault();
+        $("#route_search").submit([name: "commit", value: "search"]);
+    }
+});
 </script>
