@@ -1,10 +1,24 @@
 class RoutesController < ApplicationController
   before_action :set_route, only: [:show, :edit, :update, :destroy]
+  before_filter :set_search
+
 
   # GET /routes
   # GET /routes.json
   def index
-    @routes = Route.all
+    if !params[:commit].nil? && params[:commit].downcase == "search" 
+      if !params[:q].blank?
+        @results = Route.search(params[:q])
+        puts @results.result
+      else
+        @results = Route.search({:id_eq => 0})
+      end
+
+      @routes = @results.result
+
+    else
+      @routes = Route.all
+    end
   end
 
   # GET /routes/1

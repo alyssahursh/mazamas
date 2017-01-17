@@ -1,17 +1,24 @@
 class ClimbsController < ApplicationController
   before_action :set_climb, only: [:show, :edit, :update, :destroy]
+  before_filter :set_search
 
   # GET /climbs
   # GET /climbs.json
   def index
-    @climbs = Climb.paginate(:page => params[:page], :per_page => 20)
-    # .includes(
-    #   :route,
-    #   :mountain,
-    #   :registrations,
-    #   :climb_class,
-    #   :climb_schedule
-    # )
+    if !params[:commit].nil? && params[:commit].downcase == "search"
+      if !params[:q].blank?
+        @results = Climb.search(params[:q])
+        puts @results.result
+      else
+        @results = Climb.search({:id_eq => 0})
+      end
+
+      @climbs = @results.result
+
+    else
+      @climbs = Climb.paginate(:page => params[:page], :per_page => 20)
+    end
+
     respond_to do |format|
       format.html
       format.js

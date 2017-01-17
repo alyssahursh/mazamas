@@ -1,10 +1,25 @@
 class MountainsController < ApplicationController
   before_action :set_mountain, only: [:show, :edit, :update, :destroy]
+  before_filter :set_search
+
 
   # GET /mountains
   # GET /mountains.json
   def index
-    @mountains = Mountain.all
+    if !params[:commit].nil? && params[:commit].downcase == "search"
+      if !params[:q].blank?
+        @results = Mountain.search(params[:q])
+        puts @results.result
+      else
+        @results = Mountain.search({:id_eq => 0})
+      end
+
+      @mountains = @results.result
+
+    else
+      @mountains = Mountain.all
+    end
+
   end
 
   # GET /mountains/1
@@ -70,5 +85,10 @@ class MountainsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def mountain_params
       params.fetch(:mountain, {})
+    end
+
+    # Attempted to used named urls, but stopped. Function currently not in use:
+    def snake_name
+      @mountain.name.gsub(/./,'').gsub(/ /,'_').downcase
     end
 end
