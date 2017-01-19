@@ -15,13 +15,17 @@ class Climb < ActiveRecord::Base
   has_one       :climb_class,   through: :route
   has_one       :climb_class,   through: :route
 
-  #
-  # def spots_available
-  #   occupied = registrations.where(registration_status: 'accepted').length
-  #   occupied += registrations.where(registration_status: 'leader').length
-  #   occupied += registrations.where(registration_status: 'assistant').length
-  #
-  #   available = party_size - occupied
-  # end
+
+  def spots_available
+    occupied = registrations.where(registration_status: 'accepted').length
+
+    !leader_1.nil? ? occupied += 1 : nil
+    !leader_2.nil? ? occupied += 1 : nil
+    !assistant_1.nil? ? occupied += 1 : nil
+    !assistant_2.nil? ? occupied += 1 : nil
+
+    available = party_size - occupied
+  end
+  
 
 end
