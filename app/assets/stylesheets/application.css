@@ -22,7 +22,7 @@
 
 
 /**********************************************************/
-/*                        NAV BAR                         */
+/*                        GENERAL                         */
 /**********************************************************/
 
 body {
@@ -37,6 +37,17 @@ a:link, a:visited {
 a:hover {
   text-decoration: none;
 }
+
+.extra-space {
+  display: inline-block;
+  width: 100%;
+  height: 10rem;
+  position: relative;
+}
+
+/**********************************************************/
+/*                       NAVIGATION                       */
+/**********************************************************/
 
 nav {
   display: flex;
@@ -57,22 +68,24 @@ nav h1 {
   flex-basis: auto;
 }
 
-.navlinks {
+.navlinks,
+.mobile-menu {
   display: flex;
   margin: 0;
   flex-grow: 3;
 }
 
-.navlinks div {
+.navlinks div,
+.mobile-menu div {
   flex-basis: 20%;
-  /*flex-grow: 1*/
 }
 
 .navlinks div:nth-of-type(2) {
   flex-grow: 2
 }
 
-.navlinks div a {
+.navlinks div a,
+.mobile-menu div a {
   display: inline-block;
   letter-spacing: .2em;
   text-transform: uppercase;
@@ -81,12 +94,12 @@ nav h1 {
   padding: 2.56rem 0;
   margin: 0;
   text-align: center;
-
   /*-webkit-align-self: flex-start;
   align-self: flex-start;*/
 }
 
-.navlinks div:hover {
+.navlinks div:hover,
+.mobile-menu div:hover {
   background-color: rgba(255, 255, 255, .9);
   color: #000;
 }
@@ -98,6 +111,144 @@ nav h1 {
   height: 8.25rem;
   width: 100%;
   border-bottom: 1px solid black;
+}
+
+/**********************************************************/
+/*                   MOBILE NAVIGATION                    */
+/**********************************************************/
+
+.mobile-menu {
+  display: block;
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 8rem;
+}
+
+@media (max-width: 550px) {
+  nav {
+    display: block;
+  }
+
+  nav h1 {
+    margin-top: .4rem;
+    padding-right: 0;
+  }
+  .navlinks {
+    display: none;
+  }
+  .expand {
+    display: block;
+    position: fixed;
+    top: 8.25rem;
+    right: 0;
+    display: block;
+    background-color: #FFFFFF;
+    width: auto;
+  }
+  .expand div h5 a{
+    text-align: left;
+    font-size: 1.5rem;
+    height: 3rem;
+    padding: 1rem 2rem .25rem 2rem;
+  }
+}
+
+@media (min-width: 550px) {
+  .mobile-menu {
+    display: none;
+  }
+}
+
+/**********************************************************/
+/*                        TOUTS                           */
+/**********************************************************/
+
+.tout-container {
+  text-align: center;
+}
+
+.tout-container p {
+  width: 90%;
+  margin-left: 5%;
+  margin-top: 2rem;
+  letter-spacing: .1rem;
+}
+
+.tout-container div.columns {
+  margin-bottom: 10rem;
+}
+
+.tout-container div:nth-of-type(3n+2),
+ .tout-container div:nth-of-type(3n+3){
+  margin-left: 4%;
+}
+
+.tout-image-container {
+  width: 100%;
+  height: 20rem;
+  position: relative;
+  margin-bottom: 0;
+}
+
+.tout-container img {
+  position: absolute;
+  /*margin: auto;*/
+  bottom: 2rem;
+  left: 0;
+  width: 44%;
+  margin-left: 28%;
+  border-radius: .5rem;
+  margin-bottom: 3rem;
+}
+
+.tout-container img.logo {
+  width: 70%;
+  margin-left: 15%;
+  bottom: 0;
+}
+
+@media (max-width: 550px) {
+  .tout-container {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .tout-container div:nth-of-type(3n+2),
+  .tout-container div:nth-of-type(3n+3) {
+    margin: 0;
+  }
+
+  .tout-container div:nth-of-type(2) {
+    order: -1;
+  }
+
+  .tout-container tout {
+    display: block;
+    width: 100vw;
+    /*padding: 5%;*/
+    margin-left: 0;
+  }
+
+  .tout-image-container {
+    width: 100vw;
+    padding: 0;
+    margin: 0;
+    padding-top: 10vh;
+  }
+
+  .tout-container div:nth-of-type(1) .tout-image-container,
+  .tout-container div:nth-of-type(3) .tout-image-container {
+    display: none;
+  }
+
+  .tout-container div:nth-of-type(1) h4 {
+    margin-top: 15vh;
+  }
+
+  .tout p {
+    font-size: 90%;
+  }
 }
 
 /**********************************************************/
@@ -150,22 +301,92 @@ input[type=text]:focus {
 /**********************************************************/
 
 #map {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
 }
 
 
 /**********************************************************/
 /*             MOUNTAIN DESCRIPTION OVERLAY               */
 /**********************************************************/
-#mountain-description-overlay {
-  position: fixed;
-  height: calc(70vh - 1.5rem);
-  width: calc(27vw - 1.5rem);
-  margin: 10vh 6vw 10vh 65vw;
+
+.all-but-header {
+  display: block;
+  position: absolute;
+  width: 50%;
+  height: calc(100vh - 8.25rem);
+  top: 8.25rem;
+  right: 0;
+}
+
+.mountain-description-overlay {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  height: 80%;
+  top: 10%;
   background-color: rgba(255, 255, 255, .8);
   border: 2px solid white;
   border-radius: .75rem;
   padding: 1.5rem;
 }
+
+.mountain-description-overlay a {
+  color: rgb(20, 128, 138)
+}
+
+.mountain-stats {
+  display: block;
+  width: 100%;
+}
+
+.mountain-text {
+  padding-bottom: 2.25rem;
+}
+
+.mountain-data {
+  width: 50%;
+  margin: 5px 0;
+}
+.mountain-data td {
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+.overflow-scroll {
+  display: block;
+  height: 50%;
+  overflow: scroll;
+}
+
+@media (orientation: portrait) {
+  .all-but-header {
+    width: 100vw;
+    margin-top: calc((100vh - 8.25rem) / 2);
+  }
+  .mountain-description-overlay {
+    top: 0;
+    height: auto;
+  }
+
+  .overflow-scroll {
+    overflow: visible;
+  }
+
+  .mountain-data {
+    width: 100%;
+  }
+}
+
+@media (min-width: 550px) and (orientation: portrait) {
+  .all-but-header section.columns {
+      margin-left: 4.333333333333%;
+  }
+}
+
 
 
 
@@ -174,7 +395,7 @@ input[type=text]:focus {
 /**********************************************************/
 
 .banner-quote {
-  z-index: 1;
+  z-index: 0;
   display: block;
   position: absolute;
   width: 42vw;
@@ -198,10 +419,13 @@ input[type=text]:focus {
 }
 
 .cover-container {
+  z-index: -1;
   width: 100vw;
   height: 100vh;
   position: relative;
   overflow: hidden;
+  margin-bottom: 15vh;
+
 }
 
 .banner-image {
@@ -243,20 +467,66 @@ input {
 
 
 /**********************************************************/
-/*                     TABLE / COLUMNS                    */
+/*                     TABLES / COLUMNS                   */
 /**********************************************************/
 
+/* Specific to the Mountain index page */
 tr h5 a:hover {
   color: #717171;
 }
 
-tbody tr td:first-of-type {
+table,
+tr {
+  width: 100%
+}
+
+.mountain-list td:first-of-type {
   width: 65%;
 }
 
-tbody tr td:nth-of-type(2n+2) {
+.mountain-list td:nth-of-type(2n+2) {
   width: 35%;
 }
+
+/* Specific to Mountain show page */
+.mountain-details tr td:nth-child(1) { width: 46%; }
+.mountain-details tr th:nth-child(1) { width: 46%; }
+.mountain-details tr td:nth-child(2) { width: 18%; }
+.mountain-details tr th:nth-child(2) { width: 18%; }
+.mountain-details tr td:nth-child(3) { width: 18%; }
+.mountain-details tr th:nth-child(3) { width: 18%; }
+.mountain-details tr td:nth-child(4) { width: 18%; }
+.mountain-details th th:nth-child(4) { width: 18%; }
+
+.overflow-scroll table:first-child {
+  border-top: 1px solid transparent;
+}
+
+.climb-class-circle {
+  display: inline-block;
+  height: 2.5rem;
+  width: 2.5rem;
+  border-radius: 100%;
+  color: white;
+  background-color: green;
+  text-align: center;
+  margin-right: .5rem;
+}
+
+.climb-class-circle p {
+  padding-top: .1rem;
+}
+
+.A-color { background-color: #F2671F; border: 2px solid #faccb3}
+.B-color { background-color: #C91B26; border: 2px solid #db6d76}
+.C-color { background-color: #9C0F5F; border: 2px solid #c54850}
+.D-color { background-color: #60047A; border: 2px solid #9549aa}
+.E-color { background-color: #260A47; border: 2px solid #54169d}
+
+
+/**********************************************************/
+/*                       SEARCH BAR                       */
+/**********************************************************/
 
 input:nth-of-type(2n+2) {
   border-radius: 5rem;
@@ -269,4 +539,19 @@ input:nth-of-type(2n+2) {
 
 .search-button {
   visibility: hidden;
+}
+
+/**********************************************************/
+/*                   CLIMB INDEX PAGE                     */
+/**********************************************************/
+.one-climb {
+  margin-bottom: 5rem;
+}
+
+.always-visible {
+  border: 2px solid green;
+}
+
+.hidden-until {
+  border: 2px solid blue;
 }
