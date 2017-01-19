@@ -2,7 +2,7 @@ namespace :db do
   desc "Completely destroy the database, build from scratch and reseed"
 
   task :rebuild do
-      Rails.env = "test"
+      Rails.env = "development"
       Rake::Task['db:schema:dump'].invoke
       Rake::Task['db:drop'].invoke
       Rake::Task['db:create'].invoke
