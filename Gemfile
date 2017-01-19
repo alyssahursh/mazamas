@@ -25,7 +25,7 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 
 # Use Stripe for payment processing
-gem 'stripe', :git => 'https://github.com/stripe/stripe-ruby'
+gem 'stripe', '~> 1.57', '>= 1.57.1'
 
 # Use Mandrill for transactional emails
 gem 'mandrill-api'
