@@ -80,6 +80,8 @@ test:
 #
 production:
   <<: *default
-  database: aa1lq0x4pd5vlhl.cxrks9rmlmng.us-west-2.rds.amazonaws.com
-  username: MazamasClimbs
-  password: <%= ENV['mazamas_DATABASE_PASSWORD'] %>
+  database: <%= ENV['RDS_DB_NAME'] %>
+  username: <%= ENV['RDS_USERNAME'] %>
+  password: <%= ENV['RDS_PASSWORD'] %>
+  host: <%= ENV['RDS_HOSTNAME'] %>
+  port: <%= ENV['RDS_PORT'] %>
