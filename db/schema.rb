@@ -183,7 +183,6 @@ ActiveRecord::Schema.define(version: 20170113033524) do
   add_foreign_key "climber_experiences", "climber_profiles"
   add_foreign_key "climber_profiles", "users"
   add_foreign_key "climbs", "climb_schedules"
-  add_foreign_key "climbs", "climb_tags"
   add_foreign_key "climbs", "routes"
   add_foreign_key "general_dates", "climbs"
   add_foreign_key "registrations", "users"

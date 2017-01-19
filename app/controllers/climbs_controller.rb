@@ -2,6 +2,7 @@ class ClimbsController < ApplicationController
   before_action :set_climb, only: [:show, :edit, :update, :destroy]
   before_filter :set_search
 
+
   # GET /climbs
   # GET /climbs.json
   def index
@@ -89,5 +90,11 @@ class ClimbsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def climb_params
       params.fetch(:climb, {})
+    end
+
+    def check_status
+      if spots_available <= 0 && climb_stats != "closed"
+        climb_status = "waitlist"
+      end
     end
 end
