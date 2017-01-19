@@ -8,14 +8,14 @@
 
 <div class="f5 container six columns offset-by-three">
 
-  <div class="search f1">
+  <div id="mountain_search" class="search f1">
     <%= search_form_for @search_mountain do |f| %>
       <%= f.search_field :name_or_state_or_country_cont, placeholder: "Search Mountains by Name or Location"%>
-      <%= f.submit "", class: "search-button"%>
+      <%= f.submit "", class: "search-button", value: "search"%>
     <% end %>
   </div>
 
-  <table>
+  <table class="mountain-list">
     <thead>
         <td><h4 class="f3">Peak</h4></td>
         <td><h4 class="f3">Location</h4></td>
@@ -34,10 +34,10 @@
 </div>
 
 <script>
-$("#route_search input").keypress(function(event) {
+$("#mountain_search input").keypress(function(event) {
     if (event.which == 13) {
         event.preventDefault();
-        $("#route_search").submit([name: "commit", value: "search"]);
+        $("#mountain_search").submit([name: "commit", value: "search"]);
     }
 });
 </script>
