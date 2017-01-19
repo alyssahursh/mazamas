@@ -74,17 +74,20 @@ group :development, :test do
   gem 'awesome_print'
   gem 'minitest-reporters'
   gem 'simplecov'
+  gem 'simplecov-rcov'
+
+
+end
+
+group :development do
+  # Access an IRB console on exception pages or by using <%= console %> in views
+  gem 'web-console', '~> 2.0', group: :development
 
   # Use faker for seeding placeholder user data
   gem "faker"
 
   # Fixture fixer
   gem 'db_fixtures_dump'
-end
-
-group :development do
-  # Access an IRB console on exception pages or by using <%= console %> in views
-  gem 'web-console', '~> 2.0', group: :development
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'

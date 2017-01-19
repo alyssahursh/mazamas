@@ -17,8 +17,8 @@ class CreateClimbs < ActiveRecord::Migration
     add_reference :climbs, :climb_schedule, index: true
     add_foreign_key :climbs, :climb_schedules
 
-    add_reference :climbs, :climb_tag, index: true
-    add_foreign_key :climbs, :climb_tags
+    # add_reference :climbs, :climb_tag, index: true
+    # add_foreign_key :climbs, :climb_tags
 
     add_reference :climbs, :leader_1, index: true
     # add_foreign_key :climbs, :users
