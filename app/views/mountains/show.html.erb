@@ -7,23 +7,71 @@
 
 <div id='map'></div>
 
-<section id="mountain-description-overlay">
-  <h1><%= @mountain.name %></h1>
-  <h4>Latitude: <%= @mountain.latitude %></h4>
-  <h4>Longitude: <%= @mountain.longitude %></h4>
-  <h4>Elevation: <%= @mountain.elevation_feet %> feet</h4>
-  <a href: <%= @mountain.summit_post_url %>, target: '_blank' >Summit Post</a>
+<div class="all-but-header">
+  <section class="mountain-description-overlay eleven columns offset-by-zero">
+    <section class="mountain-stats">
+      <div class="mountain-text">
+        <h1 class="f3"><%= @mountain.name %></h1>
+        <h4 class="f2"><%= @mountain.state %>, <%= @mountain.country %></h5>
+        <% if @mountain.driving_text != "" %>
+          <h5 class="f1"><%= @mountain.driving_text %></h5>
+        <% end %>
 
+        <table class="mountain-data f1">
+          <tr>
+            <td>COORDINATES</td>
+            <td><%= link_to "#{@mountain.latitude}, #{@mountain.longitude}", @mountain.google_maps_url, { target: '_blank' }  %></td>
+          </tr>
+          <tr>
+            <td>ELEVATION</td>
+            <td><%= @mountain.elevation_text %></td>
+          </tr>
+          <tr>
+            <td>GLACIATED</td>
+            <td><%= @mountain.glaciated ? "Yes" : "No" %></td>
+          </tr>
+        </table>
 
-  <h4>Routes</h4>
-  <ul>
-    <% @mountain.routes.each do |route| %>
-      <li> <%= link_to(route.name, :controller => 'routes', :action => 'show', :id => route.id) %></li>
-    <% end %>
-  </ul>
+        <h5 class="f1"><%= link_to "Summit Post", @mountain.summit_post_url, { target: '_blank' } %></h5>
+      </div>
 
+      <table class="mountain-details f2">
+        <tr>
+          <th>ROUTE</th>
+          <th>GAIN</th>
+          <% @mountain.route_headers.each do |header| %>
+            <th><%= header %></th>
+          <% end %>
 
-</section>
+        </tr>
+      </table>
+    </section>
+    <div class="overflow-scroll">
+      <table class="mountain-details f2">
+
+      <% @routes.each do |route| %>
+        <tr>
+          <td>
+            <div class="climb-class-circle <%= route.climb_class.code %>-color"><%= route.climb_class.code %></div>
+            <%= route.name %>
+          </td>
+          <td><%= !route.elevation_gain.nil? ? "#{number_with_delimiter(route.elevation_gain)} ft" : "" %></td>
+
+          <% if @mountain.route_headers.length == 2 %>
+            <td><%= route.rock_class_text %></td>
+            <td><%= route.snow_angle_text %></td>
+          <% elsif route.typical_gear == "snow" %>
+            <td><%= route.snow_angle_text %></td>
+          <% elsif route.typical_gear == "rock" %>
+            <td><%= route.rock_class_text %></td>
+          <% end %>
+        </tr>
+        <% end %>
+      </div>
+    </table>
+  </section>
+</div>
+
 
 
 
@@ -34,28 +82,24 @@
 mapboxgl.accessToken = 'pk.eyJ1IjoiY2xpbWJ3aXRobWF6YW1hcyIsImEiOiJjaXh5ODdpengwMDRuMndxdW9zNHJqbjNyIn0.ECqrLVMXr5JQ9t1fRdo5lQ';
 
 var zoom = <%= @mountain.map_zoom %>;
-var offset = 0
-console.log(zoom)
+var latitude_offset = 0;
+var longitude_offset = 0;
 
 
-if (!window.matchMedia("(orientation: portrait)").matches) {
-  if (zoom == 14) {
-    var offset = .014
-  }
-  if (zoom == 12) {
-    var offset = .055
-  }
+// On a horizontal screen, leave longitude offset at 0, change latitude offset
+if (window.matchMedia("(orientation: landscape)").matches) {
+  longitude_offset = <%= @mountain.longitude_offset %>
 }
-console.log(offset)
 
+if (window.matchMedia("(orientation: portrait)").matches) {
+  latitude_offset = <%= @mountain.latitude_offset %>
+}
 
 var map = new mapboxgl.Map({
     container: 'map', // container id
     style: 'mapbox://styles/climbwithmazamas/cixyblwnf00202smnf4yywv4g', //stylesheet location
-    center: [<%= @mountain.longitude %> + offset, <%= @mountain.latitude %>], // starting position
+    center: [<%= @mountain.longitude %> + longitude_offset, <%= @mountain.latitude %> - latitude_offset], // starting position
     zoom: zoom // starting zoom
 });
 
 </script>
-
-</body>
