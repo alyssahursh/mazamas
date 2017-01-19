@@ -63,9 +63,10 @@ gem 'ransack'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
-# Use faker for seeding placeholder user data
-gem "faker"
-
+group :development, :production do
+  # Use faker for seeding placeholder user data
+  gem "faker"
+end
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -100,5 +101,5 @@ end
 
 group :production do
   # Use PostgreSQL as the database for Active Record
-  gem 'pg', '~> 0.19.0'
+  # gem 'pg', '~> 0.19.0'
 end
