@@ -226,6 +226,8 @@ GEM
       json (>= 1.8, < 3)
       simplecov-html (~> 0.10.0)
     simplecov-html (0.10.0)
+    simplecov-rcov (0.2.3)
+      simplecov (>= 0.4.1)
     spring (2.0.0)
       activesupport (>= 4.2)
     sprockets (3.7.1)
@@ -305,6 +307,7 @@ DEPENDENCIES
   schema_plus_enums
   sdoc (~> 0.4.0)
   simplecov
+  simplecov-rcov
   spring
   stormpath-rails
   stormpath-sdk
