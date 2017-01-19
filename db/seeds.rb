@@ -121,13 +121,16 @@ CSV.foreach('db/mountain_data.csv', headers: true) do |line|
     google_maps_url:        line[7],
     summit_post_name:       line[8],
     elevation_feet:         line[9],
-    elevation_meters:       line[10]
+    elevation_meters:       line[10],
+    driving_distance:       line[11],
+    driving_time:           line[12],
+    glaciated:              line[13]
   )
 end
 puts "Seeded Mountains. Total Mountains: #{Mountain.all.length}"
 
 
-CSV.foreach('db/route_data_clean2.csv', headers: true) do |line|
+CSV.foreach('db/route_data_3.csv', headers: true) do |line|
   # begin
     # puts line[0], line[2]
 
@@ -150,11 +153,8 @@ CSV.foreach('db/route_data_clean2.csv', headers: true) do |line|
       name:                   line[2],
       climb_class:            ClimbClass.find_by_code(line[3]),
       elevation_gain:         line[4],
-      driving_distance:       line[5],
-      driving_time:           line[6],
       typical_duration:       line[7],
       typical_season:         line[8],
-      glaciated_peak:         line[9],
       rock_class:             line[10],
       snow_angle:             line[11],
       rappelling:             line[12],

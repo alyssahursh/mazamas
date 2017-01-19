@@ -12,6 +12,9 @@ class CreateMountains < ActiveRecord::Migration
       t.string :elevation_feet
       t.string :elevation_meters
       t.string :summit_post_name
+      t.integer :driving_distance
+      t.float   :driving_time
+      t.boolean :glaciated
 
       t.timestamps null: false
     end

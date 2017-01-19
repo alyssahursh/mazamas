@@ -4,6 +4,8 @@ Mountain_1:
   name: Abiel Peak
   latitude: '47.35207'
   longitude: "-121.46933"
+  driving_distance: 200
+  driving_time: 4.0
   state: Washington
   country: United States
   continent: North America
@@ -14,11 +16,15 @@ Mountain_1:
   summit_post_name: Abiel Peak
   created_at: 2017-01-14 05:32:58.727736000 Z
   updated_at: 2017-01-14 05:32:58.727736000 Z
+  glaciated: false
+
 Mountain_2:
   id: 2
   name: Acker Rock
   latitude: '43.053'
   longitude: "-122.644"
+  driving_distance: 200
+  driving_time: 4.0
   state: Oregon
   country: United States
   continent: North America
@@ -29,6 +35,8 @@ Mountain_2:
   summit_post_name: Acker Rock
   created_at: 2017-01-14 05:32:58.752909000 Z
   updated_at: 2017-01-14 05:32:58.752909000 Z
+  glaciated: false
+
 Mountain_3:
   id: 3
   name: Aiguille de I'Index
@@ -40,11 +48,15 @@ Mountain_3:
   elevation_meters: '2595'
   created_at: 2017-01-14 05:32:58.762238000 Z
   updated_at: 2017-01-14 05:32:58.762238000 Z
+  glaciated: false
+
 Mountain_4:
   id: 4
   name: Aiguille du Midi
   latitude: '45.8789'
   longitude: '6.8878'
+  driving_distance: 200
+  driving_time: 4.0
   state: Mont Blanc
   country: France
   continent: Europe
@@ -55,11 +67,15 @@ Mountain_4:
   summit_post_name: Aiguille du Midi
   created_at: 2017-01-14 05:32:58.767723000 Z
   updated_at: 2017-01-14 05:32:58.767723000 Z
+  glaciated: false
+
 Mountain_5:
   id: 5
   name: Aneroid Mountain
   latitude: '45.2033'
   longitude: "-117.1736"
+  driving_distance: 200
+  driving_time: 4.0
   state: Oregon
   country: United States
   continent: North America
@@ -70,3 +86,4 @@ Mountain_5:
   summit_post_name: Aneroid Mountain
   created_at: 2017-01-14 05:32:58.773494000 Z
   updated_at: 2017-01-14 05:32:58.773494000 Z
+  glaciated: false

@@ -3,10 +3,7 @@ Route_1:
   id: 1
   name: Annette Lake
   elevation_gain: '1500'
-  driving_distance: 200
-  driving_time: 4.0
   typical_duration: 1
-  glaciated_peak: false
   rappelling: false
   crevasse_rescue: false
   notes: These walk up peaks are located just south of Snoqualmie Pass.
@@ -16,17 +13,14 @@ Route_1:
   created_at: 2017-01-14 05:33:02.071590000 Z
   updated_at: 2017-01-14 05:33:02.071590000 Z
   typical_gear: scramble
-  typical_season: summerautumn
+  typical_season: summer autumn
   climb_class_id: 1
   mountain_id: 1
 Route_2:
   id: 2
   name: PCT Route
   elevation_gain: '1500'
-  driving_distance: 200
-  driving_time: 4.0
   typical_duration: 1
-  glaciated_peak: false
   rappelling: false
   crevasse_rescue: false
   notes: These walk up peaks are located just south of Snoqualmie Pass.
@@ -36,15 +30,13 @@ Route_2:
   created_at: 2017-01-14 05:33:02.090147000 Z
   updated_at: 2017-01-14 05:33:02.090147000 Z
   typical_gear: scramble
-  typical_season: summerautumn
+  typical_season: summer autumn
   climb_class_id: 1
   mountain_id: 1
 Route_3:
   id: 3
   name: Peregrine Travers
   elevation_gain: '800'
-  driving_distance: 253
-  driving_time: 5.0
   typical_duration: 1
   rock_class: 5
   crevasse_rescue: false
@@ -59,7 +51,7 @@ Route_3:
   created_at: 2017-01-14 05:33:02.100589000 Z
   updated_at: 2017-01-14 05:33:02.100589000 Z
   typical_gear: rock
-  typical_season: summerautumn
+  typical_season: summer autumn
   climb_class_id: 4
   mountain_id: 2
 Route_4:
@@ -67,7 +59,6 @@ Route_4:
   name: Southeast Arete
   elevation_gain: '640'
   typical_duration: 1
-  glaciated_peak: false
   rock_class: 5
   rappelling: true
   crevasse_rescue: false
@@ -91,7 +82,7 @@ Route_4:
   created_at: 2017-01-14 05:33:02.111151000 Z
   updated_at: 2017-01-14 05:33:02.111151000 Z
   typical_gear: rock
-  typical_season: summerautumn
+  typical_season: summer autumn
   climb_class_id: 4
   mountain_id: 3
 Route_5:
@@ -99,7 +90,6 @@ Route_5:
   name: Arete des Cosmiques
   elevation_gain: '984'
   typical_duration: 1
-  glaciated_peak: true
   rock_class: 5
   rappelling: true
   crevasse_rescue: true
@@ -124,8 +114,8 @@ Route_5:
   phone_numbers: "+33(0)4 50 53 22 75"
   created_at: 2017-01-14 05:33:02.121065000 Z
   updated_at: 2017-01-14 05:33:02.121065000 Z
-  snow_angle: 35to50
-  typical_gear: rockandsnow
-  typical_season: springsummer
+  snow_angle: 35 to 50
+  typical_gear: rock and snow
+  typical_season: spring summer
   climb_class_id: 4
   mountain_id: 4

@@ -22,9 +22,9 @@ ActiveRecord::Schema.define(version: 20170113033524) do
   create_enum "climb_type", "mazamas", "private", "other"
   create_enum "membership_status", "nonmember", "active", "lapsed"
   create_enum "registration_status", "applied", "accepted", "rejected", "waitlist"
-  create_enum "snow_angle", "notapplicable", "35to50", "over50", "upto35"
-  create_enum "typical_gear", "snow", "scramble", "rock", "rockandsnow"
-  create_enum "typical_season", "springsummer", "summerautumn"
+  create_enum "snow_angle", "not applicable", "35 to 50", "over 50", "up to 35"
+  create_enum "typical_gear", "snow", "scramble", "rock", "rock and snow"
+  create_enum "typical_season", "spring summer", "summer autumn"
   create_table "climb_classes", force: :cascade do |t|
     t.string   "code"
     t.string   "description"
@@ -132,6 +132,9 @@ ActiveRecord::Schema.define(version: 20170113033524) do
     t.string   "elevation_feet"
     t.string   "elevation_meters"
     t.string   "summit_post_name"
+    t.integer  "driving_distance"
+    t.float    "driving_time"
+    t.boolean  "glaciated"
     t.datetime "created_at",       :null=>false
     t.datetime "updated_at",       :null=>false
   end

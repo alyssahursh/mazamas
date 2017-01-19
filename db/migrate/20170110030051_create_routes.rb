@@ -1,15 +1,12 @@
 class CreateRoutes < ActiveRecord::Migration
   def change
-    create_enum :snow_angle, 'notapplicable', '35to50', 'over50', 'upto35'
-    create_enum :typical_gear, 'snow', 'scramble', 'rock', 'rockandsnow'
-    create_enum :typical_season, 'springsummer', 'summerautumn'
+    create_enum :snow_angle, 'not applicable', '35 to 50', 'over 50', 'up to 35'
+    create_enum :typical_gear, 'snow', 'scramble', 'rock', 'rock and snow'
+    create_enum :typical_season, 'spring summer', 'summer autumn'
     create_table :routes do |t|
       t.string  :name
       t.string  :elevation_gain
-      t.integer :driving_distance
-      t.float   :driving_time
       t.integer :typical_duration
-      t.boolean :glaciated_peak
       t.integer :rock_class
       t.boolean :rappelling
       t.boolean :crevasse_rescue
