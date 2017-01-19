@@ -2,14 +2,12 @@ class MountainsController < ApplicationController
   before_action :set_mountain, only: [:show, :edit, :update, :destroy]
   before_filter :set_search
 
-
   # GET /mountains
   # GET /mountains.json
   def index
     if !params[:commit].nil? && params[:commit].downcase == "search"
       if !params[:q].blank?
         @results = Mountain.search(params[:q])
-        puts @results.result
       else
         @results = Mountain.search({:id_eq => 0})
       end
@@ -25,6 +23,7 @@ class MountainsController < ApplicationController
   # GET /mountains/1
   # GET /mountains/1.json
   def show
+    @routes = @mountain.routes.order("name")
   end
 
   # GET /mountains/new
