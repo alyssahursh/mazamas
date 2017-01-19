@@ -80,6 +80,6 @@ test:
 #
 production:
   <<: *default
-  database: mazamas_production
-  username: mazamas
+  database: aa1lq0x4pd5vlhl.cxrks9rmlmng.us-west-2.rds.amazonaws.com
+  username: MazamasClimbs
   password: <%= ENV['mazamas_DATABASE_PASSWORD'] %>
