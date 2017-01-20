@@ -14,9 +14,6 @@
  *= require_self
  */
 
-@import "normalize.css";
-@import "skeleton.css";
-@import "font-awesome.css";
 @import url('https://fonts.googleapis.com/css?family=Assistant|Droid+Serif|Lora|News+Cycle|Quicksand');
 
 /*font-family: 'Quicksand', sans-serif;*/
