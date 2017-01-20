@@ -24,5 +24,7 @@ module Capstone
     config.active_record.raise_in_transactional_callbacks = true
     # config.web_console.development_only = false
 
+    config.assets.paths << Rails.root.join("app", "assets", "fonts")
+
   end
 end
