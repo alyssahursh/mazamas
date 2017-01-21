@@ -569,3 +569,12 @@ input:nth-of-type(2n+2) {
 .hidden-until {
   border: 2px solid blue;
 }
+
+.static-map-container {
+  margin: 2%;
+  width: 50%;
+}
+
+.static-map-container img {
+  width: 94%;
+}
