@@ -30,9 +30,8 @@ gem 'stripe', '~> 1.57', '>= 1.57.1'
 # Use Mandrill for transactional emails
 gem 'mandrill-api'
 
-# Use Stormpath for user authentication
-gem 'stormpath-sdk'
-gem 'stormpath-rails'
+# Use Devise for user authentication
+gem 'devise', '~> 4.2'
 
 # Use dotenv to load environment variables
 gem 'dotenv-rails', '~> 2.1', '>= 2.1.1'
