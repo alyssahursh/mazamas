@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
+  devise_for :users
   root to: 'pages#index'
-
-  stormpath_rails_routes
 
   get 'pages/index'
   get 'pages/test', as: 'test'

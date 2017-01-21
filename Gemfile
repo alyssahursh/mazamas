@@ -53,7 +53,11 @@ gem 'mapbox-rails'
 # Gem for searching
 gem 'ransack'
 
+# For the cute little icons
 gem "font-awesome-rails"
+
+# Use faker for seeding placeholder user data
+gem "faker"
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
@@ -65,9 +69,9 @@ gem "font-awesome-rails"
 # gem 'capistrano-rails', group: :development
 
 group :development, :production do
-  # Use faker for seeding placeholder user data
-  gem "faker"
+
 end
+
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

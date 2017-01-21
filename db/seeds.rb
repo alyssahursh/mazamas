@@ -11,6 +11,9 @@
 # # rake db:schema:dump && rake db:drop && rake db:create && rake db:migrate && rake db:seed
 #
 #
+
+require 'faker'
+
 # All Education Programs
 Education.create(abbreviation: "BCEP", name: "Basic Climbing Education Program", description: "")
 Education.create(abbreviation: "ICS",  name: "Intermediate Climbing School",     description: "")
@@ -65,6 +68,7 @@ CSV.foreach('db/leader_data.csv', headers: true) do |line|
   climb_leader = User.create(
     first_name:             line[0],
     last_name:              line[1],
+    password:               '*B;faNQ)*@!fHKJL3gnav%&(3)_wpbj$%#nnasqyhkoia8b',
     email:                  Faker::Internet.email,
     phone:                  Faker::PhoneNumber.phone_number,
     emergency_contact:      Faker::Name.name,
@@ -180,6 +184,7 @@ puts "Seeded Routes. Total Routes: #{Route.all.length}"
   climber = User.create(
     first_name:             Faker::Name.first_name,
     last_name:              Faker::Name.last_name,
+    password:               '*B;faNQ)*@!fHKJL3gnav%&(3)_wpbj$%#nnasqyhkoia8b',
     email:                  Faker::Internet.email,
     phone:                  Faker::PhoneNumber.phone_number,
     emergency_contact:      Faker::Name.name,
@@ -221,7 +226,7 @@ puts "Seeded Routes. Total Routes: #{Route.all.length}"
       year:                 rand(2000..2017),
       mountain:             mountain_name,
       route:                route_name,
-      climb_leader:         climb_leader_name
+      # climb_leader:         climb_leader_name
     )
   end
 
@@ -233,7 +238,7 @@ puts "Seeded Routes. Total Routes: #{Route.all.length}"
     ClimberEducation.create(
       climber_profile:      climber_profile,
       education:            Education.find(x+1),
-      leader:               climb_leader_name,
+      # leader:               climb_leader_name,
       year:                 rand(2000..2017)
     )
   end
