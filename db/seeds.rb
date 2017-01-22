@@ -68,7 +68,7 @@ CSV.foreach('db/leader_data.csv', headers: true) do |line|
   climb_leader = User.create(
     first_name:             line[0],
     last_name:              line[1],
-    # password:               '*B;faNQ)*@!fHKJL3gnav%&(3)_wpbj$%#nnasqyhkoia8b',
+    password:               '*B;faNQ)*@!fHKJL3gnav%&(3)_wpbj$%#nnasqyhkoia8b',
     email:                  Faker::Internet.email,
     phone:                  Faker::PhoneNumber.phone_number,
     emergency_contact:      Faker::Name.name,
@@ -184,7 +184,7 @@ puts "Seeded Routes. Total Routes: #{Route.all.length}"
   climber = User.create(
     first_name:             Faker::Name.first_name,
     last_name:              Faker::Name.last_name,
-    # password:               '*B;faNQ)*@!fHKJL3gnav%&(3)_wpbj$%#nnasqyhkoia8b',
+    password:               '*B;faNQ)*@!fHKJL3gnav%&(3)_wpbj$%#nnasqyhkoia8b',
     email:                  Faker::Internet.email,
     phone:                  Faker::PhoneNumber.phone_number,
     emergency_contact:      Faker::Name.name,

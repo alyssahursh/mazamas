@@ -16,6 +16,7 @@ User_1:
   created_at: 2017-01-14 05:32:54.485581000 Z
   updated_at: 2017-01-14 05:32:54.485581000 Z
   membership_status: active
+  encrypted_password: "f6boi3%hh(237)HFe12479-gbd27"
 User_2:
   id: 2
   first_name: Gary
@@ -33,6 +34,7 @@ User_2:
   created_at: 2017-01-14 05:32:54.623520000 Z
   updated_at: 2017-01-14 05:32:54.623520000 Z
   membership_status: active
+  encrypted_password: "f6boi3%hh(237)HFe12479-gbd27"
 User_3:
   id: 3
   first_name: Larry
@@ -50,6 +52,7 @@ User_3:
   created_at: 2017-01-14 05:32:54.675873000 Z
   updated_at: 2017-01-14 05:32:54.675873000 Z
   membership_status: active
+  encrypted_password: "f6boi3%hh(237)HFe12479-gbd27"
 User_4:
   id: 4
   first_name: Gary
@@ -67,6 +70,7 @@ User_4:
   created_at: 2017-01-14 05:32:54.717889000 Z
   updated_at: 2017-01-14 05:32:54.717889000 Z
   membership_status: active
+  encrypted_password: "f6boi3%hh(237)HFe12479-gbd27"
 User_5:
   id: 5
   first_name: Andrew
@@ -84,6 +88,7 @@ User_5:
   created_at: 2017-01-14 05:32:54.751432000 Z
   updated_at: 2017-01-14 05:32:54.751432000 Z
   membership_status: active
+  encrypted_password: "f6boi3%hh(237)HFe12479-gbd27"
 
 
 User_100:
@@ -103,6 +108,8 @@ User_100:
   created_at: 2017-01-14 05:33:10.108269000 Z
   updated_at: 2017-01-14 05:33:10.108269000 Z
   membership_status: active
+  encrypted_password: "f6boi3%hh(237)HFe12479-gbd27"
+
 User_101:
   id: 101
   first_name: Rodrigo
@@ -120,6 +127,8 @@ User_101:
   created_at: 2017-01-14 05:33:10.302723000 Z
   updated_at: 2017-01-14 05:33:10.302723000 Z
   membership_status: nonmember
+  encrypted_password: "f6boi3%hh(237)HFe12479-gbd27"
+
 User_102:
   id: 102
   first_name: Michael
@@ -137,6 +146,8 @@ User_102:
   created_at: 2017-01-14 05:33:10.566704000 Z
   updated_at: 2017-01-14 05:33:10.566704000 Z
   membership_status: active
+  encrypted_password: "f6boi3%hh(237)HFe12479-gbd27"
+
 User_103:
   id: 103
   first_name: Sven
@@ -154,6 +165,8 @@ User_103:
   created_at: 2017-01-14 05:33:10.933360000 Z
   updated_at: 2017-01-14 05:33:10.933360000 Z
   membership_status: active
+  encrypted_password: "f6boi3%hh(237)HFe12479-gbd27"
+
 User_104:
   id: 104
   first_name: Quinn
@@ -171,6 +184,8 @@ User_104:
   created_at: 2017-01-14 05:33:11.241578000 Z
   updated_at: 2017-01-14 05:33:11.241578000 Z
   membership_status: lapsed
+  encrypted_password: "f6boi3%hh(237)HFe12479-gbd27"
+
 User_105:
   id: 105
   first_name: Rafael
@@ -188,3 +203,4 @@ User_105:
   created_at: 2017-01-14 05:33:11.504140000 Z
   updated_at: 2017-01-14 05:33:11.504140000 Z
   membership_status: nonmember
+  encrypted_password: "f6boi3%hh(237)HFe12479-gbd27"
