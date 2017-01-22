@@ -1,0 +1,1 @@
+json.array! @climb_apps, partial: 'climb_apps/climb_app', as: :climb_app

@@ -68,7 +68,7 @@ CSV.foreach('db/leader_data.csv', headers: true) do |line|
   climb_leader = User.create(
     first_name:             line[0],
     last_name:              line[1],
-    password:               '*B;faNQ)*@!fHKJL3gnav%&(3)_wpbj$%#nnasqyhkoia8b',
+    # password:               '*B;faNQ)*@!fHKJL3gnav%&(3)_wpbj$%#nnasqyhkoia8b',
     email:                  Faker::Internet.email,
     phone:                  Faker::PhoneNumber.phone_number,
     emergency_contact:      Faker::Name.name,
@@ -184,7 +184,7 @@ puts "Seeded Routes. Total Routes: #{Route.all.length}"
   climber = User.create(
     first_name:             Faker::Name.first_name,
     last_name:              Faker::Name.last_name,
-    password:               '*B;faNQ)*@!fHKJL3gnav%&(3)_wpbj$%#nnasqyhkoia8b',
+    # password:               '*B;faNQ)*@!fHKJL3gnav%&(3)_wpbj$%#nnasqyhkoia8b',
     email:                  Faker::Internet.email,
     phone:                  Faker::PhoneNumber.phone_number,
     emergency_contact:      Faker::Name.name,
@@ -252,7 +252,7 @@ puts "Seeded Climber Educations. Total Educations: #{ClimberEducation.all.length
 
 
 
-registration_status = ["applied", "accepted", "rejected", "waitlist"]
+climb_app_status = ["applied", "accepted", "rejected", "waitlist"]
 
 300.times do |x|
   random_date = Faker::Date.forward(rand(100..200))
@@ -276,14 +276,14 @@ registration_status = ["applied", "accepted", "rejected", "waitlist"]
     assistant_1:              ClimberProfile.find(rand(1..ClimberProfile.all.length)).user
   )
   rand(3..20).times do |x|
-    Registration.create(
+    ClimbApp.create(
       climb:                    climb,
       user:                     User.find(rand(1..User.all.length)),
-      registration_status:      registration_status[rand(0..registration_status.length)]
+      climb_app_status:      climb_app_status[rand(0..climb_app_status.length)]
     )
   end
 end
-puts "Seeded Leader and Climber Registrations. Total Registrations: #{Registration.all.length}"
+puts "Seeded Leader and Climber ClimbApps. Total ClimbApps: #{ClimbApp.all.length}"
 puts "Seeded Open Summer Climbs. Total Climbs: #{Climb.all.length}"
 puts "Seeded Specific Dates. Total Dates: #{SpecificDate.all.length}"
 
@@ -306,13 +306,13 @@ puts "Seeded Specific Dates. Total Dates: #{SpecificDate.all.length}"
     assistant_1:              ClimberProfile.find(rand(1..ClimberProfile.all.length)).user
   )
   rand(3..20).times do |x|
-    Registration.create(
+    ClimbApp.create(
       climb:                    climb,
       user:                     User.find(rand(1..User.all.length)),
-      registration_status:      registration_status[rand(0..registration_status.length)]
+      climb_app_status:      climb_app_status[rand(0..climb_app_status.length)]
     )
   end
 end
-puts "Seeded Leader and Climber Registrations. Total Registrations: #{Registration.all.length}"
+puts "Seeded Leader and Climber ClimbApps. Total ClimbApps: #{ClimbApp.all.length}"
 puts "Seeded Open Winter Climbs. Total Climbs: #{Climb.all.length}"
 puts "Seeded Specific Dates. Total Dates: #{GeneralDate.all.length}"

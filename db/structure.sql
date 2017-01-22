@@ -87,10 +87,10 @@ CREATE TYPE membership_status AS ENUM (
 
 
 --
--- Name: registration_status; Type: TYPE; Schema: public; Owner: -
+-- Name: climb_app_status; Type: TYPE; Schema: public; Owner: -
 --
 
-CREATE TYPE registration_status AS ENUM (
+CREATE TYPE climb_app_status AS ENUM (
     'applied',
     'accepted',
     'rejected',
@@ -550,25 +550,25 @@ ALTER SEQUENCE mountains_id_seq OWNED BY mountains.id;
 
 
 --
--- Name: registrations; Type: TABLE; Schema: public; Owner: -
+-- Name: climb_apps; Type: TABLE; Schema: public; Owner: -
 --
 
-CREATE TABLE registrations (
+CREATE TABLE climb_apps (
     id integer NOT NULL,
     application_date date,
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL,
-    registration_status registration_status,
+    climb_app_status climb_app_status,
     user_id integer,
     climb_id integer
 );
 
 
 --
--- Name: registrations_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+-- Name: climb_apps_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
-CREATE SEQUENCE registrations_id_seq
+CREATE SEQUENCE climb_apps_id_seq
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -577,10 +577,10 @@ CREATE SEQUENCE registrations_id_seq
 
 
 --
--- Name: registrations_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+-- Name: climb_apps_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
-ALTER SEQUENCE registrations_id_seq OWNED BY registrations.id;
+ALTER SEQUENCE climb_apps_id_seq OWNED BY climb_apps.id;
 
 
 --
@@ -842,10 +842,10 @@ ALTER TABLE ONLY mountains ALTER COLUMN id SET DEFAULT nextval('mountains_id_seq
 
 
 --
--- Name: registrations id; Type: DEFAULT; Schema: public; Owner: -
+-- Name: climb_apps id; Type: DEFAULT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY registrations ALTER COLUMN id SET DEFAULT nextval('registrations_id_seq'::regclass);
+ALTER TABLE ONLY climb_apps ALTER COLUMN id SET DEFAULT nextval('climb_apps_id_seq'::regclass);
 
 
 --
@@ -965,11 +965,11 @@ ALTER TABLE ONLY mountains
 
 
 --
--- Name: registrations registrations_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: climb_apps climb_apps_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY registrations
-    ADD CONSTRAINT registrations_pkey PRIMARY KEY (id);
+ALTER TABLE ONLY climb_apps
+    ADD CONSTRAINT climb_apps_pkey PRIMARY KEY (id);
 
 
 --
@@ -1096,17 +1096,17 @@ CREATE INDEX index_general_dates_on_climb_id ON general_dates USING btree (climb
 
 
 --
--- Name: index_registrations_on_climb_id; Type: INDEX; Schema: public; Owner: -
+-- Name: index_climb_apps_on_climb_id; Type: INDEX; Schema: public; Owner: -
 --
 
-CREATE INDEX index_registrations_on_climb_id ON registrations USING btree (climb_id);
+CREATE INDEX index_climb_apps_on_climb_id ON climb_apps USING btree (climb_id);
 
 
 --
--- Name: index_registrations_on_user_id; Type: INDEX; Schema: public; Owner: -
+-- Name: index_climb_apps_on_user_id; Type: INDEX; Schema: public; Owner: -
 --
 
-CREATE INDEX index_registrations_on_user_id ON registrations USING btree (user_id);
+CREATE INDEX index_climb_apps_on_user_id ON climb_apps USING btree (user_id);
 
 
 --

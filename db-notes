@@ -126,7 +126,7 @@ profile             text
 ///                  CLIMBS                    ///
 //////////////////////////////////////////////////
 
-rails g model climb_registration application_date:date
+rails g model climb_climb_app application_date:date
 
 CLIMB_APPLICATION
 belongs_to            user_id
@@ -137,7 +137,7 @@ enum                  submitted accepted rejected waitlist leader assistant
 rails g model climb description:text party_size:integer spots_available:integer last_updated:datetime
 
 CLIMB
-has_many                  climb_registration
+has_many                  climb_climb_app
 has_and_belongs_to_many   climb_grads
 has_and_belongs_to_many   climb_restrictions
 belongs_to                climb_schedule

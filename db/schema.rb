@@ -11,20 +11,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170121005416) do
+ActiveRecord::Schema.define(version: 20170113033524) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
 
+  create_enum "climb_app_status", "applied", "accepted", "rejected", "waitlist"
   create_enum "climb_month", "january", "february", "march", "april", "may", "june", "july", "august", "september", "october", "november", "december"
   create_enum "climb_status", "unpublished", "open", "full", "waitlist", "cancelled", "completed"
   create_enum "climb_type", "mazamas", "private", "other"
   create_enum "membership_status", "nonmember", "active", "lapsed"
-  create_enum "registration_status", "applied", "accepted", "rejected", "waitlist"
   create_enum "snow_angle", "not applicable", "35 to 50", "over 50", "up to 35"
   create_enum "typical_gear", "snow", "scramble", "rock", "rock and snow"
   create_enum "typical_season", "spring summer", "summer autumn"
+# Could not dump table "climb_apps" because of following StandardError
+#   Unknown type 'climb_app_status' for column 'climb_app_status'
+
+
   create_table "climb_classes", force: :cascade do |t|
     t.string   "code"
     t.string   "description"
@@ -139,10 +143,6 @@ ActiveRecord::Schema.define(version: 20170121005416) do
     t.datetime "updated_at",       :null=>false
   end
 
-# Could not dump table "registrations" because of following StandardError
-#   Unknown type 'registration_status' for column 'registration_status'
-
-
 # Could not dump table "routes" because of following StandardError
 #   Unknown type 'snow_angle' for column 'snow_angle'
 
@@ -177,6 +177,7 @@ ActiveRecord::Schema.define(version: 20170121005416) do
 #   Unknown type 'membership_status' for column 'membership_status'
 
 
+  add_foreign_key "climb_apps", "users"
   add_foreign_key "climb_leader_profiles", "users"
   add_foreign_key "climber_educations", "climber_profiles"
   add_foreign_key "climber_educations", "educations"
@@ -185,7 +186,6 @@ ActiveRecord::Schema.define(version: 20170121005416) do
   add_foreign_key "climbs", "climb_schedules"
   add_foreign_key "climbs", "routes"
   add_foreign_key "general_dates", "climbs"
-  add_foreign_key "registrations", "users"
   add_foreign_key "routes", "climb_classes"
   add_foreign_key "routes", "mountains"
   add_foreign_key "specific_dates", "climbs"

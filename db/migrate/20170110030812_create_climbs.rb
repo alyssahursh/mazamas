@@ -32,8 +32,8 @@ class CreateClimbs < ActiveRecord::Migration
     add_reference :climbs, :assistant_2, index: true
     # add_foreign_key :climbs, :users
 
-    add_reference :registrations, :climb, index: true
-    # add_foreign_key :registrations, :climbs
+    add_reference :climb_apps, :climb, index: true
+    # add_foreign_key :climb_apps, :climbs
 
     add_reference :specific_dates, :climb, index: true
     add_foreign_key :specific_dates, :climbs

@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  devise_for :users
   root to: 'pages#index'
 
   get 'pages/index'
@@ -21,7 +20,7 @@ Rails.application.routes.draw do
             :climber_profiles,
             :educations,
             :general_dates,
-            :registrations,
+            :climb_apps,
             :routes,
             :specific_dates,
             :user_roles,
