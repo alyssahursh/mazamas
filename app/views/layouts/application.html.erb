@@ -18,7 +18,7 @@
     <h1 class="f3"><a href="/">MAZAMAS CLIMBS</a></h1>
 
     <div class="mobile-menu">
-      <div><h5><a href="/"><i class="fa fa-bars fa-2x" aria-hidden="true"></i></a></h5></div>
+      <div><h5><a href="/"><i class="fa fa-bars fa-1x" aria-hidden="true"></i></a></h5></div>
     </div>
 
     <div class="navlinks f2">
@@ -29,8 +29,15 @@ Schedule</a></h5></div
 Mountains and Routes</a></h5></div>
 
       <% if !current_user.nil? %>
-        <div><h5><a href="/climb_leader_profiles"><i class="fa fa-address-book-o" aria-hidden="true"></i> Climb Leaders</a></h5></div>
-        <div><h5><a href="/users/edit"><i class="fa fa-user-circle-o .fa-1x" aria-hidden="true"></i> <%= current_user.first_name %></a></h5></div>
+        <div><h5><a href="/climb_leader_profiles"><i class="fa fa-address-book-o" aria-hidden="true"></i> Leaders</a></h5></div>
+        <div><h5><%= link_to raw("<i class='fa fa-user-circle-o .fa-1x' aria-hidden='true'></i> #{ current_user.first_name}"), current_user %></h5></div>
+        <section class="hover-content">
+          <!-- HOVER -->
+          <!-- Climb applications -->
+          <!-- IF LEADER -->
+          <!-- My climbs -->
+        </section>
+
 
       <% else %>
         <div><h5><a href="/users/sign_up"><i class="fa fa-user-circle-o .fa-1x" aria-hidden="true"></i> Sign Up</a></h5></div
