@@ -1,26 +1,38 @@
-<h2>Log in</h2>
+<head>
+  <% title("Sign In") %>
+</head>
 
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
-  </div>
+<div class='cover-container'>
+  <%= image_tag("VaqasMalik_IngallsPeak.jpg", class: "banner-image dont-move") %>
+</div>
 
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "off" %>
-  </div>
+<section class="full-page-form form-on-image four columns offset-by-four">
+  <h1 class="f4">Sign In</h1>
 
-  <% if devise_mapping.rememberable? -%>
+  <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
     <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
+      <h5 class="f2"><%= f.label :email %></h5>
+      <%= f.email_field :email, autofocus: true %>
     </div>
-  <% end -%>
 
-  <div class="actions">
-    <%= f.submit "Log in" %>
-  </div>
-<% end %>
+    <div class="field">
+      <h5 class="f2"><%= f.label :password %></h5>
+      <%= f.password_field :password, autocomplete: "off" %>
+    </div>
 
-<%= render "devise/shared/links" %>
+    <div id="remember">
+      <% if devise_mapping.rememberable? -%>
+        <h5> </h5>
+        <div class="field">
+          <%= f.check_box :remember_me %>
+          <h5 class="f2"><%= f.label :remember_me %></h5>
+        </div>
+      <% end -%>
+    </div>
+
+    <div class="actions">
+      <%= f.submit "Sign In" %>
+    </div>
+  <% end %>
+
+</section>
