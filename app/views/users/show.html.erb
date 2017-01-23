@@ -1,4 +1,18 @@
-<p id="notice"><%= notice %></p>
+<head>
+  <% title current_user.first_name %>
+</head>
 
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+<div class="nav-spacing"></div>
+<div class="general-spacing"></div>
+
+<div class="eight columns offset-by-two">
+  <p id="notice"><%= notice %></p>
+
+  <h1>THIS IS THE USER SHOW PAGE AND IT NEEDS WORK</h1>
+    <%= current_user.first_name %>
+    <%= current_user.last_name %>
+    <%= current_user.email %>
+
+  <%= link_to 'Edit', edit_user_path(@user) %> |
+
+</div>
