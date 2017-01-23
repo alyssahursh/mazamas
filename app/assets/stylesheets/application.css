@@ -183,6 +183,7 @@ nav h1 {
 /**********************************************************/
 
 .tout-container {
+  position: absolute;
   text-align: center;
 }
 
@@ -277,11 +278,6 @@ nav h1 {
     width: 130px;
     -webkit-transition: width 0.4s ease-in-out;
     transition: width 0.4s ease-in-out;
-}
-
-/* When the input field gets focus, change its width to 100% */
-input[type=text]:focus {
-    width: 100%;
 }
 
 /**********************************************************/
@@ -446,6 +442,7 @@ input[type=text]:focus {
 
 }
 
+/* Banner images should be 1400px by 800px */
 .banner-image {
   min-width: 100%;
   min-height: 100%;
@@ -453,6 +450,10 @@ input[type=text]:focus {
   left: 50%;
   top: 50%;
   -webkit-transform: translateY(-50%) translateX(-50%);
+}
+
+.banner-image.dont-move {
+  position: fixed
 }
 
 @media (orientation: portrait) and (max-width: 550px)  {
@@ -581,4 +582,114 @@ input:nth-of-type(2n+2) {
 
 .static-map-container img {
   width: 94%;
+}
+
+
+/**********************************************************/
+/*                FORMS (FIXED ON IMAGE)                  */
+/**********************************************************/
+.form-on-image {
+  position: absolute;
+  top: 20rem;
+  letter-spacing: .3rem;
+  text-shadow: 1px 1px 2px #000;
+  color: #FFF;
+}
+
+.form-on-image h1 {
+  text-align: center;
+  color: #FFFFFF;
+  margin-bottom: 5rem;
+}
+
+.form-on-image div {
+  display: flex;
+  padding-bottom: 2rem;
+}
+
+.form-on-image div.field h5 {
+  width: 13rem;
+  text-align: right;
+  padding-right: 2rem;
+  line-height: 2;
+}
+
+.form-on-image label {
+  text-transform: uppercase;
+}
+
+.form-on-image input {
+  background-color: rgba(255, 255, 255, .8);
+  color: #000000;
+  flex-grow: 100;
+}
+
+.remember label {
+  flex-grow: 100;
+}
+
+.form-on-image .actions input {
+  width: calc(100% - 15rem);
+  margin-left: 15rem;
+  background-color: #3343A1;
+  color: white;
+  border: 2px #5868ca solid;
+  margin-top: 2rem;
+}
+
+.form-on-image .actions input:hover {
+  background-color: #3c4fbe;
+  border: 2px #5868ca solid;
+}
+
+input#user_remember_me {
+  width: 2rem;
+  height: 2rem;
+  margin: 0.25rem 1rem 0 15rem;
+  flex-grow: 1;
+  padding: 0;
+}
+
+#remember h5 {
+  text-align: left;
+  width: 25rem;
+  line-height: 1;
+}
+
+@media (orientation: portrait) {
+  .form-on-image {
+    width: 60%;
+    margin-left: 20%;
+  }
+}
+
+@media (orientation: portrait) and (max-width: 550px){
+  .form-on-image {
+    width: 86%;
+    margin-left: 7%;
+    top: 14rem;
+  }
+
+  .form-on-image div {
+    display: block
+  }
+
+  .form-on-image div.field h5 {
+    text-align: left;
+  }
+
+  .form-on-image input,
+  .form-on-image .actions input {
+    width: 100%;
+    margin-left: 0;
+  }
+
+  input#user_remember_me {
+    display: inline-block;
+    width: 2rem;
+    height: 2rem;
+    margin: .25rem 1rem 0 0rem;
+    padding: 0;
+    float: left;
+  }
 }
