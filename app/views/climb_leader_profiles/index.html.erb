@@ -3,20 +3,24 @@
 </head>
 
 <div class="nav-spacing"></div>
+<div class="general-spacing"></div>
+<div class="general-spacing"></div>
 
 <p id="notice"><%= notice %></p>
 
-<h1>Mazamas Climb Leaders</h1>
 
 <section class="tout-container ten columns offset-by-one">
+  <h1 class="f3">Mazamas Climb Leaders</h1>
+  <div class="general-spacing"></div>
+
+
   <% @climb_leader_profiles.each do |climb_leader_profile| %>
     <div class="tout four columns">
       <div class="tout-image-container">
-        <img src='<%= climb_leader_profile.photo_link %>'>
+        <img src="http://placehold.it/150x150">
       </div>
-      <h4 class="f4"><%= climb_leader_profile.user.first_name %> <%= climb_leader_profile.user.last_name %></h4>
+      <h4 class="f4"><%= link_to raw("#{climb_leader_profile.user.first_name} #{climb_leader_profile.user.last_name}"), climb_leader_profile_path(climb_leader_profile) %></h4>
       <p class="f1">Leader since <%= climb_leader_profile.leader_since %></p>
-      <p class="f1"><%= link_to "image", climb_leader_profile.photo_link %></p>
     </div>
   <% end %>
 </section>
