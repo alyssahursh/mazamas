@@ -4,7 +4,8 @@ class ClimbLeaderProfilesController < ApplicationController
   # GET /climb_leader_profiles
   # GET /climb_leader_profiles.json
   def index
-    @climb_leader_profiles = ClimbLeaderProfile.all
+    @climb_leader_profiles = ClimbLeaderProfile.joins(:user).order('users.first_name')
+
   end
 
   # GET /climb_leader_profiles/1
