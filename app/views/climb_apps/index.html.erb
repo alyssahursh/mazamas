@@ -12,14 +12,14 @@
   <tbody>
     <% @climb_apps.each do |climb_app| %>
       <tr>
-        <td><%= link_to 'Show', climb_app %></td>
-        <td><%= link_to 'Edit', edit_climb_app_path(climb_app) %></td>
-        <td><%= link_to 'Destroy', climb_app, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= climb_app.climb.mountain.name %></td>
+        <td><%= climb_app.id  %></td>
+        <td><%= climb_app.climb_app_status  %></td>
+        <td><%= link_to "Edit", edit_user_climb_app_path(current_user, climb_app) %></td>
+        <td><%= link_to 'Destroy', user_climb_app_path(current_user, climb_app), method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
 <br>
-
-<%= link_to 'New ClimbApp', new_climb_app_path %>

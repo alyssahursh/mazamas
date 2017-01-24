@@ -1,4 +1,4 @@
 <p id="notice"><%= notice %></p>
 
-<%= link_to 'Edit', edit_climb_app_path(@climb_app) %> |
-<%= link_to 'Back', climb_apps_path %>
+<%= link_to 'Edit', edit_user_climb_app_path(current_user, @climb_app) %> |
+<%= link_to 'Back', user_climb_apps_path(current_user) %>
