@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users, :controllers => { registrations: 'registrations' }
+
   root to: 'pages#index'
 
   get 'pages/index'
@@ -8,25 +9,35 @@ Rails.application.routes.draw do
   post 'payments/stripe', to: 'payments#stripe'
   get 'payments/stripe', to: 'payments#stripe', as: 'payments'
 
-  resources :mountains # param: :name (Attempted to use named routes but stopped)
-
 
   resources :climb_classes,
-            :climb_leader_profiles,
             :climb_schedules,
             :climb_tags,
             :climbs,
             :climber_educations,
             :climber_experiences,
-            :climber_profiles,
+            :climb_leader_profiles,
             :educations,
             :general_dates,
-            :climb_apps,
             :routes,
             :specific_dates,
-            :user_roles,
-            :users
+            :user_roles
 
+
+resources :users do
+  resources :climbs do
+    resources :climb_apps
+  end
+end
+
+resources :mountains do
+  resources :climbs
+end
+
+resources :users do
+  resources :climb_apps
+  resources :climber_profiles
+end
 
 
 
