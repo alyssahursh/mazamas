@@ -747,6 +747,7 @@ input#user_remember_me {
 
 .profile-table div {
   width: 100%;
+  display: inline-flex;
   border-bottom: 1px solid #E1E1E1;
   position: relative;
   padding: 1rem 0;
@@ -760,7 +761,7 @@ input#user_remember_me {
 
 .profile-table div h5:last-of-type {
   display: inline-block;
-  width: 38%;
+  flex-grow: 3;
 }
 
 
@@ -791,17 +792,22 @@ input#user_remember_me {
     width: 90%;
     margin: 0 5%;
   }
+  .profile-table div {
+    display: block;
+  }
+
   .profile-table div h5:first-of-type,
   .profile-table div h5:last-of-type {
+    display: block;
     width: 100%;
   }
-  .profile div.profile-header form.button_to,
-  .profile section.profile-table div form.button_to {
-    width: 50%;
+  .profile div.profile-header form.button_to {
+    width: 38%;
     right: 0;
   }
   .profile section.profile-table div form.button_to {
-    margin: 1rem 25% 1rem 25%;
+    width: 100%;
+    margin-top: 1rem;
   }
 }
 
