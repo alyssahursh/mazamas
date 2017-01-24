@@ -4,7 +4,7 @@ class ClimbAppsController < ApplicationController
   # GET /climb_apps
   # GET /climb_apps.json
   def index
-    @climb_apps = ClimbApp.all
+    @climb_apps = ClimbApp.where(user_id: current_user.id)
   end
 
   # GET /climb_apps/1
@@ -14,7 +14,7 @@ class ClimbAppsController < ApplicationController
 
   # GET /climb_apps/new
   def new
-    @climb_app = ClimbApp.new
+    # @climb_app = ClimbApp.new
   end
 
   # GET /climb_apps/1/edit
