@@ -30,14 +30,18 @@ Mountains and Routes</a></h5></div>
 
       <% if !current_user.nil? %>
         <div><h5><a href="/climb_leader_profiles"><i class="fa fa-address-book-o" aria-hidden="true"></i> Leaders</a></h5></div>
-        <div><h5><%= link_to raw("<i class='fa fa-user-circle-o .fa-1x' aria-hidden='true'></i> #{ current_user.first_name}"), current_user %></h5></div>
-        <section class="hover-content">
-          <!-- HOVER -->
-          <!-- Climb applications -->
-          <!-- IF LEADER -->
-          <!-- My climbs -->
-        </section>
-
+        <div class="dropdown"><h5><%= link_to raw("<i class='fa fa-user-circle-o .fa-1x' aria-hidden='true'></i> #{ current_user.first_name}"), current_user %></h5>
+          <section class="dropdown-content">
+            <%= link_to "My Account", current_user, method: "get" %>
+            <%= link_to "My Climb Resume", user_climber_profile_path(current_user, current_user), method: "get" %>
+            <%= link_to "My Climb Cards", user_climb_apps_path(current_user), method: "get" %>
+            <% if !current_user.user_roles.where(id: [2, 3, 4, 5]).nil? %>
+              <%= link_to "My Leader Profile", climb_leader_profile_path(current_user), method: "get" %>
+              <%= link_to "My Climbs", user_climbs_path(current_user), method: "get" %>
+            <% end %>
+            <%= link_to "Sign Out", destroy_user_session_path, method: "delete" %>
+          </section>
+        </div>
 
       <% else %>
         <div><h5><a href="/users/sign_up"><i class="fa fa-user-circle-o .fa-1x" aria-hidden="true"></i> Sign Up</a></h5></div
