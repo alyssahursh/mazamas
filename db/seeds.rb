@@ -221,28 +221,22 @@ puts "Seeded Routes. Total Routes: #{Route.all.length}"
       route_name = ""
     end
 
-    climb_leader = ClimbLeaderProfile.find(rand(1..ClimbLeaderProfile.all.length))
-    climb_leader_name = "#{climb_leader.user.first_name} #{climb_leader.user.last_name}"
-
     ClimberExperience.create(
       climber_profile:      climber_profile,
       month:                rand(1..12),
       year:                 rand(2000..2017),
       mountain:             mountain_name,
       route:                route_name,
-      # climb_leader:         climb_leader_name
+      climb_leader:         ClimbLeaderProfile.find(rand(1..ClimbLeaderProfile.all.length)).user,
     )
   end
 
   education_count = rand(1..Education.all.length)
   education_count.times do |x|
-    climb_leader = ClimbLeaderProfile.find(rand(1..ClimbLeaderProfile.all.length))
-    climb_leader_name = "#{climb_leader.user.first_name} #{climb_leader.user.last_name}"
-
     ClimberEducation.create(
       climber_profile:      climber_profile,
       education:            Education.find(x+1),
-      # leader:               climb_leader_name,
+      education_leader:     ClimbLeaderProfile.find(rand(1..ClimbLeaderProfile.all.length)).user,
       year:                 rand(2000..2017)
     )
   end

@@ -76,14 +76,15 @@ ActiveRecord::Schema.define(version: 20170122034448) do
 
   create_table "climber_educations", force: :cascade do |t|
     t.integer  "year"
-    t.string   "leader"
-    t.datetime "created_at",         :null=>false
-    t.datetime "updated_at",         :null=>false
+    t.datetime "created_at",          :null=>false
+    t.datetime "updated_at",          :null=>false
     t.integer  "education_id"
+    t.integer  "education_leader_id"
     t.integer  "climber_profile_id"
   end
   add_index "climber_educations", ["climber_profile_id"], :name=>"index_climber_educations_on_climber_profile_id", :using=>:btree
   add_index "climber_educations", ["education_id"], :name=>"index_climber_educations_on_education_id", :using=>:btree
+  add_index "climber_educations", ["education_leader_id"], :name=>"index_climber_educations_on_education_leader_id", :using=>:btree
 
 # Could not dump table "climber_experiences" because of following StandardError
 #   Unknown type 'climb_type' for column 'climb_type'
