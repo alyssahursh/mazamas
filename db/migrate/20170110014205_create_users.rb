@@ -14,6 +14,7 @@ class CreateUsers < ActiveRecord::Migration
       t.string :phone
       t.date :birthdate
       t.integer :age
+      t.integer :credits
 
       t.timestamps null: false
     end

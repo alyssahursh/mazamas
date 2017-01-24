@@ -63,13 +63,17 @@ ClimbSchedule.create(season: "Winter", year: 2018)
 ClimbSchedule.create(season: "Summer", year: 2018)
 puts "Seeded Climb Schedules. Total Climb Schedules: #{ClimbSchedule.all.length}"
 
+leader_count = 0
+
 CSV.foreach('db/leader_data.csv', headers: true) do |line|
-  # Add a new user
+
+  leader_count += 1
+
   climb_leader = User.create(
     first_name:             line[0],
     last_name:              line[1],
-    password:               '*B;faNQ)*@!fHKJL3gnav%&(3)_wpbj$%#nnasqyhkoia8b',
-    email:                  Faker::Internet.email,
+    password:               'password',
+    email:                  "leader#{leader_count}@mazamasclimbs.org",
     phone:                  Faker::PhoneNumber.phone_number,
     emergency_contact:      Faker::Name.name,
     emergency_phone:        Faker::PhoneNumber.phone_number,
@@ -184,8 +188,8 @@ puts "Seeded Routes. Total Routes: #{Route.all.length}"
   climber = User.create(
     first_name:             Faker::Name.first_name,
     last_name:              Faker::Name.last_name,
-    password:               '*B;faNQ)*@!fHKJL3gnav%&(3)_wpbj$%#nnasqyhkoia8b',
-    email:                  Faker::Internet.email,
+    password:               'password',
+    email:                  "climber#{x}@mazamasclimbs.org",
     phone:                  Faker::PhoneNumber.phone_number,
     emergency_contact:      Faker::Name.name,
     emergency_phone:        Faker::PhoneNumber.phone_number,
