@@ -12,4 +12,9 @@ class User < ActiveRecord::Base
   has_many :climb_assistant_1s, class_name: "Climb", foreign_key:'assistant_1_id'
   has_many :climb_assistant_2s, class_name: "Climb", foreign_key:'assistant_2_id'
 
+
+  def age
+    now = Time.now.utc.to_date
+    now.year - birthdate.year - ((now.month > birthdate.month || (now.month == birthdate.month && now.day >= birthdate.day)) ? 0 : 1)
+  end    
 end
