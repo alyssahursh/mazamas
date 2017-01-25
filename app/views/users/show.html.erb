@@ -6,11 +6,11 @@
 <div class="general-spacing"></div>
 
 <div class="profile six columns offset-by-three">
-  <p id="notice"><%= notice %></p>
+  <h4 id="notice" class="f3"><%= notice %></h4>
 
   <div class="profile-header">
     <h4 class="f3">My Account</h4>
-    <%= button_to 'Edit', edit_user_path(@user), class: "profile-button f2" %>
+    <%= button_to 'Edit', edit_user_path(@user), method: "get", class: "profile-button f2" %>
   </div>
 
   <section class= "profile-table f2">
@@ -61,7 +61,11 @@
     <div>
       <h5>UNUSED CLIMB CREDITS</h5></h5>
       <h5><%= !current_user.credits.nil? ? current_user.credits : 0 %></h5>
-      <%= button_to 'Purchase Credits', edit_user_path(@user), class: "profile-button f2" %>
+      <% if current_user.credits.nil? %>
+        <%= button_to 'Purchase Credits', edit_user_path(@user), class: "profile-button f2" %>
+      <% else %>
+        <%= button_to 'Refund Credits', edit_user_path(@user), class: "profile-button f2" %>
+      <% end %>
     </div>
   </section>
 
