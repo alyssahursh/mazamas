@@ -21,16 +21,17 @@
     </div>
 
     <div id="remember">
-      <% if devise_mapping.rememberable? -%>
+      <% if devise_mapping.rememberable? %>
         <h5> </h5>
         <div class="field">
           <%= f.check_box :remember_me %>
           <h5 class="f2"><%= f.label :remember_me %></h5>
         </div>
-      <% end -%>
+      <% end %>
     </div>
 
-    <div class="actions">
+    <div class="actions field">
+      <h5></h5>
       <%= f.submit "Sign In" %>
     </div>
   <% end %>
