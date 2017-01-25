@@ -59,6 +59,12 @@ a:hover {
   position: relative;
 }
 
+#notice {
+  text-align: center;
+  color: #008000;
+  margin: 3rem 0;
+}
+
 /**********************************************************/
 /*                       NAVIGATION                       */
 /**********************************************************/
@@ -131,7 +137,8 @@ nav h1 {
     display: none;
     position: absolute;
     margin-top: .5rem;
-    background-color: rgba(255, 255, 255, .8);
+    background-color: #e7e7e7;
+    border: 1px solid #000;
     width: 100%;
 }
 
@@ -167,6 +174,10 @@ nav h1 {
 
 .general-spacing {
   height: 10rem;
+}
+
+.half-spacing {
+  height: 5rem;
 }
 
 
@@ -627,37 +638,48 @@ input:nth-of-type(2n+2) {
 /**********************************************************/
 /*                FORMS (FIXED ON IMAGE)                  */
 /**********************************************************/
-.form-on-image {
+.full-page-form {
   position: absolute;
-  top: 20rem;
-  letter-spacing: .3rem;
-  text-shadow: 1px 1px 2px #000;
-  color: #FFF;
 }
 
-.form-on-image h1 {
-  text-align: center;
+.form-on-image {
+  top: 20rem;
   color: #FFFFFF;
+  text-shadow: 1px 1px 2px #000;
+}
+
+.full-page-form h1 {
+  text-align: center;
   margin-bottom: 5rem;
 }
 
-.form-on-image div {
+.full-page-form div {
   display: flex;
-  padding-bottom: 2rem;
+  padding-top: 2rem;
+}
+
+.full-page-form div.field h5,
+.form-on-image div.field h5 {
+  letter-spacing: .2rem;
+  padding-right: 2rem;
+  line-height: 2;
+}
+
+.full-page-form div.field h5 {
+  width: 22rem;
 }
 
 .form-on-image div.field h5 {
   width: 13rem;
   text-align: right;
-  padding-right: 2rem;
-  line-height: 2;
 }
 
-.form-on-image label {
+.full-page-form label {
   text-transform: uppercase;
 }
 
-.form-on-image input {
+.full-page-form input,
+.full-page-form textarea {
   background-color: rgba(255, 255, 255, .8);
   color: #000000;
   flex-grow: 100;
@@ -667,18 +689,20 @@ input:nth-of-type(2n+2) {
   flex-grow: 100;
 }
 
-.form-on-image .actions input {
-  width: calc(100% - 15rem);
-  margin-left: 15rem;
+.full-page-form .actions input {
   background-color: #3343A1;
   color: white;
   border: 2px #5868ca solid;
   margin-top: 2rem;
 }
 
-.form-on-image .actions input:hover {
+.full-page-form .actions input:hover {
   background-color: #3c4fbe;
   border: 2px #5868ca solid;
+}
+
+.full-page-form textarea.paragraph {
+  height: 12rem;
 }
 
 input#user_remember_me {
@@ -696,29 +720,29 @@ input#user_remember_me {
 }
 
 @media (orientation: portrait) {
-  .form-on-image {
+  .ffull-page-form {
     width: 60%;
     margin-left: 20%;
   }
 }
 
 @media (orientation: portrait) and (max-width: 550px){
-  .form-on-image {
+  .full-page-form {
     width: 86%;
     margin-left: 7%;
     top: 14rem;
   }
 
-  .form-on-image div {
+  .full-page-form div {
     display: block
   }
 
-  .form-on-image div.field h5 {
+  .full-page-form div.field h5 {
     text-align: left;
   }
 
-  .form-on-image input,
-  .form-on-image .actions input {
+  .full-page-form input,
+  .full-page-form .actions input {
     width: 100%;
     margin-left: 0;
   }
@@ -756,12 +780,22 @@ input#user_remember_me {
 .profile-table div h5:first-of-type {
   display: inline-block;
   letter-spacing: .2rem;
-  width: 36%;
+  flex-basis: 22rem;
+  margin-right: 3rem;
 }
 
 .profile-table div h5:last-of-type {
   display: inline-block;
-  flex-grow: 3;
+  flex-grow: 1.5;
+  max-width: 64%;
+}
+
+.profile-table .three-columns div h5:first-of-type,
+.profile-table .three-columns div h5:nth-of-type(2) {
+  display: inline-block;
+  flex-basis: 9.5rem;
+  margin-right: 3rem;
+
 }
 
 
