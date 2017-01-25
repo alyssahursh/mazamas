@@ -1,4 +1,62 @@
-<p id="notice"><%= notice %></p>
+<head>
+  <% title "Leader Profile" %>
+</head>
 
-<%= link_to 'Edit', edit_climb_leader_profile_path(@climb_leader_profile) %> |
-<%= link_to 'Back', climb_leader_profiles_path %>
+<div class="nav-spacing"></div>
+<div class="general-spacing"></div>
+
+<div class="profile six columns offset-by-three">
+  <h4 id="notice" class="f3"><%= notice %></h4>
+
+  <div class="profile-header">
+    <h4 class="f3">Climb Leader Profile</h4>
+    <% if current_user == @climb_leader_profile.user %>
+      <%= button_to 'Edit', edit_climb_leader_profile_path(current_user, @climb_leader_profile), method: "get", class: "profile-button f2" %>
+    <% end %>
+  </div>
+
+  <section class= "profile-table f2">
+    <div>
+      <h5>NAME</h5>
+      <h5><%= @climb_leader_profile.user.first_name %> <%= @climb_leader_profile.user.last_name %></h5>
+    </div>
+    <div>
+      <h5>CLIMBING SINCE</h5>
+      <h5><%= @climb_leader_profile.climbing_since %></h5>
+    </div>
+    <div>
+      <h5>LEADER SINCE</h5>
+      <h5><%= @climb_leader_profile.leader_since %></h5>
+    </div>
+    <div>
+      <h5>CLIMBING PACE</h5>
+      <h5><%= @climb_leader_profile.pace %></h5>
+    </div>
+    <div>
+      <h5>I LIKE TO CLIMB ON</h5>
+      <h5><%= @climb_leader_profile.climb_preferences %></h5>
+    </div>
+    <div>
+      <h5>BIO</h5>
+      <h5><%= @climb_leader_profile.bio %></h5>
+    </div>
+    <div>
+      <h5>VOLUNTEER HISTORY</h5>
+      <h5><%= @climb_leader_profile.volunteer_history %></h5>
+    </div>
+    <div>
+      <h5>CLIMBING PHILOSOPHY</h5>
+      <h5><%= @climb_leader_profile.climb_philosophy %></h5>
+    </div>
+    <div>
+      <h5>CLIMBING ACHIEVEMENTS</h5>
+      <h5><%= @climb_leader_profile.climb_achievements %></h5>
+    </div>
+    <div>
+      <h5>FAVORITE SUMMIT TREAT</h5>
+      <h5><%= @climb_leader_profile.summit_treat %></h5>
+    </div>
+
+    <div class="general-spacing"></div>
+
+  </div>
