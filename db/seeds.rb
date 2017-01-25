@@ -213,6 +213,11 @@ puts "Seeded Routes. Total Routes: #{Route.all.length}"
   rand(3..20).times do |x|
     mountain = Mountain.find(rand(1..Mountain.all.length))
     mountain_name = mountain.name
+    possible_roles = ["Climber", "Climber", "Climber", "Climber", "Assistant", "Climber"]
+    climb_leader = ClimbLeaderProfile.find(rand(1..ClimbLeaderProfile.all.length)).user
+    climb_leader_name = "#{climb_leader.first_name} #{climb_leader.last_name}"
+    months = ["january", "february", "march", "april", "may", "june", "july", "august", "september", "october", "november", "december"]
+    climb_type = ["mazamas", "private", "other"]
 
     if mountain.routes.length != 0
       route_count = mountain.routes.length
@@ -223,11 +228,13 @@ puts "Seeded Routes. Total Routes: #{Route.all.length}"
 
     ClimberExperience.create(
       climber_profile:      climber_profile,
-      month:                rand(1..12),
+      month:                months[rand(0...possible_roles.length)],
       year:                 rand(2000..2017),
       mountain:             mountain_name,
       route:                route_name,
-      climb_leader:         ClimbLeaderProfile.find(rand(1..ClimbLeaderProfile.all.length)).user,
+      role:                 possible_roles[rand(0...possible_roles.length)],
+      climb_leader:         climb_leader_name,
+      climb_type:           climb_type[rand(0...climb_type.length)]
     )
   end
 

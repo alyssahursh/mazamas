@@ -5,12 +5,13 @@ class CreateClimberExperiences < ActiveRecord::Migration
       t.string :mountain
       t.string :route
       t.string :role
-      t.integer :month
       t.integer :year
+      t.string :climb_leader
 
       t.timestamps null: false
     end
     add_column :climber_experiences, :climb_type, :climb_type
-    add_reference :climber_experiences, :climb_leader, index: true
+    add_column :climber_experiences, :month, :climb_month
+
   end
 end
