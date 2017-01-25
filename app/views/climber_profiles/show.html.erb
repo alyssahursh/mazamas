@@ -1,4 +1,85 @@
-<p id="notice"><%= notice %></p>
+<head>
+  <% title "Climb Resume" %>
+</head>
 
-<%= link_to 'Edit', edit_climber_profile_path(@climber_profile) %> |
-<%= link_to 'Back', climber_profiles_path %>
+<div class="nav-spacing"></div>
+<div class="general-spacing"></div>
+
+<div class="profile six columns offset-by-three">
+  <h4 id="notice" class="f3"><%= notice %></h4>
+
+  <div class="profile-header">
+    <h4 class="f3">Climber Bio</h4>
+    <%= button_to 'Edit', edit_user_climber_profile_path(current_user, @climber_profile), class: "profile-button f2" %>
+  </div>
+
+  <section class= "profile-table f2">
+    <div>
+      <h5>NAME</h5>
+      <h5><%= @climber_profile.user.first_name %> <%= @climber_profile.user.last_name %></h5>
+    </div>
+    <div>
+      <h5>BIO</h5>
+      <h5><%= @climber_profile.bio %></h5>
+    </div>
+    <div>
+      <h5>VOLUNTEER HISTORY</h5>
+      <h5><%= @climber_profile.volunteer_history %></h5>
+    </div>
+    <div>
+      <h5>PHYSICAL CONDITIONING</h5>
+      <h5><%= @climber_profile.physical_conditioning %></h5>
+    </div>
+    <div>
+      <h5>MEDICAL CONDITION</h5>
+      <h5><%= @climber_profile.medical_condition %></h5>
+    </div>
+    <div>
+      <h5>MEDICATION</h5>
+      <h5><%= @climber_profile.medication %></h5>
+    </div>
+
+  <section class="half-spacing"></section>
+
+  <div class="profile-header">
+    <h4 class="f3">Climbing Resume</h4>
+    <%= button_to 'Edit', edit_user_climber_profile_path(current_user, @climber_profile), class: "profile-button f2" %>
+  </div>
+
+  <section class="experience-table">
+    <% @climber_profile.climber_experiences.order(:year).each do |climber_experience| %>
+    <div>
+      <% route = Route.find_by(name: climber_experience.route) %>
+        <% if !route.nil? %>
+          <h5><%= route.climb_class.code %></h5>
+        <% end %>
+      <h5><%= climber_experience.mountain %></h5>
+      <h5><%= climber_experience.route %></h5>
+      <h5><%= climber_experience.role %></h5>
+      <h5><%= climber_experience.climb_leader %></h5>
+      <h5><%= climber_experience.climb_type.capitalize %></h5>
+      <h5><%= climber_experience.month.capitalize %></h5>
+      <h5><%= climber_experience.year %></h5>
+    </div>
+    <% end %>
+  </section>
+
+  <section class="half-spacing"></section>
+
+  <div class="profile-header">
+    <h4 class="f3">Climbing Education</h4>
+    <%= button_to 'Edit', edit_user_climber_profile_path(current_user, @climber_profile), class: "profile-button f2" %>
+  </div>
+
+  <section class="three-columns">
+    <% @climber_profile.climber_educations.order(:year).each do |climber_education| %>
+    <div>
+      <h5><%= climber_education.education.abbreviation %></h5>
+      <h5><%= climber_education.year %></h5>
+      <h5><%= link_to raw("#{climber_education.education_leader.first_name} #{climber_education.education_leader.last_name}"), climb_leader_profile_path(climber_education.education_leader) %></h5>
+    </div>
+    <% end %>
+  </section>
+  <div class="general-spacing"></div>
+
+</div>
