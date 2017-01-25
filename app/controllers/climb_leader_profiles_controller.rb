@@ -70,6 +70,6 @@ class ClimbLeaderProfilesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def climb_leader_profile_params
-      params.fetch(:climb_leader_profile, {})
+      params.fetch(:climb_leader_profile, {}).permit(:climbing_since, :leader_since, :pace, :climb_preferences, :climb_philosophy, :climb_achievements, :bio, :volunteer_history, :summit_treat)
     end
 end
