@@ -12,8 +12,6 @@ class User < ActiveRecord::Base
   has_many :climb_assistant_1s, class_name: "Climb", foreign_key:'assistant_1_id'
   has_many :climb_assistant_2s, class_name: "Climb", foreign_key:'assistant_2_id'
   has_many :leaders, class_name: "ClimberEducation", foreign_key:'education_leader_id'
-  has_many :leaders, class_name: "ClimberExperience", foreign_key:'climb_experience_leader_id'
-
 
   def age
     now = Time.now.utc.to_date
