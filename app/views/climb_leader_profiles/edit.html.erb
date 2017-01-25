@@ -1,6 +1,59 @@
-<h1>Editing Climb Leader Profile</h1>
+<head>
+  <% title "Edit My Leader Profile" %>
+</head>
 
-<%= render 'form' %>
+<div class="nav-spacing"></div>
+<div class="general-spacing"></div>
 
-<%= link_to 'Show', @climb_leader_profile %> |
-<%= link_to 'Back', climb_leader_profiles_path %>
+<div class="full-page-form profile six columns offset-by-three">
+  <h4 id="notice" class="f3"><%= notice %></h4>
+
+  <div class="profile-header">
+    <h4 class="f3">Edit My Leader Profile</h4>
+  </div>
+
+  <%= form_for @climb_leader_profile do |f| %>
+    <div class="field">
+      <h5 class="f2"><%= f.label :climbing_since %></h5>
+      <%= f.text_field :climbing_since, autofocus: true %><br />
+    </div>
+    <div class="field">
+      <h5 class="f2"><%= f.label :leader_since %></h5>
+      <%= f.text_field :leader_since %><br />
+    </div>
+    <div class="field">
+      <h5 class="f2"><%= f.label :pace %></h5>
+      <%= f.text_field :pace %><br />
+    </div>
+    <div class="field">
+      <h5 class="f2"><%= f.label :climb_preferences %></h5>
+      <%= f.text_field :climb_preferences %><br />
+    </div>
+    <div class="field">
+      <h5 class="f2"><%= f.label :bio %></h5>
+      <%= f.text_area :bio, class: "paragraph" %><br />
+    </div>
+    <div class="field">
+      <h5 class="f2"><%= f.label :volunteer_history %></h5>
+      <%= f.text_area :volunteer_history, class: "paragraph" %><br />
+    </div>
+    <div class="field">
+      <h5 class="f2"><%= f.label :climb_philosophy %></h5>
+      <%= f.text_area :climb_philosophy, class: "paragraph" %><br />
+    </div>
+    <div class="field">
+      <h5 class="f2"><%= f.label :climb_achievements %></h5>
+      <%= f.text_area :climb_achievements, class: "paragraph" %><br />
+    </div>
+    <div class="field">
+      <h5 class="f2"><%= f.label :summit_treat %></h5>
+      <%= f.text_area :summit_treat, class: "paragraph" %><br />
+    </div>
+    <div class="actions field">
+      <h5></h5>
+      <%= f.submit "Save" %>
+    </div>
+  <% end %>
+  <div class="general-spacing"></div>
+
+</div>
