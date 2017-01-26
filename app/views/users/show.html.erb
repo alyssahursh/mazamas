@@ -50,23 +50,42 @@
       <h5>MEMBERSHIP STATUS</h5>
       <h5 class='member-status <%= current_user.membership_status %>'><%= current_user.membership_status.capitalize %></h5>
       <% if current_user.membership_status == "lapsed" %>
-        <%= button_to 'Renew', edit_user_path(@user), class: "profile-button f2" %>
+        <%= form_for @user, url: { action: "start_subscription" }, method: "post" do |f| %>
+          <script
+            src="https://checkout.stripe.com/checkout.js" class="stripe-button profile-button"
+            data-key="pk_test_uuP4f9lToS2cmYlc6RneOwqV"
+            data-amount="6000"
+            data-name="The Mazamas"
+            data-description="Annual Membership"
+            data-locale="auto"
+            data-label="Renew"
+            data-image="https://www.mazamasclimbs.org/assets/mazamas-logo-square-227a770fb59bffaac46635487b9d514dfb4401839766b04dfba02f06893214f3.jpg"
+            data-email=<%= current_user.email %> >
+          </script>
+        <% end %>
       <% elsif current_user.membership_status == "nonmember" %>
         <%= button_to 'Become a Member', edit_user_path(@user), class: "profile-button f2" %>
-      <% elsif current_user.membership_status == "active" %>
-        <%= button_to 'Manage Renewal', edit_user_path(@user), class: "profile-button f2" %>
       <% end %>
-
     </div>
+    <% if current_user.membership_status == "active" %>
+      <div>
+        <h5>MEMBERSHIP RENEWAL</h5></h5>
+        <h5><%= raw(current_user.renewal_text) %></h5>
+        <% if current_user.autorenew %>
+          <%= button_to 'Disable Auto-Renew', end_autorenew_path, class: "profile-button f2" %>
+        <% else %>
+          <%= button_to 'Enable Auto-Renew', restart_autorenew_path, class: "profile-button f2" %>
+        <% end %>
+      </div>
+    <% end %>
     <div>
       <h5>UNUSED CLIMB CREDITS</h5></h5>
       <h5><%= !current_user.credits.nil? ? current_user.credits : 0 %></h5>
-      <% if current_user.credits.nil? %>
-        <%= button_to 'Purchase Credits', edit_user_path(@user), class: "profile-button f2" %>
-      <% else %>
+      <% if !current_user.credits.nil? %>
         <%= button_to 'Refund Credits', edit_user_path(@user), class: "profile-button f2" %>
       <% end %>
     </div>
   </section>
+  <div class="general-spacing"></div>
 
 </div>
