@@ -489,7 +489,6 @@ nav h1 {
   position: relative;
   overflow: hidden;
   margin-bottom: 15vh;
-
 }
 
 /* Banner images should be 1400px by 800px */
@@ -786,7 +785,7 @@ input#user_remember_me {
 
 .profile-table div h5:last-of-type {
   display: inline-block;
-  flex-grow: 1.5;
+  flex-grow: 1;
   max-width: 64%;
 }
 
