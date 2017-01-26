@@ -78,13 +78,6 @@
         <% end %>
       </div>
     <% end %>
-    <div>
-      <h5>UNUSED CLIMB CREDITS</h5></h5>
-      <h5><%= !current_user.credits.nil? ? current_user.credits : 0 %></h5>
-      <% if !current_user.credits.nil? %>
-        <%= button_to 'Refund Credits', edit_user_path(@user), class: "profile-button f2" %>
-      <% end %>
-    </div>
   </section>
   <div class="general-spacing"></div>
 
