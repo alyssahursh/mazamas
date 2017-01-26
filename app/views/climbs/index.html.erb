@@ -90,7 +90,7 @@
         <div class="hidden-until">
           <table>
             <td><h5 class="f2">LEADER PHILOSOPHY</h5></td>
-            <td><h5 class="f2"><%= ClimbLeaderProfile.find(climb.leader_1).climb_philosophy%></h5></td>
+            <td><h5 class="f2"><%= ClimbLeaderProfile.find_by(id: climb.leader_1.id).climb_philosophy%></h5></td>
           </table>
         </div>
       </section>

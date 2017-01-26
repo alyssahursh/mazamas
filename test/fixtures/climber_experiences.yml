@@ -4,7 +4,7 @@ ClimberExperience_1:
   mountain: The Brothers
   route: South Couloir / Lena Lake
   climb_leader: Alex Fox
-  month: 4
+  month: "november"
   year: 2015
   created_at: 2017-01-14 05:33:08.232646000 Z
   updated_at: 2017-01-14 05:33:08.232646000 Z
@@ -14,7 +14,7 @@ ClimberExperience_2:
   mountain: Tolmie Peak
   route: Mowich Lake
   climb_leader: Paul Underwood
-  month: 8
+  month: "august"
   year: 2014
   created_at: 2017-01-14 05:33:08.269987000 Z
   updated_at: 2017-01-14 05:33:08.269987000 Z
@@ -24,7 +24,7 @@ ClimberExperience_3:
   mountain: Mt. Deception
   route: Royal Basin
   climb_leader: Chris Kruell
-  month: 3
+  month: "march"
   year: 2015
   created_at: 2017-01-14 05:33:08.291467000 Z
   updated_at: 2017-01-14 05:33:08.291467000 Z
@@ -34,7 +34,7 @@ ClimberExperience_4:
   mountain: Petunia Peak
   route: ''
   climb_leader: Jon Major
-  month: 6
+  month: "july"
   year: 2009
   created_at: 2017-01-14 05:33:08.427128000 Z
   updated_at: 2017-01-14 05:33:08.427128000 Z
@@ -44,7 +44,7 @@ ClimberExperience_5:
   mountain: Grand Teton
   route: Exum Ridge
   climb_leader: John Meckel
-  month: 7
+  month: "september"
   year: 2007
   created_at: 2017-01-14 05:33:08.447892000 Z
   updated_at: 2017-01-14 05:33:08.447892000 Z
