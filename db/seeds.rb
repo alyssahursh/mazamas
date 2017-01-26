@@ -11,6 +11,9 @@
 # # rake db:schema:dump && rake db:drop && rake db:create && rake db:migrate && rake db:seed
 #
 #
+
+require 'faker'
+
 # All Education Programs
 Education.create(abbreviation: "BCEP", name: "Basic Climbing Education Program", description: "")
 Education.create(abbreviation: "ICS",  name: "Intermediate Climbing School",     description: "")
@@ -60,12 +63,17 @@ ClimbSchedule.create(season: "Winter", year: 2018)
 ClimbSchedule.create(season: "Summer", year: 2018)
 puts "Seeded Climb Schedules. Total Climb Schedules: #{ClimbSchedule.all.length}"
 
+leader_count = 0
+
 CSV.foreach('db/leader_data.csv', headers: true) do |line|
-  # Add a new user
+
+  leader_count += 1
+
   climb_leader = User.create(
     first_name:             line[0],
     last_name:              line[1],
-    email:                  Faker::Internet.email,
+    password:               'password',
+    email:                  "leader#{leader_count}@mazamasclimbs.org",
     phone:                  Faker::PhoneNumber.phone_number,
     emergency_contact:      Faker::Name.name,
     emergency_phone:        Faker::PhoneNumber.phone_number,
@@ -76,6 +84,8 @@ CSV.foreach('db/leader_data.csv', headers: true) do |line|
     state:                  Faker::Address.state_abbr,
     zip:                    Faker::Address.zip,
     membership_status:      "active",
+    autorenew:              true,
+    membership_expiration:  Faker::Date.between(Date.today, 1.year.from_now),
     user_roles:             [UserRole.find_by_role("Climber"), UserRole.find_by_role("Climb Leader")]
   )
 
@@ -177,10 +187,22 @@ puts "Seeded Routes. Total Routes: #{Route.all.length}"
 # Use Faker to create 100 users
 100.times do |x|
   statuses = ["nonmember", "active", "lapsed"]
+  random_status = statuses[rand(0..2)]
+  truefalse = [true, false]
+
+  if random_status == "active"
+    autorenewal = truefalse[rand(0..1)]
+    membership_expiration = Faker::Date.between(Date.today, 1.year.from_now)
+  else
+    autorenewal = false
+    membership_exipration = nil
+  end
+
   climber = User.create(
     first_name:             Faker::Name.first_name,
     last_name:              Faker::Name.last_name,
-    email:                  Faker::Internet.email,
+    password:               'password',
+    email:                  "climber#{x}@mazamasclimbs.org",
     phone:                  Faker::PhoneNumber.phone_number,
     emergency_contact:      Faker::Name.name,
     emergency_phone:        Faker::PhoneNumber.phone_number,
@@ -190,8 +212,11 @@ puts "Seeded Routes. Total Routes: #{Route.all.length}"
     city:                   Faker::Address.city,
     state:                  Faker::Address.state_abbr,
     zip:                    Faker::Address.zip,
-    membership_status:      statuses[rand(0..2)],
-    user_roles:             [UserRole.find_by_role("Climber")]
+    membership_status:      random_status,
+    autorenew:              autorenewal,
+    membership_expiration:  membership_expiration,
+    user_roles:             [UserRole.find_by_role("Climber")],
+    credits:                rand(0..4),
   )
   climber_profile = ClimberProfile.create(
     user:                   climber,
@@ -204,6 +229,11 @@ puts "Seeded Routes. Total Routes: #{Route.all.length}"
   rand(3..20).times do |x|
     mountain = Mountain.find(rand(1..Mountain.all.length))
     mountain_name = mountain.name
+    possible_roles = ["Climber", "Climber", "Climber", "Climber", "Assistant", "Climber"]
+    climb_leader = ClimbLeaderProfile.find(rand(1..ClimbLeaderProfile.all.length)).user
+    climb_leader_name = "#{climb_leader.first_name} #{climb_leader.last_name}"
+    months = ["january", "february", "march", "april", "may", "june", "july", "august", "september", "october", "november", "december"]
+    climb_type = ["mazamas", "private", "other"]
 
     if mountain.routes.length != 0
       route_count = mountain.routes.length
@@ -212,28 +242,24 @@ puts "Seeded Routes. Total Routes: #{Route.all.length}"
       route_name = ""
     end
 
-    climb_leader = ClimbLeaderProfile.find(rand(1..ClimbLeaderProfile.all.length))
-    climb_leader_name = "#{climb_leader.user.first_name} #{climb_leader.user.last_name}"
-
     ClimberExperience.create(
       climber_profile:      climber_profile,
-      month:                rand(1..12),
+      month:                months[rand(0...possible_roles.length)],
       year:                 rand(2000..2017),
       mountain:             mountain_name,
       route:                route_name,
-      climb_leader:         climb_leader_name
+      role:                 possible_roles[rand(0...possible_roles.length)],
+      climb_leader:         climb_leader_name,
+      climb_type:           climb_type[rand(0...climb_type.length)]
     )
   end
 
   education_count = rand(1..Education.all.length)
   education_count.times do |x|
-    climb_leader = ClimbLeaderProfile.find(rand(1..ClimbLeaderProfile.all.length))
-    climb_leader_name = "#{climb_leader.user.first_name} #{climb_leader.user.last_name}"
-
     ClimberEducation.create(
       climber_profile:      climber_profile,
       education:            Education.find(x+1),
-      leader:               climb_leader_name,
+      education_leader:     ClimbLeaderProfile.find(rand(1..ClimbLeaderProfile.all.length)).user,
       year:                 rand(2000..2017)
     )
   end
@@ -247,7 +273,7 @@ puts "Seeded Climber Educations. Total Educations: #{ClimberEducation.all.length
 
 
 
-registration_status = ["applied", "accepted", "rejected", "waitlist"]
+climb_app_status = ["applied", "accepted", "rejected", "waitlist"]
 
 300.times do |x|
   random_date = Faker::Date.forward(rand(100..200))
@@ -271,14 +297,14 @@ registration_status = ["applied", "accepted", "rejected", "waitlist"]
     assistant_1:              ClimberProfile.find(rand(1..ClimberProfile.all.length)).user
   )
   rand(3..20).times do |x|
-    Registration.create(
+    ClimbApp.create(
       climb:                    climb,
       user:                     User.find(rand(1..User.all.length)),
-      registration_status:      registration_status[rand(0..registration_status.length)]
+      climb_app_status:      climb_app_status[rand(0..climb_app_status.length)]
     )
   end
 end
-puts "Seeded Leader and Climber Registrations. Total Registrations: #{Registration.all.length}"
+puts "Seeded Leader and Climber ClimbApps. Total ClimbApps: #{ClimbApp.all.length}"
 puts "Seeded Open Summer Climbs. Total Climbs: #{Climb.all.length}"
 puts "Seeded Specific Dates. Total Dates: #{SpecificDate.all.length}"
 
@@ -301,13 +327,13 @@ puts "Seeded Specific Dates. Total Dates: #{SpecificDate.all.length}"
     assistant_1:              ClimberProfile.find(rand(1..ClimberProfile.all.length)).user
   )
   rand(3..20).times do |x|
-    Registration.create(
+    ClimbApp.create(
       climb:                    climb,
       user:                     User.find(rand(1..User.all.length)),
-      registration_status:      registration_status[rand(0..registration_status.length)]
+      climb_app_status:      climb_app_status[rand(0..climb_app_status.length)]
     )
   end
 end
-puts "Seeded Leader and Climber Registrations. Total Registrations: #{Registration.all.length}"
+puts "Seeded Leader and Climber ClimbApps. Total ClimbApps: #{ClimbApp.all.length}"
 puts "Seeded Open Winter Climbs. Total Climbs: #{Climb.all.length}"
 puts "Seeded Specific Dates. Total Dates: #{GeneralDate.all.length}"

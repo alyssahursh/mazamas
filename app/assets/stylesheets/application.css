@@ -59,6 +59,12 @@ a:hover {
   position: relative;
 }
 
+#notice {
+  text-align: center;
+  color: #008000;
+  margin: 3rem 0;
+}
+
 /**********************************************************/
 /*                       NAVIGATION                       */
 /**********************************************************/
@@ -118,6 +124,45 @@ nav h1 {
   color: #000;
 }
 
+
+/**********************************************************/
+/*                      NAV DROPDOWN                      */
+/**********************************************************/
+
+.dropdown a {
+  position: relative;
+}
+  /* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    margin-top: .5rem;
+    background-color: #e7e7e7;
+    border: 1px solid #000;
+    width: 100%;
+}
+
+/* Links inside the dropdown */
+.navlinks .dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {background-color: rgba(255, 255, 255, 1)}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+/**********************************************************/
+/*                        SPACING                         */
+/**********************************************************/
+
 .nav-spacing {
   position: fixed;
   top: 0;
@@ -126,6 +171,15 @@ nav h1 {
   width: 100%;
   border-bottom: 1px solid black;
 }
+
+.general-spacing {
+  height: 10rem;
+}
+
+.half-spacing {
+  height: 5rem;
+}
+
 
 /**********************************************************/
 /*                   MOBILE NAVIGATION                    */
@@ -179,6 +233,7 @@ nav h1 {
 /**********************************************************/
 
 .tout-container {
+  position: absolute;
   text-align: center;
 }
 
@@ -273,11 +328,6 @@ nav h1 {
     width: 130px;
     -webkit-transition: width 0.4s ease-in-out;
     transition: width 0.4s ease-in-out;
-}
-
-/* When the input field gets focus, change its width to 100% */
-input[type=text]:focus {
-    width: 100%;
 }
 
 /**********************************************************/
@@ -439,9 +489,9 @@ input[type=text]:focus {
   position: relative;
   overflow: hidden;
   margin-bottom: 15vh;
-
 }
 
+/* Banner images should be 1400px by 800px */
 .banner-image {
   min-width: 100%;
   min-height: 100%;
@@ -449,6 +499,10 @@ input[type=text]:focus {
   left: 50%;
   top: 50%;
   -webkit-transform: translateY(-50%) translateX(-50%);
+}
+
+.banner-image.dont-move {
+  position: fixed
 }
 
 @media (orientation: portrait) and (max-width: 550px)  {
@@ -569,3 +623,247 @@ input:nth-of-type(2n+2) {
 .hidden-until {
   border: 2px solid blue;
 }
+
+.static-map-container {
+  margin: 2%;
+  width: 50%;
+}
+
+.static-map-container img {
+  width: 94%;
+}
+
+
+/**********************************************************/
+/*                FORMS (FIXED ON IMAGE)                  */
+/**********************************************************/
+.full-page-form {
+  position: absolute;
+}
+
+.form-on-image {
+  top: 20rem;
+  color: #FFFFFF;
+  text-shadow: 1px 1px 2px #000;
+}
+
+.full-page-form h1 {
+  text-align: center;
+  margin-bottom: 5rem;
+}
+
+.full-page-form div {
+  display: flex;
+  padding-top: 2rem;
+}
+
+.full-page-form div.field h5,
+.form-on-image div.field h5 {
+  letter-spacing: .2rem;
+  padding-right: 2rem;
+  line-height: 2;
+}
+
+.full-page-form div.field h5 {
+  width: 22rem;
+}
+
+.form-on-image div.field h5 {
+  width: 13rem;
+  text-align: right;
+}
+
+.full-page-form label {
+  text-transform: uppercase;
+}
+
+.full-page-form input,
+.full-page-form textarea {
+  background-color: rgba(255, 255, 255, .8);
+  color: #000000;
+  flex-grow: 100;
+}
+
+.remember label {
+  flex-grow: 100;
+}
+
+.full-page-form .actions input {
+  background-color: #3343A1;
+  color: white;
+  border: 2px #5868ca solid;
+  margin-top: 2rem;
+}
+
+.full-page-form .actions input:hover {
+  background-color: #3c4fbe;
+  border: 2px #5868ca solid;
+}
+
+.full-page-form textarea.paragraph {
+  height: 12rem;
+}
+
+input#user_remember_me {
+  width: 2rem;
+  height: 2rem;
+  margin: 0.25rem 1rem 0 15rem;
+  flex-grow: 1;
+  padding: 0;
+}
+
+#remember h5 {
+  text-align: left;
+  width: 25rem;
+  line-height: 1;
+}
+
+@media (orientation: portrait) {
+  .ffull-page-form {
+    width: 60%;
+    margin-left: 20%;
+  }
+}
+
+@media (orientation: portrait) and (max-width: 550px){
+  .full-page-form {
+    width: 86%;
+    margin-left: 7%;
+    top: 14rem;
+  }
+
+  .full-page-form div {
+    display: block
+  }
+
+  .full-page-form div.field h5 {
+    text-align: left;
+  }
+
+  .full-page-form input,
+  .full-page-form .actions input {
+    width: 100%;
+    margin-left: 0;
+  }
+
+  input#user_remember_me {
+    display: inline-block;
+    width: 2rem;
+    height: 2rem;
+    margin: .25rem 1rem 0 0rem;
+    padding: 0;
+    float: left;
+  }
+}
+
+/**********************************************************/
+/*                    PROFILE TABLES                      */
+/**********************************************************/
+
+.profile-header {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  padding: 1.5rem 0;
+  border-bottom: 1px solid #E1E1E1;
+}
+
+.profile-table div {
+  width: 100%;
+  display: inline-flex;
+  border-bottom: 1px solid #E1E1E1;
+  position: relative;
+  padding: 1rem 0;
+}
+
+.profile-table div h5:first-of-type {
+  display: inline-block;
+  letter-spacing: .2rem;
+  flex-basis: 22rem;
+  margin-right: 3rem;
+}
+
+.profile-table div h5:last-of-type {
+  display: inline-block;
+  flex-grow: 1;
+  max-width: 64%;
+}
+
+.profile-table .three-columns div h5:first-of-type,
+.profile-table .three-columns div h5:nth-of-type(2) {
+  display: inline-block;
+  flex-basis: 9.5rem;
+  margin-right: 3rem;
+
+}
+
+
+.profile div.profile-header form.button_to,
+.profile section.profile-table div form.button_to {
+  width: 25%;
+  display: inline-block;
+}
+
+.profile div.profile-header form.button_to input.profile-button,
+.profile section.profile-table div form.button_to input.profile-button {
+  border-radius: 0;
+  border: 1px solid black;
+  color: black;
+  width: 100%;
+  height: 38px;
+  font-size: 13px;
+  line-height: 13px;
+}
+
+.profile div.profile-header form.button_to input.profile-button:hover,
+.profile section.profile-table div form.button_to input.profile-button:hover{
+  background-color: #e7e7e7;
+}
+
+@media (orientation: portrait) {
+  .profile.six {
+    width: 90%;
+    margin: 0 5%;
+  }
+  .profile-table div {
+    display: block;
+  }
+
+  .profile-table div h5:first-of-type,
+  .profile-table div h5:last-of-type {
+    display: block;
+    width: 100%;
+  }
+  .profile div.profile-header form.button_to {
+    width: 38%;
+    right: 0;
+  }
+  .profile section.profile-table div form.button_to {
+    width: 100%;
+    margin-top: 1rem;
+  }
+}
+
+
+/**********************************************************/
+/*                   MEMBERSHIP STATUS                    */
+/**********************************************************/
+.profile-table div h5.member-status::before {
+  position: relative;
+  display: inline-block;
+  content: "";
+  width: 1.3rem;
+  height: 1.3rem;
+  border-radius: 100%;
+  top: .25rem;
+  margin-right: .7rem;
+}
+
+.member-status.active::before { background-color: #008000; border: 2px solid #72b964; }
+.active { color: #008000; }
+
+.member-status.lapsed::before { background-color: #9d0000; border: 2px solid #d80012; }
+.lapsed { color: #9d0000; }
+
+.member-status.nonmember::before { background-color: #3343A1; border: 2px solid #5868ca; }
+.nonmember { color: #3343A1; }

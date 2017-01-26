@@ -1,6 +1,68 @@
-<h1>Editing User</h1>
+<head>
+  <% title "Edit My Account" %>
+</head>
 
-<%= render 'form' %>
+<div class="nav-spacing"></div>
+<div class="general-spacing"></div>
 
-<%= link_to 'Show', @user %> |
-<%= link_to 'Back', users_path %>
+<div class="full-page-form profile six columns offset-by-three">
+  <h4 id="notice" class="f3"><%= notice %></h4>
+
+  <div class="profile-header">
+    <h4 class="f3">Edit My Account</h4>
+  </div>
+
+  <%= form_for @user do |f| %>
+    <div class="field">
+      <h5 class="f2"><%= f.label :first_name %></h5>
+      <%= f.text_field :first_name, autofocus: true %><br />
+    </div>
+    <div class="field">
+      <h5 class="f2"><%= f.label :last_name %></h5>
+      <%= f.text_field :last_name %><br />
+    </div>
+    <!-- Email is not something you can change without affecting devise. -->
+    <div class="field">
+      <h5 class="f2"><%= f.label :phone %></h5>
+      <%= f.text_field :phone %><br />
+    </div>
+    <div class="field">
+      <h5 class="f2"><%= f.label "Address" %></h5>
+      <%= f.text_field :address1 %><br />
+    </div>
+    <div class="field">
+      <h5 class="f2"><%= f.label "Address" %></h5>
+      <%= f.text_field :address2 %><br />
+    </div>
+    <div class="field">
+      <h5 class="f2"><%= f.label :city %></h5>
+      <%= f.text_field :city %><br />
+    </div>
+    <div class="field">
+      <h5 class="f2"><%= f.label :state %></h5>
+      <%= f.text_field :state %><br />
+    </div>
+    <div class="field">
+      <h5 class="f2"><%= f.label :zip %></h5>
+      <%= f.text_field :zip %><br />
+    </div>
+    <div class="field">
+      <h5 class="f2"><%= f.label :birthdate %></h5>
+      <%= f.text_field :birthdate %><br />
+    </div>
+    <div class="field">
+      <h5 class="f2"><%= f.label :emergency_contact %></h5>
+      <%= f.text_field :emergency_contact %><br />
+    </div>
+    <div class="field">
+      <h5 class="f2"><%= f.label :emergency_phone %></h5>
+      <%= f.text_field :emergency_phone %><br />
+    </div>
+    <div class="actions field">
+      <h5></h5>
+      <%= f.submit "Save" %>
+    </div>
+  <% end %>
+  <div class="general-spacing"></div>
+
+</div>

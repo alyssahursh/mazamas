@@ -1,5 +1,5 @@
 class Climb < ActiveRecord::Base
-  has_many                  :registrations
+  has_many                  :climb_apps
   has_and_belongs_to_many   :educations
   has_and_belongs_to_many   :climb_tags
   belongs_to                :climb_schedule
@@ -17,7 +17,7 @@ class Climb < ActiveRecord::Base
 
 
   def spots_available
-    occupied = registrations.where(registration_status: 'accepted').length
+    occupied = climb_apps.where(climb_app_status: 'accepted').length
 
     !leader_1.nil? ? occupied += 1 : nil
     !leader_2.nil? ? occupied += 1 : nil

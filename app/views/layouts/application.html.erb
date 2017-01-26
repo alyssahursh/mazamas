@@ -5,6 +5,8 @@
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
     <%= csrf_meta_tags %>
+    <link href="/assets/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+
     <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
     <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.31.0/mapbox-gl.js'></script>
     <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.31.0/mapbox-gl.css' rel='stylesheet' />
@@ -18,7 +20,7 @@
     <h1 class="f3"><a href="/">MAZAMAS CLIMBS</a></h1>
 
     <div class="mobile-menu">
-      <div><h5><a href="/"><i class="fa fa-bars fa-2x" aria-hidden="true"></i></a></h5></div>
+      <div><h5><a href="/"><i class="fa fa-bars fa-1x" aria-hidden="true"></i></a></h5></div>
     </div>
 
     <div class="navlinks f2">
@@ -26,13 +28,34 @@
       <div><h5><a href="/climbs"><i class="fa fa-calendar-o fa-1x" aria-hidden="true"></i>
 Schedule</a></h5></div
       ><div><h5><a href="/mountains"><i class="fa fa-map-o .fa-1x" aria-hidden="true"></i>
-Mountains and Routes</a></h5></div
-      ><div><h5><a href="/register"><i class="fa fa-user-circle-o .fa-1x" aria-hidden="true"></i></i> Sign Up</a></h5></div
-      ><div><h5><a href="/login"><i class="fa fa-user-circle .fa-1x" aria-hidden="true"></i>
-Sign In</a></h5></div>
+Mountains and Routes</a></h5></div>
+
+      <% if !current_user.nil? %>
+        <div><h5><a href="/climb_leader_profiles"><i class="fa fa-address-book-o" aria-hidden="true"></i> Leaders</a></h5></div>
+        <div class="dropdown"><h5><%= link_to raw("<i class='fa fa-user-circle-o .fa-1x' aria-hidden='true'></i> #{ current_user.first_name}"), current_user %></h5>
+          <section class="dropdown-content">
+            <%= link_to "My Account", current_user, method: "get" %>
+            <%= link_to "My Climb Resume", user_climber_profile_path(current_user, current_user), method: "get" %>
+            <%= link_to "My Climb Cards", user_climb_apps_path(current_user), method: "get" %>
+            <% if !current_user.user_roles.where(id: [2, 3, 4, 5]).empty? %>
+              <%= link_to "My Leader Profile", climb_leader_profile_path(current_user), method: "get" %>
+              <%= link_to "My Climbs", user_climbs_path(current_user), method: "get" %>
+            <% end %>
+            <%= link_to "Sign Out", destroy_user_session_path, method: "delete" %>
+          </section>
+        </div>
+
+      <% else %>
+        <div><h5><a href="/users/sign_up"><i class="fa fa-user-circle-o .fa-1x" aria-hidden="true"></i> Sign Up</a></h5></div
+        ><div><h5><a href="/users/sign_in"><i class="fa fa-user-circle .fa-1x" aria-hidden="true"></i>
+  Sign In</a></h5></div>
+      <% end %>
     </div>
   </nav>
+
 <%= yield %>
+
+
 
 </body>
 </html>

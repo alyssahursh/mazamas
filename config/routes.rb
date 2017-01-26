@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
-  root to: 'pages#index'
+  devise_for :users, :controllers => { registrations: 'registrations' }
 
-  stormpath_rails_routes
+  root to: 'pages#index'
 
   get 'pages/index'
   get 'pages/test', as: 'test'
@@ -9,25 +9,39 @@ Rails.application.routes.draw do
   post 'payments/stripe', to: 'payments#stripe'
   get 'payments/stripe', to: 'payments#stripe', as: 'payments'
 
-  resources :mountains # param: :name (Attempted to use named routes but stopped)
-
 
   resources :climb_classes,
-            :climb_leader_profiles,
             :climb_schedules,
             :climb_tags,
             :climbs,
             :climber_educations,
             :climber_experiences,
-            :climber_profiles,
+            :climb_leader_profiles,
             :educations,
             :general_dates,
-            :registrations,
             :routes,
             :specific_dates,
-            :user_roles,
-            :users
+            :user_roles
 
+
+post 'users/start_subscription', to: 'users#start_subscription', as: 'subscribe'
+post 'users/end_autorenew', to: 'users#end_autorenew', as: 'end_autorenew'
+post 'users/restart_autorenew', to: 'users#restart_autorenew', as: 'restart_autorenew'
+
+resources :users do
+  resources :climbs do
+    resources :climb_apps
+  end
+end
+
+resources :mountains do
+  resources :climbs
+end
+
+resources :users do
+  resources :climb_apps
+  resources :climber_profiles
+end
 
 
 

@@ -1,8 +1,7 @@
 class ApplicationController < ActionController::Base
-  include Stormpath::Rails::Controller
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
-  protect_from_forgery with: :exception
+  protect_from_forgery with: :null_session
 
   def set_search
     @search_mountain = Mountain.search(params[:q])
@@ -15,5 +14,16 @@ end
 module ApplicationHelper
   def title(text)
     content_for :title, text
+  end
+
+  def phone_convert(phone_number)
+    phone_number = phone_number.gsub(/\D/, '')
+    length = phone_number.length
+
+    if length == 10
+      return number_to_phone(phone_number, area_code: true)
+    else
+      return number_to_phone(phone_number[0...10], area_code: true, extension: phone_number[10..-1])
+    end
   end
 end

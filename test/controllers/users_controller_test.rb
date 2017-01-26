@@ -1,6 +1,7 @@
 require 'test_helper'
 
 class UsersControllerTest < ActionController::TestCase
+
   setup do
     @user = users(:User_1)
   end
@@ -16,18 +17,18 @@ class UsersControllerTest < ActionController::TestCase
     assert_response :success
   end
 
-  test "should create user" do
-    assert_difference('User.count') do
-      post :create, user: {  }
-    end
+  # test "should create user" do
+  #   assert_difference('User.count') do
+  #     post :create, user: {}
+  #   end
+  #
+  #   assert_redirected_to user_path(assigns(:user))
+  # end
 
-    assert_redirected_to user_path(assigns(:user))
-  end
-
-  test "should show user" do
-    get :show, id: @user
-    assert_response :success
-  end
+  # test "should show user" do
+  #   get :show, id: @user
+  #   assert_response :success
+  # end
 
   test "should get edit" do
     get :edit, id: @user

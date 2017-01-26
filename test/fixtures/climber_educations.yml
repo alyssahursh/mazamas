@@ -2,7 +2,7 @@
 ClimberEducation_1:
   id: 1
   year: 2006
-  leader: Preston Corless
+  education_leader: Preston Corless
   created_at: 2017-01-14 05:33:08.317720000 Z
   updated_at: 2017-01-14 05:33:08.317720000 Z
   education_id: 1
@@ -10,7 +10,7 @@ ClimberEducation_1:
 ClimberEducation_2:
   id: 2
   year: 2012
-  leader: Rayce Boucher
+  education_leader: Rayce Boucher
   created_at: 2017-01-14 05:33:08.348548000 Z
   updated_at: 2017-01-14 05:33:08.348548000 Z
   education_id: 2
@@ -18,7 +18,7 @@ ClimberEducation_2:
 ClimberEducation_3:
   id: 3
   year: 2015
-  leader: Keith Campbell
+  education_leader: Keith Campbell
   created_at: 2017-01-14 05:33:08.360613000 Z
   updated_at: 2017-01-14 05:33:08.360613000 Z
   education_id: 3
@@ -26,7 +26,7 @@ ClimberEducation_3:
 ClimberEducation_4:
   id: 4
   year: 2002
-  leader: David Zeps
+  education_leader: David Zeps
   created_at: 2017-01-14 05:33:08.374599000 Z
   updated_at: 2017-01-14 05:33:08.374599000 Z
   education_id: 4
@@ -34,7 +34,7 @@ ClimberEducation_4:
 ClimberEducation_5:
   id: 5
   year: 2012
-  leader: Vaqas Malik
+  education_leader: Vaqas Malik
   created_at: 2017-01-14 05:33:08.927822000 Z
   updated_at: 2017-01-14 05:33:08.927822000 Z
   education_id: 1

@@ -1,0 +1,1 @@
+json.partial! "climb_apps/climb_app", climb_app: @climb_app

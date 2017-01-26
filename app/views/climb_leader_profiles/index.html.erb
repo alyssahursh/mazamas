@@ -1,25 +1,28 @@
-<p id="notice"><%= notice %></p>
+<head>
+  <% title("Climb Leaders") %>
+</head>
 
-<h1>Listing Climb Leader Profiles</h1>
+<div class="nav-spacing"></div>
+<div class="general-spacing"></div>
+<div class="general-spacing"></div>
 
-<table>
-  <thead>
-    <tr>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+<h4 id="notice" class="f3"><%= notice %></h4>
 
-  <tbody>
-    <% @climb_leader_profiles.each do |climb_leader_profile| %>
-      <tr>
-        <td><%= link_to 'Show', climb_leader_profile %></td>
-        <td><%= link_to 'Edit', edit_climb_leader_profile_path(climb_leader_profile) %></td>
-        <td><%= link_to 'Destroy', climb_leader_profile, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
 
-<br>
+<section class="tout-container ten columns offset-by-one">
+  <h1 class="f3">Mazamas Climb Leaders</h1>
+  <div class="general-spacing"></div>
 
-<%= link_to 'New Climb leader profile', new_climb_leader_profile_path %>
+
+  <% @climb_leader_profiles.each do |climb_leader_profile| %>
+    <div class="tout four columns">
+      <div class="tout-image-container">
+        <img src="http://placehold.it/150x150">
+      </div>
+      <h4 class="f4"><%= link_to raw("#{climb_leader_profile.user.first_name} #{climb_leader_profile.user.last_name}"), climb_leader_profile_path(climb_leader_profile) %></h4>
+      <p class="f1">Leader since <%= climb_leader_profile.leader_since %></p>
+    </div>
+  <% end %>
+</section>
+
+<section class="tout-container ten columns offset-by-one">

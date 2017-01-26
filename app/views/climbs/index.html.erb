@@ -4,7 +4,7 @@
 
 <div class="nav-spacing"></div>
 
-<p id="notice"><%= notice %></p>
+<h4 id="notice" class="f3"><%= notice %></h4>
 
 <div class="f5 container six columns offset-by-three">
 
@@ -35,12 +35,15 @@
             <h5 class="f2"><%= education.name %></h5>
           <% end %>
 
-          <!-- THIS IS BROKEN YO -->
           <% climb.climb_tags.each do |tag| %>
             <h5 class="f2"><%= tag.code %></h5>
           <% end %>
 
-
+          <% if !climb.mountain.latitude.nil? && !climb.mountain.longitude.nil?  %>
+            <div class="static-map-container">
+              <img src='https://api.mapbox.com/v4/mapbox.light/pin-m-circle+3343A1(<%= climb.mountain.longitude %>,<%= climb.mountain.latitude %>)/<%= climb.mountain.longitude %>,<%= climb.mountain.latitude %>,5/320x440@2x.png?access_token=pk.eyJ1IjoiY2xpbWJ3aXRobWF6YW1hcyIsImEiOiJjaXh5ODdpengwMDRuMndxdW9zNHJqbjNyIn0.ECqrLVMXr5JQ9t1fRdo5lQ' alt='Map of <%= climb.mountain.name %>'>
+            </div>
+          <% end %>
 
 
           <% if !climb.specific_date.nil? %>
@@ -87,7 +90,7 @@
         <div class="hidden-until">
           <table>
             <td><h5 class="f2">LEADER PHILOSOPHY</h5></td>
-            <td><h5 class="f2"><%= ClimbLeaderProfile.find(climb.leader_1).climb_philosophy%></h5></td>
+            <td><h5 class="f2"><%= ClimbLeaderProfile.find_by(id: climb.leader_1.id).climb_philosophy%></h5></td>
           </table>
         </div>
       </section>

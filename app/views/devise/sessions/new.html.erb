@@ -1,0 +1,39 @@
+<head>
+  <% title("Sign In") %>
+</head>
+
+<div class='cover-container'>
+  <%= image_tag("VaqasMalik_IngallsPeak.jpg", class: "banner-image dont-move") %>
+</div>
+
+<section class="full-page-form form-on-image four columns offset-by-four">
+  <h1 class="f4">Sign In</h1>
+
+  <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+    <div class="field">
+      <h5 class="f2"><%= f.label :email %></h5>
+      <%= f.email_field :email, autofocus: true %>
+    </div>
+
+    <div class="field">
+      <h5 class="f2"><%= f.label :password %></h5>
+      <%= f.password_field :password, autocomplete: "off" %>
+    </div>
+
+    <div id="remember">
+      <% if devise_mapping.rememberable? %>
+        <h5> </h5>
+        <div class="field">
+          <%= f.check_box :remember_me %>
+          <h5 class="f2"><%= f.label :remember_me %></h5>
+        </div>
+      <% end %>
+    </div>
+
+    <div class="actions field">
+      <h5></h5>
+      <%= f.submit "Sign In" %>
+    </div>
+  <% end %>
+
+</section>
