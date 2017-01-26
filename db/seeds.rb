@@ -84,6 +84,8 @@ CSV.foreach('db/leader_data.csv', headers: true) do |line|
     state:                  Faker::Address.state_abbr,
     zip:                    Faker::Address.zip,
     membership_status:      "active",
+    autorenew:              true,
+    membership_expiration:  Faker::Date.between(Date.today, 1.year.from_now),
     user_roles:             [UserRole.find_by_role("Climber"), UserRole.find_by_role("Climb Leader")]
   )
 
@@ -185,6 +187,17 @@ puts "Seeded Routes. Total Routes: #{Route.all.length}"
 # Use Faker to create 100 users
 100.times do |x|
   statuses = ["nonmember", "active", "lapsed"]
+  random_status = statuses[rand(0..2)]
+  truefalse = [true, false]
+
+  if random_status == "active"
+    autorenewal = truefalse[rand(0..1)]
+    membership_expiration = Faker::Date.between(Date.today, 1.year.from_now)
+  else
+    autorenewal = false
+    membership_exipration = nil
+  end
+
   climber = User.create(
     first_name:             Faker::Name.first_name,
     last_name:              Faker::Name.last_name,
@@ -199,8 +212,11 @@ puts "Seeded Routes. Total Routes: #{Route.all.length}"
     city:                   Faker::Address.city,
     state:                  Faker::Address.state_abbr,
     zip:                    Faker::Address.zip,
-    membership_status:      statuses[rand(0..2)],
-    user_roles:             [UserRole.find_by_role("Climber")]
+    membership_status:      random_status,
+    autorenew:              autorenewal,
+    membership_expiration:  membership_expiration,
+    user_roles:             [UserRole.find_by_role("Climber")],
+    credits:                rand(0..4),
   )
   climber_profile = ClimberProfile.create(
     user:                   climber,

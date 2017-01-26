@@ -15,6 +15,10 @@ class CreateUsers < ActiveRecord::Migration
       t.date :birthdate
       t.integer :age
       t.integer :credits
+      t.string :stripe_id
+      t.string :subscription_id
+      t.boolean :autorenew
+      t.date :membership_expiration
 
       t.timestamps null: false
     end
