@@ -24,6 +24,10 @@ Rails.application.routes.draw do
             :user_roles
 
 
+post 'users/start_subscription', to: 'users#start_subscription', as: 'subscribe'
+post 'users/end_autorenew', to: 'users#end_autorenew', as: 'end_autorenew'
+post 'users/restart_autorenew', to: 'users#restart_autorenew', as: 'restart_autorenew'
+
 resources :users do
   resources :climbs do
     resources :climb_apps
