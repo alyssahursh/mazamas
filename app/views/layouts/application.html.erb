@@ -5,6 +5,8 @@
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
     <%= csrf_meta_tags %>
+    <link href="/assets/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+
     <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
     <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.31.0/mapbox-gl.js'></script>
     <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.31.0/mapbox-gl.css' rel='stylesheet' />
@@ -50,7 +52,7 @@ Mountains and Routes</a></h5></div>
       <% end %>
     </div>
   </nav>
-  
+
 <%= yield %>
 
 
