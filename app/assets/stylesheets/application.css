@@ -232,10 +232,14 @@ nav h1 {
 /*                        TOUTS                           */
 /**********************************************************/
 
-.tout-container {
-  top: 125vh;
+.tout-container,
+.leader-profile-container {
   position: absolute;
   text-align: center;
+}
+
+.tout-container {
+  top: 125vh;
 }
 
 @media (orientation: portrait) {
@@ -244,19 +248,23 @@ nav h1 {
   }
 }
 
-.tout-container p {
+.tout-container p,
+.leader-profile-container p {
   width: 90%;
   margin-left: 5%;
   margin-top: 2rem;
   letter-spacing: .1rem;
 }
 
-.tout-container div.columns {
+.tout-container div.columns,
+.leader-profile-container div.columns {
   margin-bottom: 10rem;
 }
 
 .tout-container div:nth-of-type(3n+2),
- .tout-container div:nth-of-type(3n+3){
+.tout-container div:nth-of-type(3n+3),
+.leader-profile-container div.tout.four.columns:nth-of-type(3n+3),
+.leader-profile-container div.tout.four.columns:nth-of-type(3n+4) {
   margin-left: 4%;
 }
 
@@ -267,15 +275,23 @@ nav h1 {
   margin-bottom: 0;
 }
 
-.tout-container img {
+.tout-container img,
+.leader-profile-container img {
   position: absolute;
-  /*margin: auto;*/
   bottom: 2rem;
   left: 0;
+  border-radius: .5rem;
+}
+
+.tout-container img {
   width: 44%;
   margin-left: 28%;
-  border-radius: .5rem;
   margin-bottom: 3rem;
+}
+
+.leader-profile-container img {
+  width: 56%;
+  margin: 2rem 22% 1rem;
 }
 
 .tout-container img.logo {
@@ -283,6 +299,7 @@ nav h1 {
   margin-left: 15%;
   bottom: 0;
 }
+
 
 @media (max-width: 550px) {
   .tout-container {
