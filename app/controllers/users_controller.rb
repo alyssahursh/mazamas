@@ -15,6 +15,8 @@ class UsersController < ApplicationController
   # GET /users/new
   def new
     @user = User.new
+    @user.membership_status = "lapsed"
+    @user.save
   end
 
   # GET /users/1/edit
