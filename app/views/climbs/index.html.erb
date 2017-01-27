@@ -10,7 +10,7 @@
 
   <div class="search f1">
     <%= search_form_for @search_climb do |f| %>
-      <%= f.search_field :description_cont, placeholder: "Search Climbs by Description"%>
+      <%= f.search_field :description_cont, placeholder: "Search Climbs"%>
       <%= f.submit "", class: "search-button"%>
     <% end %>
   </div>
@@ -38,7 +38,7 @@
 
           <% if !climb.mountain.latitude.nil? && !climb.mountain.longitude.nil?  %>
             <div class="static-map-container">
-              <img src='https://api.mapbox.com/v4/mapbox.light/pin-m-circle+3343A1(<%= climb.mountain.longitude %>,<%= climb.mountain.latitude %>)/<%= climb.mountain.longitude %>,<%= climb.mountain.latitude %>,5/320x550@2x.png?access_token=pk.eyJ1IjoiY2xpbWJ3aXRobWF6YW1hcyIsImEiOiJjaXh5ODdpengwMDRuMndxdW9zNHJqbjNyIn0.ECqrLVMXr5JQ9t1fRdo5lQ' alt='Map of <%= climb.mountain.name %>'>
+              <img src='https://api.mapbox.com/v4/mapbox.light/pin-m-circle+3343A1(<%= climb.mountain.longitude %>,<%= climb.mountain.latitude %>)/<%= climb.mountain.longitude %>,<%= climb.mountain.latitude %>,5/320x550@2x.png?access_token=pk.eyJ1IjoiY2xpbWJ3aXRobWF6YW1hcyIsImEiOiJjaXh5ODdpengwMDRuMndxdW9zNHJqbjNyIn0.ECqrLVMXr5JQ9t1fRdo5lQ' alt='Map of <%= climb.mountain.name %>' class="static-map">
             </div>
           <% else %>
             <div class="static-map-container">
@@ -135,7 +135,22 @@
                 <td><%= climb.last_updated.strftime('%m-%d-%Y') %></td>
               </tr>
             </table>
-            <%= button_to "Apply to #{climb.mountain.name}", root_path, class: "profile-button f2" %>
+
+            <%= form_for climb, url: { action: "create" }, method: "post" do |f| %>
+              <script
+                src="https://checkout.stripe.com/checkout.js" class="stripe-button profile-button f2"
+                data-key="pk_test_uuP4f9lToS2cmYlc6RneOwqV"
+                data-amount="2000"
+                data-name="The Mazamas"
+                data-description="Application for <%= climb.mountain.name %>"
+                data-locale="auto"
+                data-label="Apply to <%= climb.mountain.name %>"
+                data-image="https://www.mazamasclimbs.org/assets/mazamas-logo-square-227a770fb59bffaac46635487b9d514dfb4401839766b04dfba02f06893214f3.jpg"
+                data-email=<%= current_user.email %> >
+
+              </script>
+            <% end %>
+
           </div>
         </div>
       </section>

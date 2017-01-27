@@ -954,11 +954,17 @@ button.stripe-button-el:hover {
 
 .static-map-container {
   display: inline-block;
+  position: relative;
   float: left;
   width: calc(50% - 1rem);
   margin-right: 1rem;
-  height: auto;
+  height: 54rem;
   overflow: hidden;
+}
+
+.static-map {
+  position: absolute;
+  bottom: 0;
 }
 
 @media (orientation: portrait) and (max-width: 800px) {
@@ -1004,22 +1010,32 @@ div.details table.mountain-data tbody tr td:last-of-type {
   }
 }
 
-.one-climb div.hidden-until form.button_to input.profile-button  {
+
+.one-climb div.hidden-until div.details form.edit_climb button.stripe-button-el,
+.one-climb div.hidden-until div.details form.edit_climb button.stripe-button-el:active {
   background-color: #3343A1;
-  color: white;
   border: 2px #5868ca solid;
   border-radius: 0;
   width: 100%;
   height: 38px;
+}
+
+
+.one-climb div.hidden-until div.details form.edit_climb button.stripe-button-el span,
+.one-climb div.hidden-until div.details form.edit_climb button.stripe-button-el span:active {
+  color: white;
   font-size: 13px;
-  line-height: 13px;
+  line-height: 28px;
+  box-shadow: none;
+  border: transparent;
+  background-color: transparent;
+  font-weight: bold;
 }
 
-.one-climb div.hidden-until form.button_to input.profile-button:hover {
+.one-climb div.hidden-until div.details form.edit_climb button.stripe-button-el:hover,
+.one-climb div.hidden-until div.details form.edit_climb button.stripe-button-el span:hover {
   background-color: #3c4fbe;
-  border: 2px #5868ca solid;
 }
-
 
 .description {
   display: block;

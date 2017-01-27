@@ -17,7 +17,7 @@ class ClimbsController < ApplicationController
       @climbs = @results.result
 
     else
-      @climbs = Climb.paginate(:page => params[:page], :per_page => 20)
+      @climbs = Climb.paginate(:page => params[:page], :per_page => 10)
     end
 
     respond_to do |format|
