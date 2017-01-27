@@ -26,4 +26,12 @@ module ApplicationHelper
       return number_to_phone(phone_number[0...10], area_code: true, extension: phone_number[10..-1])
     end
   end
+
+  def list(input, attribute)
+    holder_array = []
+    input.each do |item|
+      holder_array << item[attribute]
+    end
+    text = holder_array.join(", ")
+  end
 end

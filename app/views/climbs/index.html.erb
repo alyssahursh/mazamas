@@ -19,79 +19,125 @@
     <% @climbs.each do |climb| %>
       <section class="one-climb">
         <div class="always-visible">
-          <h4 class="f2"><%= link_to climb.mountain.name, climb.mountain %></h5>
-          <h5 class="f2"><%= climb.route.name %></h5>
-          <h5 class="f2"><%= climb.route.climb_class.code %></h5>
-          <h5 class="f2"><%= climb.route.rock_class_text %></h5>
-          <h5 class="f2"><%= climb.route.snow_angle_text %></h5>
-          <h5 class="f2"><%= climb.climb_schedule.season %> <%= climb.climb_schedule.year %></h5>
-          <h5 class="f2"><%= climb.climb_status %></h5>
-          <h5 class="f2"><%= climb.party_size %></h5>
-          <h5 class="f2"><%= climb.spots_available %></h5>
-          <h5 class="f2"><%= climb.description %></h5>
-          <h5 class="f2"><%= climb.last_updated %></h5>
 
-          <% climb.educations.each do |education| %>
-            <h5 class="f2"><%= education.name %></h5>
-          <% end %>
+          <div class="climb-class-circle-large <%= climb.route.climb_class.code %>-color"><h5 class=f2><%= climb.route.climb_class.code %></h5></div>
 
-          <% climb.climb_tags.each do |tag| %>
-            <h5 class="f2"><%= tag.code %></h5>
-          <% end %>
+          <div class="climb-mountain-route">
+            <h4 class="f2"><%= link_to climb.mountain.name, climb.mountain %></h5>
+            <h5 class="f2"><%= climb.route.name %></h5>
+          </div>
 
-          <% if !climb.mountain.latitude.nil? && !climb.mountain.longitude.nil?  %>
-            <div class="static-map-container">
-              <img src='https://api.mapbox.com/v4/mapbox.light/pin-m-circle+3343A1(<%= climb.mountain.longitude %>,<%= climb.mountain.latitude %>)/<%= climb.mountain.longitude %>,<%= climb.mountain.latitude %>,5/320x440@2x.png?access_token=pk.eyJ1IjoiY2xpbWJ3aXRobWF6YW1hcyIsImEiOiJjaXh5ODdpengwMDRuMndxdW9zNHJqbjNyIn0.ECqrLVMXr5JQ9t1fRdo5lQ' alt='Map of <%= climb.mountain.name %>'>
-            </div>
-          <% end %>
-
-
-          <% if !climb.specific_date.nil? %>
-            <h5 class="f2"><%= climb.specific_date.date_leave_town %></h5>
-            <h5 class="f2"><%= climb.specific_date.date_leave_trailhead %></h5>
-            <h5 class="f2"><%= climb.specific_date.date_summit %></h5>
-            <h5 class="f2"><%= climb.specific_date.date_return_trailhead %></h5>
-            <h5 class="f2"><%= climb.specific_date.date_return_town %></h5>
-          <% elsif !climb.general_date.nil? %>
-            <h5 class="f2"><%= climb.general_date.month %></h5>
-            <h5 class="f2"><%= climb.general_date.year %></h5>
-          <% end %>
-
-
-          <table>
-            <% if !climb.leader_1.nil? %>
-            <tr>
-              <td><h5 class="f2">LEADER</h5></td>
-              <td><h5 class="f2"><%= climb.leader_1.first_name%> <%= climb.leader_1.last_name %></h5></td>
-            </tr>
-            <% end %>
-            <% if !climb.leader_2.nil? %>
-            <tr>
-              <td><h5 class="f2">LEADER</h5></td>
-              <td><h5 class="f2"><%= climb.leader_2.first_name%> <%= climb.leader_2.last_name %></h5></td>
-            </tr>
-            <% end %>
-            <% if !climb.assistant_1.nil? %>
-            <tr>
-              <td><h5 class="f2">ASSISTANT</h5></td>
-              <td><h5 class="f2"><%= climb.assistant_1.first_name%> <%= climb.assistant_1.last_name %></h5></td>
-            </tr>
-            <% end %>
-            <% if !climb.assistant_2.nil? %>
-            <tr>
-              <td><h5 class="f2">ASSISTANT</h5></td>
-              <td><h5 class="f2"><%= climb.assistant_2.first_name%> <%= climb.assistant_2.last_name %></h5></td>
-            </tr>
-            <% end %>
-          </table>
+          <h5 class="f2"><%= climb.climb_status.upcase %></h5>
+          <h5 class="f2"><%= link_to "DETAILS", root_path, class: "details" %></h5>
+          <h5 class="f2"><%= climb.leader_1.first_name%> <%= climb.leader_1.last_name %></h5>
+          <h5><%= !climb.specific_date.nil? ? climb.specific_date.date_leave_town.strftime('%m-%d-%Y') : climb.general_date.month %></h5>
+          <h5></h5>
 
         </div>
 
-        <div class="hidden-until">
-          <table>
-            <td><h5 class="f2">LEADER PHILOSOPHY</h5></td>
-            <td><h5 class="f2"><%= ClimbLeaderProfile.find_by(id: climb.leader_1.id).climb_philosophy%></h5></td>
-          </table>
+        <div class="hidden-until" id="hidden-until">
+
+          <% if !climb.mountain.latitude.nil? && !climb.mountain.longitude.nil?  %>
+            <div class="static-map-container">
+              <img src='https://api.mapbox.com/v4/mapbox.light/pin-m-circle+3343A1(<%= climb.mountain.longitude %>,<%= climb.mountain.latitude %>)/<%= climb.mountain.longitude %>,<%= climb.mountain.latitude %>,5/320x550@2x.png?access_token=pk.eyJ1IjoiY2xpbWJ3aXRobWF6YW1hcyIsImEiOiJjaXh5ODdpengwMDRuMndxdW9zNHJqbjNyIn0.ECqrLVMXr5JQ9t1fRdo5lQ' alt='Map of <%= climb.mountain.name %>'>
+            </div>
+          <% else %>
+            <div class="static-map-container">
+              <img src='https://placehold.it/320x550'>
+            </div>
+          <% end %>
+
+          <div class="details">
+            <table class="mountain-data f1">
+              <% if !climb.leader_1.nil? %>
+              <tr>
+                <td>LEADER</td>
+                <td><%= climb.leader_1.first_name%> <%= climb.leader_1.last_name %></td>
+              </tr>
+              <% end %>
+
+              <% if !climb.leader_2.nil? %>
+              <tr>
+                <td>LEADER</td>
+                <td><%= climb.leader_2.first_name%> <%= climb.leader_2.last_name %></td>
+              </tr>
+              <% end %>
+
+              <% if !climb.assistant_1.nil? %>
+              <tr>
+                <td>ASSISTANT</td>
+                <td><%= climb.assistant_1.first_name%> <%= climb.assistant_1.last_name %></td>
+              </tr>
+              <% end %>
+
+              <% if !climb.assistant_2.nil? %>
+              <tr>
+                <td>ASSISTANT</td>
+                <td><%= climb.assistant_2.first_name%> <%= climb.assistant_2.last_name %></td>
+              </tr>
+              <% end %>
+
+              <tr>
+                <td>PARTY SIZE</td>
+                <td><%= climb.party_size %></td>
+              </tr>
+              <tr>
+                <td>SPOTS AVAILABLE</td>
+                <td><%= climb.spots_available %></td>
+              </tr>
+              <tr>
+                <td>ROCK CLASS</td>
+                <td><%= climb.route.rock_class_text %></td>
+              </tr>
+              <tr>
+                <td>SNOW ANGLE</td>
+                <td><%= climb.route.snow_angle_text %></td>
+              </tr>
+              <tr>
+                <td>GRAD PREFERENCES</td>
+                <td><%= list(climb.educations, "abbreviation") %></td>
+              </tr>
+              <tr>
+                <td>TAGS</td>
+                <td><%= list(climb.climb_tags, "code") %></td>
+              </tr>
+
+              <% if !climb.specific_date.nil? %>
+                <tr>
+                  <td>LEAVE TOWN</td>
+                  <td><%= climb.specific_date.date_leave_town.strftime('%m-%d-%Y') %></td>
+                </tr>
+                <tr>
+                  <td>LEAVE TRAILHEAD</td>
+                  <td><%= climb.specific_date.date_leave_trailhead.strftime('%m-%d-%Y') %></td>
+                </tr>
+                <tr>
+                  <td>SUMMIT</td>
+                  <td><%= climb.specific_date.date_summit.strftime('%m-%d-%Y') %></td>
+                </tr>
+                <tr>
+                  <td>BACK TO TRAILHEAD</td>
+                  <td><%= climb.specific_date.date_return_trailhead.strftime('%m-%d-%Y') %></td>
+                </tr>
+                <tr>
+                  <td>BACK TO TOWN</td>
+                  <td><%= climb.specific_date.date_return_town.strftime('%m-%d-%Y') %></td>
+                </tr>
+
+              <% elsif !climb.general_date.nil? %>
+                <tr>
+                  <td>WEATHER DEPENDENT</td>
+                  <td><%= climb.general_date.month %> <%= climb.general_date.year %></td>
+                </tr>
+              <% end %>
+
+              <tr>
+                <td>LAST UPDATED</td>
+                <td><%= climb.last_updated.strftime('%m-%d-%Y') %></td>
+              </tr>
+            </table>
+            <%= button_to "Apply to #{climb.mountain.name}", root_path, class: "profile-button f2" %>
+          </div>
         </div>
       </section>
     <% end %>
@@ -108,5 +154,11 @@ $("#route_search input").keypress(function(event) {
         event.preventDefault();
         $("#route_search").submit([name: "commit", value: "search"]);
     }
+});
+
+$(".details").on("click", function(event) {
+  event.preventDefault();
+  console.log("I heard that click")
+    // $(".hidden-until").
 });
 </script>

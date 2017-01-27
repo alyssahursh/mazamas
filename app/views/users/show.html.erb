@@ -52,7 +52,7 @@
       <% if current_user.membership_status == "lapsed" %>
         <%= form_for @user, url: { action: "start_subscription" }, method: "post" do |f| %>
           <script
-            src="https://checkout.stripe.com/checkout.js" class="stripe-button profile-button"
+            src="https://checkout.stripe.com/checkout.js" class="stripe-button f2"
             data-key="pk_test_uuP4f9lToS2cmYlc6RneOwqV"
             data-amount="6000"
             data-name="The Mazamas"

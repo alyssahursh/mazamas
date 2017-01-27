@@ -26,6 +26,5 @@ class Climb < ActiveRecord::Base
 
     available = party_size - occupied
   end
-
-
+  
 end

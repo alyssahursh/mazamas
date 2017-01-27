@@ -418,7 +418,7 @@ nav h1 {
   top: 10%;
   background-color: rgba(255, 255, 255, .8);
   border: 2px solid white;
-  border-radius: .75rem;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.18);
   padding: 1.5rem;
 }
 
@@ -557,6 +557,20 @@ input {
   height: 3rem;
 }
 
+/* STRIPE */
+button.stripe-button-el {
+  background-image: none;
+  border-radius: 0;
+}
+
+button.stripe-button-el span {
+  background-image: none;
+  border-radius: 0;
+  background: transparent;
+  color: #000;
+  font-family: 'Assistant',    sans-serif;
+  font-weight: normal;
+}
 
 /**********************************************************/
 /*                     TABLES / COLUMNS                   */
@@ -600,7 +614,6 @@ tr {
   width: 2.5rem;
   border-radius: 100%;
   color: white;
-  background-color: green;
   text-align: center;
   margin-right: .5rem;
 }
@@ -631,30 +644,6 @@ input:nth-of-type(2n+2) {
 
 .search-button {
   visibility: hidden;
-}
-
-/**********************************************************/
-/*                   CLIMB INDEX PAGE                     */
-/**********************************************************/
-.one-climb {
-  margin-bottom: 5rem;
-}
-
-.always-visible {
-  border: 2px solid green;
-}
-
-.hidden-until {
-  border: 2px solid blue;
-}
-
-.static-map-container {
-  margin: 2%;
-  width: 50%;
-}
-
-.static-map-container img {
-  width: 94%;
 }
 
 
@@ -823,13 +812,15 @@ input#user_remember_me {
 
 
 .profile div.profile-header form.button_to,
-.profile section.profile-table div form.button_to {
+.profile section.profile-table div form.button_to,
+form.edit_user {
   width: 25%;
   display: inline-block;
 }
 
 .profile div.profile-header form.button_to input.profile-button,
-.profile section.profile-table div form.button_to input.profile-button {
+.profile section.profile-table div form.button_to input.profile-button,
+button.stripe-button-el {
   border-radius: 0;
   border: 1px solid black;
   color: black;
@@ -840,7 +831,8 @@ input#user_remember_me {
 }
 
 .profile div.profile-header form.button_to input.profile-button:hover,
-.profile section.profile-table div form.button_to input.profile-button:hover{
+.profile section.profile-table div form.button_to input.profile-button:hover,
+button.stripe-button-el:hover {
   background-color: #e7e7e7;
 }
 
@@ -891,3 +883,123 @@ input#user_remember_me {
 
 .member-status.nonmember::before { background-color: #3343A1; border: 2px solid #5868ca; }
 .nonmember { color: #3343A1; }
+
+
+/**********************************************************/
+/*                   CLIMB INDEX PAGE                     */
+/**********************************************************/
+.one-climb {
+  margin-bottom: 5rem;
+}
+
+.always-visible {
+  border: 2px solid #FFFFFF;
+  padding: 2rem;
+  background-color: #EEEEEE;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.16), 0 6px 20px 0 rgba(0, 0, 0, 0.12);
+
+}
+
+.hidden-until {
+  display: none;
+  background-color: #fdfdfd;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.16), 0 6px 20px 0 rgba(0, 0, 0, 0.12);
+  padding: 2rem;
+  border: 2px solid #FFFFFF;
+}
+
+.climb-class-circle-large {
+  display: inline-block;
+  float: left;
+  height: 3.5rem;
+  width: 3.5rem;
+  border-radius: 100%;
+  color: white;
+  text-align: center;
+  margin-right: .75rem;
+  margin-top: .5rem;
+}
+
+.climb-class-circle-large h5 {
+  padding-top: .3rem;
+}
+.climb-mountain-route {
+  display: inline-block;
+}
+
+.climb-mountain-route h4,
+.climb-mountain-route h5 {
+  line-height: 1.1;
+}
+
+.static-map-container {
+  display: inline-block;
+  float: left;
+  width: calc(50% - 1rem);
+  margin-right: 1rem;
+}
+
+@media (orientation: portrait) and (max-width: 800px) {
+  .static-map-container {
+    width: 100%;
+    margin: 1rem 0;
+  }
+}
+
+.static-map-container img {
+  width: 100%;
+}
+
+.details {
+  display: inline-block;
+  width: calc(50% - 1rem);
+  margin-left: 1rem;
+}
+
+.details .mountain-data {
+  width: 100%;
+}
+
+.leader {
+  display: block;
+  width: 100%;
+}
+
+div.details table.mountain-data tbody tr td:first-of-type {
+  width: 15rem;
+  padding: 5px 5px;
+}
+
+div.details table.mountain-data tbody tr td:last-of-type {
+  padding: 5px 5px;
+}
+
+
+@media (orientation: portrait) {
+  .details {
+    width: 100%;
+    margin: 1rem 0;
+  }
+}
+
+.one-climb div.hidden-until form.button_to input.profile-button  {
+  background-color: #3343A1;
+  color: white;
+  border: 2px #5868ca solid;
+  border-radius: 0;
+  width: 100%;
+  height: 38px;
+  font-size: 13px;
+  line-height: 13px;
+}
+
+.one-climb div.hidden-until form.button_to input.profile-button:hover {
+  background-color: #3c4fbe;
+  border: 2px #5868ca solid;
+}
+
+
+.description {
+  display: block;
+  width: 100%;
+}
