@@ -75,6 +75,7 @@ nav {
   width: 100%;
   position: fixed;
   background-color: rgba(255, 255, 255, .8);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.18);
   border-bottom: 1.5px solid #FFF;
   padding: 0;
   height: 8.2rem;
@@ -169,7 +170,6 @@ nav h1 {
   left: 0;
   height: 8.25rem;
   width: 100%;
-  border-bottom: 1px solid black;
 }
 
 .general-spacing {
@@ -893,9 +893,10 @@ button.stripe-button-el:hover {
 }
 
 .always-visible {
+  display: flex;
   border: 2px solid #FFFFFF;
   padding: 2rem;
-  background-color: #EEEEEE;
+  background-color: #FFFFFF;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.16), 0 6px 20px 0 rgba(0, 0, 0, 0.12);
 
 }
@@ -910,14 +911,13 @@ button.stripe-button-el:hover {
 
 .climb-class-circle-large {
   display: inline-block;
-  float: left;
   height: 3.5rem;
   width: 3.5rem;
   border-radius: 100%;
   color: white;
   text-align: center;
-  margin-right: .75rem;
-  margin-top: .5rem;
+  margin-right: 2rem;
+  margin-top: 1.5rem;
 }
 
 .climb-class-circle-large h5 {
@@ -925,6 +925,7 @@ button.stripe-button-el:hover {
 }
 .climb-mountain-route {
   display: inline-block;
+  flex-grow: 5;
 }
 
 .climb-mountain-route h4,
@@ -932,11 +933,32 @@ button.stripe-button-el:hover {
   line-height: 1.1;
 }
 
+.climb-mountain-route p {
+  padding: .1rem 0 0 0;
+  margin: 0;
+}
+
+.status-toggle {
+  display: inline-block;
+  width: auto;
+  align-self: flex-end;
+  position: relative;
+  width: 8%;
+  text-align: center;
+}
+
+.toggle {
+  display: inline-block;
+  height: 100%;
+}
+
 .static-map-container {
   display: inline-block;
   float: left;
   width: calc(50% - 1rem);
   margin-right: 1rem;
+  height: auto;
+  overflow: hidden;
 }
 
 @media (orientation: portrait) and (max-width: 800px) {

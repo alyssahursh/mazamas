@@ -23,19 +23,18 @@
           <div class="climb-class-circle-large <%= climb.route.climb_class.code %>-color"><h5 class=f2><%= climb.route.climb_class.code %></h5></div>
 
           <div class="climb-mountain-route">
-            <h4 class="f2"><%= link_to climb.mountain.name, climb.mountain %></h5>
-            <h5 class="f2"><%= climb.route.name %></h5>
+            <h4 class="f2"><%= link_to climb.mountain.name, climb.mountain %> — <%= climb.climb_status.upcase %></h5>
+            <h5 class="f2"><%= climb.route.name %> Route with <%= climb.leader_1.first_name%> <%= climb.leader_1.last_name %></h5>
+            <p class="f1"><%= climb.date_text %></p>
           </div>
 
-          <h5 class="f2"><%= climb.climb_status.upcase %></h5>
-          <h5 class="f2"><%= link_to "DETAILS", root_path, class: "details" %></h5>
-          <h5 class="f2"><%= climb.leader_1.first_name%> <%= climb.leader_1.last_name %></h5>
-          <h5><%= !climb.specific_date.nil? ? climb.specific_date.date_leave_town.strftime('%m-%d-%Y') : climb.general_date.month %></h5>
-          <h5></h5>
+          <div class="status-toggle">
+            <h5 class="f2 toggle"><i class="fa fa-angle-down fa-2x" aria-hidden="true"></i></h5>
+          </div>
 
         </div>
 
-        <div class="hidden-until" id="hidden-until">
+        <div class="hidden-until">
 
           <% if !climb.mountain.latitude.nil? && !climb.mountain.longitude.nil?  %>
             <div class="static-map-container">
@@ -155,10 +154,28 @@ $("#route_search input").keypress(function(event) {
         $("#route_search").submit([name: "commit", value: "search"]);
     }
 });
+</script>
 
-$(".details").on("click", function(event) {
-  event.preventDefault();
-  console.log("I heard that click")
-    // $(".hidden-until").
+<script>
+$(document).ready(function(){
+  $(".toggle").click(function(event) {
+    event.preventDefault();
+    // console.log("you clicked me");
+    // console.log($(this).parent().parent().parent());
+    // console.log($(this).parent().parent().parent().find(".hidden-until"));
+    var hidden_block = $(this).parent().parent().parent().find(".hidden-until");
+
+    // console.log(hidden_block.css("display"));
+    if (hidden_block.css("display") === "none" || hidden_block.css("display") === undefined) {
+      $(this).html("<i class='fa fa-angle-down fa-2x fa-flip-vertical' aria-hidden='true'></i>");
+      $(this).parent().parent().css("background-color", "#EEEEEE");
+      hidden_block.css("display", "block");
+    }
+    else {
+      $(this).html("<i class='fa fa-angle-down fa-2x' aria-hidden='true'></i>");
+      $(this).parent().parent().css("background-color", "#FFFFFF");
+      hidden_block.css("display", "none");
+    }
+  });
 });
 </script>

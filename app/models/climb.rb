@@ -26,5 +26,18 @@ class Climb < ActiveRecord::Base
 
     available = party_size - occupied
   end
-  
+
+  def date_text
+    text = ""
+    if !specific_date.nil?
+      if specific_date.date_leave_town.strftime('%m-%d-%Y') == specific_date.date_return_town.strftime('%m-%d-%Y')
+        text = specific_date.date_leave_town.strftime('%m-%d-%Y')
+      else
+        text = "#{specific_date.date_leave_town.strftime('%m-%d-%Y')} to #{specific_date.date_return_town.strftime('%m-%d-%Y')}"
+      end
+    else
+      text = "#{general_date.month} #{general_date.year}"
+    end
+    return text
+  end
 end
