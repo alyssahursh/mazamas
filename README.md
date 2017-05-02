@@ -22,10 +22,10 @@ A Ruby on Rails web app to allow climbers to search and apply for Mazamas climbs
 * SSL Certificate through AWS
 
 ## Entity relationship diagram
-See the entity relationship diagram as a PDF [here](https://github.com/alyssahursh/mazamas/blob/master/erd.png)
+See the entity relationship diagram as a PDF [here](https://github.com/alyssahursh/mazamas/blob/master/erd.png).
 ![ERD](/erd.png?raw=true "ERD")
 
-## Where can I see it?
+## Where can I interact with this web app?
 Unfortunately, this web app is not currently running anywhere online. You'll have to download the repo and run a Rails server to interact with it locally. After downloading, run rake db:rebuild to seed the database. (The database seeds were scraped from two existing websites. See the [scraper repo](https://github.com/alyssahursh/mazamas-scraper) for more information on how the data was collected.)
 
 To log in as a user, use climber10@mazamasclimbs.org or leader10@mazamasclimbs.org. The password for all test users is "password".
